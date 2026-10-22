@@ -229,106 +229,120 @@
     <!-- ======================================================== -->
     <!-- VIEW 1: LOGIN / SELECCIÓN DE PANELISTA                   -->
     <!-- ======================================================== -->
-    <section id="loginSection" class="transition-all duration-300">
+    <section id="loginSection" class="transition-all duration-300 py-4">
       
       <!-- Header / Welcome Title -->
-      <div class="text-center max-w-3xl mx-auto mb-10 pt-4">
+      <div class="text-center max-w-2xl mx-auto mb-8 pt-2">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold tracking-wider uppercase mb-3">
-          <i data-lucide="lock" class="w-3.5 h-3.5"></i> Acceso Exclusivo para Ponentes
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-indigo-400"></i> Acceso Oficial Restringido
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Portal de <span class="gradient-polyglot-text">Panelistas & Speakers</span>
         </h1>
-        <p class="mt-4 text-slate-400 text-sm sm:text-base leading-relaxed">
-          Bienvenido(a) a tu espacio de coordinación oficial para el <strong>Opportuneur Impact Forum 2026</strong>. 
-          Inicia sesión con tu correo o selecciona tu perfil oficial para consultar tu bloque, preguntas guía, co-panelistas y enlaces VIP de backstage.
+        <p class="mt-3 text-slate-400 text-xs sm:text-sm leading-relaxed">
+          Ingresa con tu <strong>usuario específico asignado</strong> y la <strong>contraseña oficial del Forum</strong> para acceder a tu briefing técnico, co-panelistas y credencial oficial.
         </p>
-
-        <!-- Access Mode Switcher Tabs -->
-        <div class="flex items-center justify-center gap-2 mt-8 p-1.5 bg-slate-900/80 rounded-2xl border border-slate-800 max-w-md mx-auto">
-          <button id="tabQuickBtn" class="flex-1 py-2 px-4 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30 flex items-center justify-center gap-1.5">
-            <i data-lucide="users" class="w-3.5 h-3.5"></i>
-            <span>Directorio de Speakers</span>
-          </button>
-          <button id="tabEmailBtn" class="flex-1 py-2 px-4 rounded-xl text-xs font-semibold transition-all text-slate-400 hover:text-white flex items-center justify-center gap-1.5">
-            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
-            <span>Acceso por Correo</span>
-          </button>
-        </div>
       </div>
 
-      <!-- Option A: Quick Directory / Speaker Cards Selector -->
-      <div id="quickSelectContainer" class="space-y-6">
-        <div class="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-800/80">
-          <span>Selecciona tu perfil para ingresar inmediatamente a tu briefing:</span>
-          <span class="text-indigo-400 font-mono font-semibold">12 Ponentes Confirmados</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="speakersLoginGrid">
-          <!-- Populated by JavaScript -->
-        </div>
-      </div>
-
-      <!-- Option B: Email / PIN Login Form -->
-      <div id="emailLoginContainer" class="hidden max-w-md mx-auto">
-        <div class="glass-card p-8 rounded-3xl border border-indigo-500/30 shadow-2xl shadow-indigo-950/50">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 p-0.5 mx-auto mb-5 shadow-lg shadow-indigo-500/30 flex items-center justify-center">
-            <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-indigo-400">
-              <i data-lucide="key-round" class="w-6 h-6"></i>
+      <!-- Main Login Card: Specific User + Generic Password -->
+      <div class="max-w-md mx-auto mb-14">
+        <div class="glass-card p-7 sm:p-8 rounded-3xl border border-indigo-500/40 shadow-2xl shadow-indigo-950/70 relative overflow-hidden bg-slate-900/90">
+          
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-500 p-0.5 shadow-lg shadow-indigo-500/30 shrink-0">
+              <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-amber-300">
+                <i data-lucide="key-round" class="w-5 h-5"></i>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-white">Inicio de Sesión</h3>
+              <p class="text-xs text-slate-400">Opportuneur Impact Forum 2026</p>
             </div>
           </div>
-          <h3 class="text-xl font-bold text-center text-white mb-1">Acceso con Credenciales</h3>
-          <p class="text-xs text-center text-slate-400 mb-6">Ingresa tu correo oficial registrado o tu código de speaker</p>
 
-          <form id="emailLoginForm" class="space-y-4">
+          <form id="speakerLoginForm" class="space-y-4">
+            <!-- Username Input -->
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Correo Electrónico del Panelista</label>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center justify-between">
+                <span>Usuario Específico del Panelista</span>
+                <span class="text-[11px] text-indigo-400">Ej: <code class="font-mono">cristian.gutierrez</code></span>
+              </label>
               <div class="relative">
-                <i data-lucide="mail" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500"></i>
+                <i data-lucide="user" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500"></i>
                 <input 
-                  type="email" 
-                  id="speakerEmailInput" 
-                  placeholder="ejemplo@polyglotmap.com"
+                  type="text" 
+                  id="speakerUsernameInput" 
+                  placeholder="usuario (ej: cristian.gutierrez, maria.gracia)"
                   required
-                  class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors placeholder:text-slate-600"
+                  autocomplete="username"
+                  class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-400 transition-colors placeholder:text-slate-600 font-mono"
                 />
               </div>
             </div>
 
+            <!-- Quick Pill Selector -->
             <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1.5 flex justify-between">
-                <span>PIN / Clave de Acceso VIP</span>
-                <span class="text-[10px] text-indigo-400 font-normal">Por defecto: <code class="font-mono font-bold">OPP2026</code></span>
+              <span class="text-[10px] text-slate-400 font-medium block mb-1.5">Selección rápida de usuario:</span>
+              <div class="flex flex-wrap gap-1.5 max-h-24 overflow-y-auto p-1.5 bg-slate-950/60 rounded-xl border border-slate-800/80" id="quickUserPills">
+                <!-- Dynamically populated chips: @cristian.gutierrez, @maria.gracia, etc. -->
+              </div>
+            </div>
+
+            <!-- Password Input -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center justify-between">
+                <span>Contraseña Oficial</span>
+                <span class="text-[10px] text-amber-300 font-mono px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">Genérica: <strong>OPPORTUNEUR2026</strong></span>
               </label>
               <div class="relative">
                 <i data-lucide="lock" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500"></i>
                 <input 
                   type="password" 
-                  id="speakerPinInput" 
-                  placeholder="••••••••"
-                  value="OPP2026"
-                  class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                  id="speakerPasswordInput" 
+                  placeholder="Contraseña del Forum"
+                  value="OPPORTUNEUR2026"
+                  required
+                  autocomplete="current-password"
+                  class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-400 transition-colors font-mono"
                 />
+                <button type="button" id="togglePasswordBtn" class="absolute right-3 top-3 text-slate-400 hover:text-white" title="Mostrar/ocultar contraseña">
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                </button>
               </div>
             </div>
 
-            <div id="loginErrorMessage" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-xl flex items-center gap-2">
-              <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
-              <span id="loginErrorText">Correo no encontrado en la base de datos de panelistas.</span>
+            <!-- Error message container -->
+            <div id="loginErrorMessage" class="hidden text-xs text-rose-300 bg-rose-500/10 border border-rose-500/25 p-3 rounded-xl flex items-start gap-2">
+              <i data-lucide="alert-circle" class="w-4 h-4 shrink-0 text-rose-400 mt-0.5"></i>
+              <span id="loginErrorText">Usuario no encontrado o contraseña incorrecta.</span>
             </div>
 
-            <button type="submit" class="w-full py-3 rounded-xl btn-gradient-polyglot text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg mt-2">
+            <button type="submit" class="w-full py-3 rounded-xl btn-gradient-polyglot text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer hover:brightness-110">
               <i data-lucide="log-in" class="w-4 h-4"></i>
-              <span>Ingresar a Mi Portal</span>
+              <span>Iniciar Sesión de Speaker</span>
             </button>
           </form>
 
-          <div class="mt-6 pt-5 border-t border-slate-800 text-center">
-            <span class="text-xs text-slate-500 block mb-2">¿Prefieres un acceso rápido sin escribir?</span>
-            <button id="switchBackToQuickBtn" class="text-xs text-indigo-400 hover:text-indigo-300 font-semibold underline">
-              Ver lista interactiva de speakers →
-            </button>
+        </div>
+      </div>
+
+      <!-- Directory of Speaker Users with Photos & 1-Click Access -->
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-3 border-b border-slate-800">
+          <div>
+            <h4 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="users" class="w-4 h-4 text-indigo-400"></i>
+              <span>Directorio Oficial de Usuarios para Ponentes</span>
+            </h4>
+            <p class="text-xs text-slate-400 mt-0.5">Haz clic en tu tarjeta para autocompletar tu usuario y acceder a tu briefing:</p>
           </div>
+          <span class="text-xs font-mono text-indigo-300 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 self-start sm:self-auto">
+            11 Ponentes Confirmados
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="speakersLoginGrid">
+          <!-- Populated by JavaScript with @usuario handles and 1-click select -->
         </div>
       </div>
 
@@ -429,32 +443,38 @@
       <!-- CRITICAL VIP BACKSTAGE BAR -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
         
-        <!-- VIP Room Join Card (2 cols) -->
-        <div class="lg:col-span-2 glass-card p-6 rounded-3xl border-2 border-emerald-500/40 bg-gradient-to-r from-emerald-950/20 via-slate-900 to-indigo-950/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 relative overflow-hidden">
+        <!-- VIP Room Join Card (2 cols) - LOCKED ZOOM LINK -->
+        <div class="lg:col-span-2 glass-card p-6 rounded-3xl border-2 border-amber-500/40 bg-gradient-to-r from-amber-950/20 via-slate-900 to-indigo-950/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 relative overflow-hidden">
           <div class="space-y-2">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span class="text-xs font-black tracking-wider uppercase text-emerald-400">ENLACE PRIVADO DE TRANSMISIÓN VIP</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold text-xs border border-amber-500/40">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-amber-400"></i>
+                SALA VIP BACKSTAGE • BLOQUEADA
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Zoom Pro / Meet VIP</span>
             </div>
             <h3 class="text-lg font-bold text-white">Sala Virtual Backstage (Ponentes & Producción)</h3>
             <p class="text-xs text-slate-300 leading-relaxed max-w-lg">
-              Conexión directa reservada para speakers. Ingresa por favor <strong class="text-amber-300">30 minutos antes (3:30 PM PET)</strong> para verificación de audio, cámara y diapositivas.
+              Conexión directa reservada para speakers. El acceso se habilitará automáticamente <strong class="text-amber-300">15 minutos antes (3:45 PM PET)</strong> para calibración de audio, prueba de cámara y paso de diapositivas.
             </p>
             <div class="flex items-center gap-4 text-xs font-mono text-slate-400 pt-1 flex-wrap">
-              <span>ID: <strong class="text-white">849 2026 7711</strong></span>
-              <span>Passcode: <strong class="text-emerald-400">OPP2026VIP</strong></span>
-              <span>Plataforma: <strong class="text-cyan-300">Zoom Pro / Meet VIP</strong></span>
+              <span>ID de Sala: <strong class="text-white">849 2026 7711</strong></span>
+              <span>Passcode: <strong class="text-amber-300">OPP2026VIP</strong></span>
+              <span class="text-amber-400/90 font-semibold flex items-center gap-1">
+                <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                Apertura: 3:45 PM PET
+              </span>
             </div>
           </div>
 
           <div class="flex flex-col sm:flex-row lg:flex-col gap-2.5 w-full sm:w-auto shrink-0">
-            <a href="https://zoom.us" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/25">
-              <i data-lucide="video" class="w-4 h-4"></i>
-              <span>Entrar a Sala VIP</span>
-            </a>
-            <button id="copyVipLinkBtn" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-200 flex items-center justify-center gap-1.5 transition-colors">
-              <i data-lucide="copy" class="w-3.5 h-3.5 text-indigo-400"></i>
-              <span id="copyVipLinkText">Copiar Enlace VIP</span>
+            <button type="button" onclick="showLockedZoomAlert()" class="px-5 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-slate-400 border border-slate-700/80 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-not-allowed shadow-md group">
+              <i data-lucide="lock" class="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform"></i>
+              <span>Sala VIP (Bloqueada)</span>
+            </button>
+            <button id="copyVipLinkBtn" type="button" onclick="showLockedZoomAlert()" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-300 flex items-center justify-center gap-1.5 transition-colors">
+              <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span id="copyVipLinkText">Disponible a las 3:45 PM</span>
             </button>
           </div>
         </div>
@@ -483,11 +503,11 @@
             </label>
             <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
               <input type="checkbox" id="soundcheckCheck" checked class="rounded bg-slate-900 border-slate-700 text-indigo-600 focus:ring-indigo-500">
-              <span>Asistiré a la prueba técnica de las 3:30 PM</span>
+              <span>Asistiré a la prueba técnica de las 3:45 PM (15 min antes)</span>
             </label>
           </div>
 
-          <button id="savePreferencesBtn" class="w-full py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-xs font-semibold text-indigo-200 transition-colors flex items-center justify-center gap-1.5">
+          <button id="savePreferencesBtn" class="w-full py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-xs font-semibold text-indigo-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer">
             <i data-lucide="save" class="w-3.5 h-3.5"></i>
             <span>Guardar Preferencias</span>
           </button>
@@ -495,23 +515,19 @@
 
       </div>
 
-      <!-- MAIN TABS: 1. Mi Panel Asignado | 2. Agenda Completa | 3. Networking Rooms | 4. Kit de Descargas -->
+      <!-- MAIN TABS: 1. Mi Panel Asignado | 2. Agenda Completa | 3. Kit de Descargas -->
       <div class="flex items-center gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
-        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30 flex items-center gap-2 shrink-0" data-tab="panel">
+        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30 flex items-center gap-2 shrink-0 cursor-pointer" data-tab="panel">
           <i data-lucide="mic" class="w-4 h-4"></i>
           <span>Mi Bloque Asignado</span>
         </button>
-        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0" data-tab="agenda">
+        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="agenda">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agenda Completa del Forum</span>
         </button>
-        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0" data-tab="networking">
-          <i data-lucide="network" class="w-4 h-4"></i>
-          <span>Salas de Networking (6:35 PM)</span>
-        </button>
-        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0" data-tab="toolkit">
+        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="toolkit">
           <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Kit de Speaker & Fondos</span>
+          <span>Kit de Speaker & Badge</span>
         </button>
       </div>
 
@@ -581,27 +597,7 @@
               </div>
             </div>
 
-            <!-- Private Speaker Notes (Stored in LocalStorage) -->
-            <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-800">
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm uppercase tracking-wider">
-                  <i data-lucide="edit-3" class="w-4 h-4"></i>
-                  <span>Mis Apuntes Privados para el Panel</span>
-                </div>
-                <span id="notesSavedIndicator" class="text-[11px] text-emerald-400 font-semibold opacity-0 transition-opacity flex items-center gap-1">
-                  <i data-lucide="check" class="w-3 h-3"></i> Guardado automático
-                </span>
-              </div>
-              <p class="text-xs text-slate-400 mb-3">
-                Puedes escribir aquí tus ideas clave, anécdotas o citas. Se guardan localmente en tu navegador para que las consultes durante la sesión.
-              </p>
-              <textarea 
-                id="speakerPrivateNotes" 
-                rows="4" 
-                placeholder="Escribe aquí tus ideas principales, números clave o mensajes de impacto para compartir..."
-                class="w-full p-3.5 rounded-2xl bg-slate-900/90 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-cyan-400 transition-colors leading-relaxed placeholder:text-slate-600 font-mono"
-              ></textarea>
-            </div>
+
 
           </div>
 
@@ -694,76 +690,7 @@
 
       </div>
 
-      <!-- ======================================================== -->
-      <!-- TAB CONTENT 3: SALAS DE NETWORKING (6:35 PM)             -->
-      <!-- ======================================================== -->
-      <div id="tabContentNetworking" class="tab-pane hidden space-y-6">
-        
-        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-cyan-950/20 via-polyglot-card to-indigo-950/20">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold uppercase mb-3">
-            <i data-lucide="network" class="w-3.5 h-3.5"></i> Espacio Participativo • 6:35 – 6:50 PM (15 minutos)
-          </div>
-          <h3 class="text-2xl font-bold text-white">Tu Rol como Facilitador en los Breakout Rooms</h3>
-          <p class="text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
-            Durante las <strong>Global Networking Rooms</strong>, los asistentes se distribuirán en salas simultáneas de 8 a 12 participantes. 
-            Como panelista y YLAI Fellow, dinamizarás la conversación para que cada joven responda las <strong>4 preguntas esenciales</strong> y conecte de forma accionable.
-          </p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          
-          <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
-            <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm">
-              <span class="w-6 h-6 rounded-lg bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-xs font-mono">1</span>
-              <span>¿Quién eres y qué impacto buscas generar en tu región?</span>
-            </div>
-            <p class="text-xs text-slate-400 pl-8 leading-relaxed">
-              Objetivo: Presentación rápida (máximo 45 segundos por participante). Enfocarse en el propósito y comunidad a la que sirven.
-            </p>
-          </div>
-
-          <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
-            <div class="flex items-center gap-2 text-purple-400 font-bold text-sm">
-              <span class="w-6 h-6 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-xs font-mono">2</span>
-              <span>¿Qué habilidad o recurso tienes hoy que podría ayudar a otro líder?</span>
-            </div>
-            <p class="text-xs text-slate-400 pl-8 leading-relaxed">
-              Objetivo: Poner valor sobre la mesa: diseño, desarrollo web, ventas, idiomas, gestión de proyectos o alianzas locales.
-            </p>
-          </div>
-
-          <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
-            <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
-              <span class="w-6 h-6 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-xs font-mono">3</span>
-              <span>¿Qué oportunidad o contacto estás buscando actualmente?</span>
-            </div>
-            <p class="text-xs text-slate-400 pl-8 leading-relaxed">
-              Objetivo: Formular peticiones claras: socios de co-fundación, mentores, clientes en el extranjero o feedback de producto.
-            </p>
-          </div>
-
-          <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
-            <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
-              <span class="w-6 h-6 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-xs font-mono">4</span>
-              <span>¿Cómo podemos colaborar juntos desde hoy?</span>
-            </div>
-            <p class="text-xs text-slate-400 pl-8 leading-relaxed">
-              Objetivo: Intercambio inmediato de perfiles de LinkedIn y creación de sinergias cross-border entre los países del Forum.
-            </p>
-          </div>
-
-        </div>
-
-        <div class="glass-card p-5 rounded-2xl border border-amber-500/30 bg-amber-500/5 flex items-start gap-4">
-          <i data-lucide="sparkles" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5"></i>
-          <div class="text-xs text-slate-300 leading-relaxed">
-            <strong class="text-amber-300">Tip para el facilitador:</strong> 
-            Invita a que todos compartan su LinkedIn en el chat de la sala. Al finalizar la dinámica, recuérdales que en el <strong>Opportuneur Bootcamp Lab</strong> 
-            se profundizará este acompañamiento durante las siguientes 4 semanas para 30 seleccionados.
-          </div>
-        </div>
-
-      </div>
 
       <!-- ======================================================== -->
       <!-- TAB CONTENT 4: KIT DE SPEAKER & DESCARGAS                -->
@@ -795,26 +722,31 @@
             </button>
           </div>
 
-          <!-- Generator 2: Social Media Speaker Badge / Flyer (1080x1080) -->
-          <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-800 space-y-5">
+          <!-- Generator 2: Official Speaker Lanyard Badge (Template 819x1024) -->
+          <div class="glass-card p-6 sm:p-7 rounded-3xl border border-amber-500/40 bg-gradient-to-b from-amber-500/[0.04] to-transparent space-y-5">
             <div>
-              <span class="text-xs font-bold text-purple-400 uppercase tracking-wider block mb-1">
-                Difusión en Redes Sociales
-              </span>
-              <h4 class="text-lg font-bold text-white">Badge & Flyer Oficial para LinkedIn / Instagram</h4>
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">
+                  ⭐ Credencial Oficial de Speaker
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 font-bold">
+                  819 × 1024 Lanyard
+                </span>
+              </div>
+              <h4 class="text-lg font-bold text-white">Badge Oficial OPPORTUNEUR IMPACT FORUM</h4>
               <p class="text-xs text-slate-400 mt-1">
-                Comparte tu participación con tu red para que tus contactos asistan a tu panel en vivo.
+                Generado con la plantilla institucional con tu fotografía, nombre, rol y área con el respaldo de Polyglot Map, YLAI e IREX.
               </p>
             </div>
 
-            <!-- Social Card Canvas Preview -->
-            <div class="rounded-2xl border border-slate-700 overflow-hidden bg-slate-950 aspect-square max-w-[320px] mx-auto relative flex items-center justify-center shadow-lg">
-              <canvas id="socialBadgeCanvas" width="600" height="600" class="w-full h-full object-contain"></canvas>
+            <!-- Official Badge Canvas Preview -->
+            <div class="rounded-3xl border-2 border-amber-400/40 overflow-hidden bg-slate-950 max-w-[320px] mx-auto relative flex items-center justify-center shadow-2xl shadow-amber-500/15">
+              <canvas id="officialBadgeCanvas" width="819" height="1024" class="w-full h-auto object-contain"></canvas>
             </div>
 
-            <button id="downloadBadgeBtn" class="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-colors">
-              <i data-lucide="share-2" class="w-4 h-4"></i>
-              <span>Descargar Flyer Social Cuadrado (PNG)</span>
+            <button id="downloadBadgeBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:brightness-110 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/25 transition-all cursor-pointer">
+              <i data-lucide="download" class="w-4 h-4 text-slate-950"></i>
+              <span>Descargar Badge Oficial de Speaker (PNG)</span>
             </button>
           </div>
 
@@ -830,7 +762,7 @@
               Agendar en tu Calendario Personal
             </h4>
             <p class="text-xs text-slate-300 leading-relaxed">
-              Reserva el bloque de 3:30 PM a 7:00 PM PET del sábado 7 de noviembre de 2026 con recordatorios de sonido automáticos.
+              Reserva el bloque de 3:45 PM a 7:00 PM PET del sábado 7 de noviembre de 2026 con recordatorios de sonido automáticos.
             </p>
             <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
               <a id="addToGoogleCalendarLink" href="#" target="_blank" class="flex-1 py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white flex items-center justify-center gap-2 transition-colors">
@@ -905,6 +837,7 @@
     const SPEAKERS_DATABASE = [
       {
         id: "melanie-almeyda",
+        username: "melanie.almeyda",
         email: "melanie@polyglotmap.com",
         name: "Melanie Almeyda",
         title: "Founder & CEO, Polyglot Map",
@@ -921,12 +854,12 @@
           { time: "4:00 – 4:10", title: "Bienvenida e Inauguración Oficial", role: "Co-Anfitriona" },
           { time: "4:10 – 4:25", title: "Keynote Magistral: Empowering talent. Unlocking global opportunities", role: "Keynote Speaker" },
           { time: "5:35 – 6:05", title: "Área 3: Innovación Digital & Habilidades del Futuro", role: "Co-Facilitadora" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitadora Principal" },
-          { time: "6:50 – 7:00", title: "Cierre Estelar + Lanzamiento OPPORTUNEUR BOOTCAMP LAB", role: "Presentadora Oficial" }
+          { time: "6:35 – 7:00", title: "Cierre Estelar + Lanzamiento OPPORTUNEUR BOOTCAMP LAB", role: "Presentadora Oficial" }
         ]
       },
       {
         id: "nataly-napanga",
+        username: "nataly.napanga",
         email: "nataly@splendia.pe",
         name: "Nataly Napanga",
         title: "CEO, SPLENDIA",
@@ -945,12 +878,12 @@
           { time: "4:00 – 4:10", title: "Bienvenida e Inauguración Oficial", role: "Co-Anfitriona" },
           { time: "4:10 – 4:25", title: "Keynote Magistral: Empowering talent. Unlocking global opportunities", role: "Keynote Speaker" },
           { time: "4:25 – 4:55", title: "Área 1: Emprendimiento & Negocios", role: "Co-Facilitadora" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitadora Principal" },
-          { time: "6:50 – 7:00", title: "Cierre Estelar + Lanzamiento OPPORTUNEUR BOOTCAMP LAB", role: "Presentadora Oficial" }
+          { time: "6:35 – 7:00", title: "Cierre Estelar + Lanzamiento OPPORTUNEUR BOOTCAMP LAB", role: "Presentadora Oficial" }
         ]
       },
       {
         id: "cristian-gutierrez",
+        username: "cristian.gutierrez",
         email: "cristian@ronin.la",
         name: "Cristian Gutiérrez",
         title: "Fundador & CEO, RONIN",
@@ -965,12 +898,12 @@
         assignedPanelId: "panel-1",
         roleInForum: "Invitado Especial • Panelista Área 1 (Emprendimiento & Negocios)",
         sessions: [
-          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista Especial" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Mentor de Emprendimiento & Biomateriales" }
+          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista Especial" }
         ]
       },
       {
         id: "maria-gracia",
+        username: "maria.gracia",
         email: "mariagracia@goldencircle.la",
         name: "María Gracia Agurto",
         title: "Fundadora & CEO, Golden Circle",
@@ -985,12 +918,12 @@
         assignedPanelId: "panel-1",
         roleInForum: "Invitada Especial • Panelista Área 1 (Emprendimiento & Negocios)",
         sessions: [
-          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista Especial" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Mentora de Inversión & Fundraising" }
+          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista Especial" }
         ]
       },
       {
         id: "alfonso-rangel",
+        username: "alfonso.rangel",
         email: "alfonso@incubadora21.com",
         name: "Alfonso Rangel",
         title: "Fundador, Incubadora 21",
@@ -1004,12 +937,12 @@
         assignedPanelId: "panel-1",
         roleInForum: "Panelista Internacional Área 1 (Emprendimiento & Negocios)",
         sessions: [
-          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitador LatAm" }
+          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista" }
         ]
       },
       {
         id: "pedro-crisostomo",
+        username: "pedro.crisostomo",
         email: "pedro.crisostomo@impactforum.lat",
         name: "Pedro Crisóstomo",
         title: "Especialista en Liderazgo (Fulbright)",
@@ -1025,19 +958,19 @@
         assignedPanelId: "panel-2",
         roleInForum: "Panelista Área 2 (Liderazgo & Impacto)",
         sessions: [
-          { time: "4:55 – 5:25", title: "Área 2 — Liderazgo & Impacto: “Liderar para generar impacto”", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitador de Liderazgo" }
+          { time: "4:55 – 5:25", title: "Área 2 — Liderazgo & Impacto: “Liderar para generar impacto”", role: "Panelista" }
         ]
       },
       {
         id: "natalia-bejan",
+        username: "natalia.bejan",
         email: "natalia.bejan@preservando.org",
         name: "Natalia Bejan",
         title: "Fundadora, Preservando",
         category: "PANELISTA",
         country: "Perú",
         flag: "🇵🇪",
-        photo: null,
+        photo: "assets/speaker-natalia-bejar.jpg",
         initials: "NB",
         avatarGradient: "from-purple-600 to-pink-600",
         tag: "YLAI Fellow",
@@ -1046,12 +979,12 @@
         assignedPanelId: "panel-2",
         roleInForum: "Panelista Área 2 (Liderazgo & Impacto)",
         sessions: [
-          { time: "4:55 – 5:25", title: "Área 2 — Liderazgo & Impacto: “Liderar para generar impacto”", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitadora de Impacto Social" }
+          { time: "4:55 – 5:25", title: "Área 2 — Liderazgo & Impacto: “Liderar para generar impacto”", role: "Panelista" }
         ]
       },
       {
         id: "luis-avelan",
+        username: "luis.avelan",
         email: "luis.avelan@farmaciabritanica.cr",
         name: "Luis Avelán",
         title: "Líder, Farmacia Británica",
@@ -1067,12 +1000,12 @@
         assignedPanelId: "panel-3",
         roleInForum: "Panelista Internacional Área 3 (Innovación Digital)",
         sessions: [
-          { time: "5:35 – 6:05", title: "Área 3 — Innovación Digital: “La tecnología no reemplaza al talento. Lo potencia.”", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitador LatAm" }
+          { time: "5:35 – 6:05", title: "Área 3 — Innovación Digital: “La tecnología no reemplaza al talento. Lo potencia.”", role: "Panelista" }
         ]
       },
       {
         id: "jorge-escalante",
+        username: "jorge.escalante",
         email: "jorge@protolabagency.com",
         name: "Jorge Escalante",
         title: "Fundador, Protolab Agency",
@@ -1088,12 +1021,12 @@
         assignedPanelId: "panel-3",
         roleInForum: "Panelista Internacional Área 3 (Innovación Digital)",
         sessions: [
-          { time: "5:35 – 6:05", title: "Área 3 — Innovación Digital: “La tecnología no reemplaza al talento. Lo potencia.”", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitador LatAm" }
+          { time: "5:35 – 6:05", title: "Área 3 — Innovación Digital: “La tecnología no reemplaza al talento. Lo potencia.”", role: "Panelista" }
         ]
       },
       {
         id: "jose-mendoza",
+        username: "jose.mendoza",
         email: "jose@trabajito.com",
         name: "José Mendoza",
         title: "Fundador, Trabajito.com",
@@ -1107,12 +1040,12 @@
         assignedPanelId: "panel-4",
         roleInForum: "Panelista Internacional Área 4 (Empleabilidad & Talento)",
         sessions: [
-          { time: "6:05 – 6:35", title: "Área 4 — Empleabilidad: “Convierte tu talento en oportunidades globales”", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitador LatAm" }
+          { time: "6:05 – 6:35", title: "Área 4 — Empleabilidad: “Convierte tu talento en oportunidades globales”", role: "Panelista" }
         ]
       },
       {
         id: "andrea-vivas",
+        username: "andrea.vivas",
         email: "andrea@bespokeedu.com",
         name: "Andrea Vivas",
         title: "Fundadora, Bespoke Education",
@@ -1126,12 +1059,12 @@
         assignedPanelId: "panel-4",
         roleInForum: "Panelista Internacional Área 4 (Empleabilidad & Talento)",
         sessions: [
-          { time: "6:05 – 6:35", title: "Área 4 — Empleabilidad: “Convierte tu talento en oportunidades globales”", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitadora LatAm" }
+          { time: "6:05 – 6:35", title: "Área 4 — Empleabilidad: “Convierte tu talento en oportunidades globales”", role: "Panelista" }
         ]
       },
       {
         id: "gabriela-gaitan",
+        username: "gabriela.gaitan",
         email: "gabriela@parlare.pe",
         name: "Gabriela Gaitán",
         title: "Directora, Parlare",
@@ -1145,8 +1078,7 @@
         assignedPanelId: "panel-4",
         roleInForum: "Mentora de Comunicación & Facilitadora",
         sessions: [
-          { time: "6:05 – 6:35", title: "Área 4 — Empleabilidad & Talento Global", role: "Mentora Invitada" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Facilitadora de Sala" }
+          { time: "6:05 – 6:35", title: "Área 4 — Empleabilidad & Talento Global", role: "Mentora Invitada" }
         ]
       }
     ];
@@ -1256,11 +1188,11 @@
     // ==========================================================
     const AGENDA_DATA = [
       {
-        time: "3:30 – 3:55 PM",
-        duration: "25 min",
-        type: "TÉCNICA",
+        time: "3:45 – 4:00 PM",
+        duration: "15 min",
+        type: "TÉCNICA (15 MIN ANTES)",
         title: "Soundcheck & Sala de Espera VIP de Ponentes",
-        desc: "Prueba de audio, cámara, iluminación y paso de diapositivas con el equipo de soporte técnico.",
+        desc: "Ingreso 15 minutos antes del inicio. Prueba de audio, cámara, iluminación y paso de diapositivas con el equipo de soporte técnico.",
         colorBorder: "border-slate-500",
         speakers: ["Todos los speakers y panelistas convocados"],
         isVipOnly: true
@@ -1333,20 +1265,11 @@
         speakers: ["jose-mendoza", "andrea-vivas"]
       },
       {
-        time: "6:35 – 6:50 PM",
-        duration: "15 min",
-        type: "ESPACIO PARTICIPATIVO",
-        title: "Global Networking Rooms",
-        desc: "Salas simultáneas de vinculación activa respondiendo las 4 preguntas esenciales entre los países.",
-        colorBorder: "border-indigo-400",
-        speakers: ["Todos los panelistas como facilitadores y mentores"]
-      },
-      {
-        time: "6:50 – 7:00 PM",
-        duration: "10 min",
+        time: "6:35 – 7:00 PM",
+        duration: "25 min",
         type: "CIERRE ESTRATÉGICO",
         title: "Cierre Estelar + Convocatoria Oficial OPPORTUNEUR BOOTCAMP LAB",
-        desc: "Conclusiones del Forum y anuncio del programa de acompañamiento intensivo para 30 seleccionados.",
+        desc: "Conclusiones del Forum, balance regional y anuncio del programa de acompañamiento intensivo para 30 seleccionados.",
         colorBorder: "border-amber-500",
         speakers: ["melanie-almeyda", "nataly-napanga"]
       }
@@ -1393,7 +1316,6 @@
       setupAuthListeners();
       setupDashboardTabs();
       setupTimezoneConverter();
-      setupSpeakerNotes();
       setupPreferences();
 
       // Check if user already logged in via localStorage
@@ -1412,6 +1334,7 @@
     // ==========================================================
     function renderSpeakersLoginGrid() {
       const container = document.getElementById('speakersLoginGrid');
+      if (!container) return;
       container.innerHTML = '';
 
       SPEAKERS_DATABASE.forEach(speaker => {
@@ -1455,12 +1378,13 @@
 
             <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">${speaker.name}</h4>
             <p class="text-xs ${isSpecial ? 'text-amber-300' : 'text-indigo-400'} font-medium line-clamp-1 mt-0.5">${speaker.title}</p>
-            <div class="my-2 inline-block text-[10px] px-2.5 py-0.5 rounded ${isSpecial ? 'bg-amber-500/15 text-amber-200 border border-amber-500/30 font-semibold' : 'bg-white/5 text-slate-300'} font-mono">
-              ${speaker.tag}
+            <div class="mt-2 inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded bg-slate-950/80 text-cyan-300 border border-slate-700/80 font-mono">
+              <i data-lucide="at-sign" class="w-3 h-3 text-cyan-400"></i>
+              <span>${speaker.username}</span>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-slate-800/80 mt-2">
+          <div class="pt-3 border-t border-slate-800/80 mt-3">
             <button class="w-full py-2 px-3 rounded-xl ${buttonStyle} text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
               <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
               <span>Ingresar como ${speaker.name.split(' ')[0]}</span>
@@ -1469,6 +1393,11 @@
         `;
 
         card.addEventListener('click', () => {
+          // Fill form and auto-login
+          const userInput = document.getElementById('speakerUsernameInput');
+          const passInput = document.getElementById('speakerPasswordInput');
+          if (userInput) userInput.value = speaker.username;
+          if (passInput) passInput.value = "OPPORTUNEUR2026";
           loginAsSpeaker(speaker);
         });
 
@@ -1482,56 +1411,84 @@
     // 7. LÓGICA DE INICIO Y CIERRE DE SESIÓN
     // ==========================================================
     function setupAuthListeners() {
-      const tabQuickBtn = document.getElementById('tabQuickBtn');
-      const tabEmailBtn = document.getElementById('tabEmailBtn');
-      const quickContainer = document.getElementById('quickSelectContainer');
-      const emailContainer = document.getElementById('emailLoginContainer');
-      const switchBackToQuickBtn = document.getElementById('switchBackToQuickBtn');
-      const emailLoginForm = document.getElementById('emailLoginForm');
+      const loginForm = document.getElementById('speakerLoginForm');
+      const userInput = document.getElementById('speakerUsernameInput');
+      const passInput = document.getElementById('speakerPasswordInput');
+      const togglePassBtn = document.getElementById('togglePasswordBtn');
+      const errBox = document.getElementById('loginErrorMessage');
+      const errText = document.getElementById('loginErrorText');
+      const pillsContainer = document.getElementById('quickUserPills');
       const logoutBtn = document.getElementById('logoutBtn');
       const switchSpeakerBtn = document.getElementById('switchSpeakerBtn');
 
-      tabQuickBtn.addEventListener('click', () => {
-        tabQuickBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30');
-        tabQuickBtn.classList.remove('text-slate-400');
-        tabEmailBtn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30');
-        tabEmailBtn.classList.add('text-slate-400');
-        quickContainer.classList.remove('hidden');
-        emailContainer.classList.add('hidden');
-      });
-
-      tabEmailBtn.addEventListener('click', () => {
-        tabEmailBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30');
-        tabEmailBtn.classList.remove('text-slate-400');
-        tabQuickBtn.classList.remove('bg-indigo-600', 'text-white', 'shadow-md', 'shadow-indigo-600/30');
-        tabQuickBtn.classList.add('text-slate-400');
-        emailContainer.classList.remove('hidden');
-        quickContainer.classList.add('hidden');
-      });
-
-      if (switchBackToQuickBtn) {
-        switchBackToQuickBtn.addEventListener('click', () => {
-          tabQuickBtn.click();
+      // Populate Quick User Pills
+      if (pillsContainer) {
+        pillsContainer.innerHTML = '';
+        SPEAKERS_DATABASE.forEach(s => {
+          const pill = document.createElement('button');
+          pill.type = 'button';
+          pill.className = "px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-indigo-600/40 text-[11px] text-slate-300 hover:text-white border border-slate-700/70 transition-all font-mono flex items-center gap-1 cursor-pointer";
+          pill.innerHTML = `<span>${s.flag}</span> <span>@${s.username}</span>`;
+          pill.addEventListener('click', () => {
+            userInput.value = s.username;
+            userInput.focus();
+            showToast(`Usuario seleccionado: @${s.username}`);
+          });
+          pillsContainer.appendChild(pill);
         });
       }
 
-      emailLoginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('speakerEmailInput').value.trim().toLowerCase();
-        const errBox = document.getElementById('loginErrorMessage');
-        
-        const speaker = SPEAKERS_DATABASE.find(s => s.email.toLowerCase() === email || s.name.toLowerCase().includes(email));
-        if (speaker) {
+      // Toggle password visibility
+      if (togglePassBtn && passInput) {
+        togglePassBtn.addEventListener('click', () => {
+          if (passInput.type === 'password') {
+            passInput.type = 'text';
+            togglePassBtn.innerHTML = '<i data-lucide="eye-off" class="w-4 h-4"></i>';
+          } else {
+            passInput.type = 'password';
+            togglePassBtn.innerHTML = '<i data-lucide="eye" class="w-4 h-4"></i>';
+          }
+          lucide.createIcons();
+        });
+      }
+
+      // Handle Login Form Submit
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const username = (userInput.value || '').trim().toLowerCase().replace(/^@/, '');
+          const password = (passInput.value || '').trim();
+
+          // Validate generic password (case-insensitive for convenience)
+          const validGenericPasswords = ['opp2026', 'opportuneur2026', 'opp2026vip'];
+          const isPasswordValid = validGenericPasswords.includes(password.toLowerCase());
+
+          // Find speaker by username or name match
+          const speaker = SPEAKERS_DATABASE.find(s => 
+            s.username.toLowerCase() === username ||
+            s.id.toLowerCase() === username ||
+            s.name.toLowerCase().includes(username)
+          );
+
+          if (!speaker) {
+            errBox.classList.remove('hidden');
+            errText.innerText = `El usuario "${username}" no existe en el registro oficial. Haz clic en tu nombre en la lista o en las etiquetas.`;
+            return;
+          }
+
+          if (!isPasswordValid) {
+            errBox.classList.remove('hidden');
+            errText.innerText = 'Contraseña incorrecta. La contraseña oficial genérica es OPPORTUNEUR2026.';
+            return;
+          }
+
           errBox.classList.add('hidden');
           loginAsSpeaker(speaker);
-        } else {
-          errBox.classList.remove('hidden');
-          document.getElementById('loginErrorText').innerText = `No encontramos el correo "${email}". Usa uno del directorio oficial.`;
-        }
-      });
+        });
+      }
 
-      logoutBtn.addEventListener('click', logout);
-      switchSpeakerBtn.addEventListener('click', logout);
+      if (logoutBtn) logoutBtn.addEventListener('click', logout);
+      if (switchSpeakerBtn) switchSpeakerBtn.addEventListener('click', logout);
     }
 
     function loginAsSpeaker(speaker) {
@@ -1563,11 +1520,8 @@
 
       // Generate Toolkit Canvas Downloads
       generateVirtualBackground(speaker);
-      generateSocialBadge(speaker);
+      generateOfficialBadge(speaker);
       updateCalendarLinks(speaker);
-
-      // Load saved notes
-      loadSpeakerNotes(speaker.id);
 
       // Load saved preferences
       loadPreferences(speaker.id);
@@ -1799,7 +1753,6 @@
       const panes = {
         'panel': document.getElementById('tabContentPanel'),
         'agenda': document.getElementById('tabContentAgenda'),
-        'networking': document.getElementById('tabContentNetworking'),
         'toolkit': document.getElementById('tabContentToolkit')
       };
 
@@ -1814,10 +1767,12 @@
 
           const target = btn.getAttribute('data-tab');
           Object.keys(panes).forEach(k => {
-            if (k === target) {
-              panes[k].classList.remove('hidden');
-            } else {
-              panes[k].classList.add('hidden');
+            if (panes[k]) {
+              if (k === target) {
+                panes[k].classList.remove('hidden');
+              } else {
+                panes[k].classList.add('hidden');
+              }
             }
           });
         });
@@ -1827,31 +1782,34 @@
       const filterAll = document.getElementById('filterAllAgendaBtn');
       const filterMy = document.getElementById('filterMyAgendaBtn');
 
-      filterAll.addEventListener('click', () => {
-        filterAll.className = "px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm";
-        filterMy.className = "px-3 py-1.5 rounded-xl text-xs font-semibold glass-card text-slate-300 hover:text-white";
-        renderFullTimeline(currentSpeaker, false);
-      });
-
-      filterMy.addEventListener('click', () => {
-        filterMy.className = "px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm";
-        filterAll.className = "px-3 py-1.5 rounded-xl text-xs font-semibold glass-card text-slate-300 hover:text-white";
-        renderFullTimeline(currentSpeaker, true);
-      });
-
-      // Copy VIP Link Button
-      const copyVipBtn = document.getElementById('copyVipLinkBtn');
-      const copyVipText = document.getElementById('copyVipLinkText');
-      copyVipBtn.addEventListener('click', () => {
-        const vipUrl = "https://zoom.us/j/84920267711?pwd=OPP2026VIP-BACKSTAGE";
-        navigator.clipboard.writeText(vipUrl).then(() => {
-          copyVipText.innerText = "¡Enlace Copiado!";
-          showToast("Enlace de Sala VIP copiado al portapapeles.");
-          setTimeout(() => {
-            copyVipText.innerText = "Copiar Enlace VIP";
-          }, 2500);
+      if (filterAll && filterMy) {
+        filterAll.addEventListener('click', () => {
+          filterAll.className = "px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm";
+          filterMy.className = "px-3 py-1.5 rounded-xl text-xs font-semibold glass-card text-slate-300 hover:text-white";
+          renderFullTimeline(currentSpeaker, false);
         });
-      });
+
+        filterMy.addEventListener('click', () => {
+          filterMy.className = "px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-sm";
+          filterAll.className = "px-3 py-1.5 rounded-xl text-xs font-semibold glass-card text-slate-300 hover:text-white";
+          renderFullTimeline(currentSpeaker, true);
+        });
+      }
+
+      // Copy VIP Link Button - Triggers Locked Notice
+      const copyVipBtn = document.getElementById('copyVipLinkBtn');
+      if (copyVipBtn) {
+        copyVipBtn.addEventListener('click', () => {
+          showLockedZoomAlert();
+        });
+      }
+    }
+
+    // ==========================================================
+    // ALERTA DE ENLACE DE ZOOM BLOQUEADO HASTA LAS 3:45 PM PET
+    // ==========================================================
+    function showLockedZoomAlert() {
+      showToast("🔒 Sala VIP Bloqueada: El enlace se activará 15 minutos antes del evento (3:45 PM PET) para el soundcheck oficial.");
     }
 
     // ==========================================================
@@ -1859,6 +1817,7 @@
     // ==========================================================
     function setupTimezoneConverter() {
       const select = document.getElementById('timezoneSelect');
+      if (!select) return;
       select.addEventListener('change', (e) => {
         selectedTimezone = e.target.value;
         if (currentSpeaker) {
@@ -1867,34 +1826,6 @@
           showToast(`Horarios actualizados a ${TIMEZONE_CONFIG[selectedTimezone].label}`);
         }
       });
-    }
-
-    // ==========================================================
-    // 13. NOTAS PRIVADAS DEL SPEAKER (LOCALSTORAGE)
-    // ==========================================================
-    function setupSpeakerNotes() {
-      const textarea = document.getElementById('speakerPrivateNotes');
-      const indicator = document.getElementById('notesSavedIndicator');
-      let timeout = null;
-
-      textarea.addEventListener('input', () => {
-        if (!currentSpeaker) return;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-          const notesKey = `opp_notes_${currentSpeaker.id}`;
-          localStorage.setItem(notesKey, textarea.value);
-          indicator.classList.remove('opacity-0');
-          setTimeout(() => {
-            indicator.classList.add('opacity-0');
-          }, 2000);
-        }, 600);
-      });
-    }
-
-    function loadSpeakerNotes(speakerId) {
-      const notesKey = `opp_notes_${speakerId}`;
-      const savedNotes = localStorage.getItem(notesKey) || '';
-      document.getElementById('speakerPrivateNotes').value = savedNotes;
     }
 
     // ==========================================================
@@ -1973,7 +1904,7 @@
 
       ctx.fillStyle = '#818cf8';
       ctx.font = '500 13px Inter, sans-serif';
-      ctx.fillText('Organizado por Polyglot Map & SPLENDIA • Red YLAI Fellows', 40, 72);
+      ctx.fillText('Polyglot Map & SPLENDIA • Red YLAI Fellows', 40, 72);
 
       // Bottom Right Speaker Badge Box
       const boxW = 380;
@@ -2014,127 +1945,129 @@
     }
 
     // ==========================================================
-    // 16. GENERADOR DE SOCIAL MEDIA BADGE (CANVAS 600x600)
+    // 16. GENERADOR DE BADGE OFICIAL DE SPEAKER (819x1024)
     // ==========================================================
-    function generateSocialBadge(speaker) {
-      const canvas = document.getElementById('socialBadgeCanvas');
+    function generateOfficialBadge(speaker) {
+      const canvas = document.getElementById('officialBadgeCanvas');
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
-      const w = canvas.width;
-      const h = canvas.height;
+      const w = 819;
+      const h = 1024;
+      canvas.width = w;
+      canvas.height = h;
 
-      // Dark Gradient Background
-      const bg = ctx.createLinearGradient(0, 0, w, h);
-      bg.addColorStop(0, '#050816');
-      bg.addColorStop(0.7, '#0a0f26');
-      bg.addColorStop(1, '#1e1b4b');
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, w, h);
+      // Load official lanyard template image
+      const templateImg = new Image();
+      templateImg.src = 'assets/badge-template-official.png';
+      templateImg.onload = () => {
+        ctx.clearRect(0, 0, w, h);
+        ctx.drawImage(templateImg, 0, 0, w, h);
 
-      // Border glow
-      ctx.strokeStyle = 'rgba(99, 102, 241, 0.4)';
-      ctx.lineWidth = 4;
-      ctx.strokeRect(10, 10, w - 20, h - 20);
+        // Coordinates based on lanyard template:
+        // Center X = 409.5, Center Y = 528, Radius = 106
+        const centerX = 409.5;
+        const centerY = 528;
+        const radius = 106;
 
-      // Header Tag
-      ctx.fillStyle = '#f59e0b';
-      ctx.font = 'bold 13px Inter, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('SPEAKER OFICIAL • 7 NOVIEMBRE 2026', w / 2, 45);
+        if (speaker.photo) {
+          const photoImg = new Image();
+          photoImg.src = speaker.photo;
+          photoImg.onload = () => {
+            drawAvatarAndBadgeDetails(photoImg);
+          };
+          photoImg.onerror = () => {
+            drawAvatarAndBadgeDetails(null);
+          };
+        } else {
+          drawAvatarAndBadgeDetails(null);
+        }
 
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '900 24px Inter, sans-serif';
-      ctx.fillText('OPPORTUNEUR IMPACT FORUM', w / 2, 75);
-
-      // Photo or Avatar Center
-      const photoSize = 180;
-      const photoX = (w - photoSize) / 2;
-      const photoY = 105;
-
-      if (speaker.photo) {
-        const img = new Image();
-        img.src = speaker.photo;
-        img.onload = () => {
+        function drawAvatarAndBadgeDetails(avatarImg) {
+          // Circular Avatar Clip
           ctx.save();
           ctx.beginPath();
-          ctx.roundRect(photoX, photoY, photoSize, photoSize, 24);
+          ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+          ctx.closePath();
           ctx.clip();
-          ctx.drawImage(img, photoX, photoY, photoSize, photoSize);
+
+          if (avatarImg) {
+            // Draw photo covering circle
+            const aspect = avatarImg.width / avatarImg.height;
+            let drawW, drawH, drawX, drawY;
+            if (aspect > 1) {
+              drawH = radius * 2;
+              drawW = drawH * aspect;
+              drawX = centerX - drawW / 2;
+              drawY = centerY - radius;
+            } else {
+              drawW = radius * 2;
+              drawH = drawW / aspect;
+              drawX = centerX - radius;
+              drawY = centerY - drawH / 2;
+            }
+            ctx.drawImage(avatarImg, drawX, drawY, drawW, drawH);
+          } else {
+            // Gradient circle for speaker initials
+            const grad = ctx.createLinearGradient(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+            grad.addColorStop(0, '#1e3a8a');
+            grad.addColorStop(1, '#0284c7');
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = '900 68px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(speaker.initials || 'SP', centerX, centerY);
+          }
           ctx.restore();
 
-          // Border ring
-          ctx.strokeStyle = '#6366f1';
-          ctx.lineWidth = 4;
+          // Circular Ring Border
+          ctx.save();
           ctx.beginPath();
-          ctx.roundRect(photoX, photoY, photoSize, photoSize, 24);
+          ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+          ctx.lineWidth = 6;
+          ctx.strokeStyle = '#ffffff';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
+          ctx.shadowBlur = 10;
           ctx.stroke();
+          ctx.restore();
 
-          finishSocialBadgeText();
-        };
-      } else {
-        ctx.fillStyle = '#312e81';
-        ctx.beginPath();
-        ctx.roundRect(photoX, photoY, photoSize, photoSize, 24);
-        ctx.fill();
-        ctx.strokeStyle = '#6366f1';
-        ctx.lineWidth = 4;
-        ctx.stroke();
+          // Speaker Name (Y = 664)
+          ctx.save();
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#0f172a';
+          ctx.font = '900 32px Inter, system-ui, sans-serif';
+          ctx.fillText(speaker.name.toUpperCase(), centerX, 664);
 
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '900 64px Inter, sans-serif';
-        ctx.fillText(speaker.initials || 'SP', w / 2, photoY + 115);
+          // Speaker Title / Organization (Y = 705)
+          ctx.fillStyle = '#334155';
+          ctx.font = 'bold 16px Inter, system-ui, sans-serif';
+          const titleText = (speaker.title || '').length > 48 
+            ? speaker.title.substring(0, 46) + '...' 
+            : speaker.title;
+          ctx.fillText(titleText, centerX, 705);
 
-        finishSocialBadgeText();
-      }
-
-      function finishSocialBadgeText() {
-        ctx.textAlign = 'center';
-
-        // Speaker Name
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 26px Inter, sans-serif';
-        ctx.fillText(`${speaker.name} ${speaker.flag}`, w / 2, 335);
-
-        // Speaker Title
-        ctx.fillStyle = '#818cf8';
-        ctx.font = '600 14px Inter, sans-serif';
-        ctx.fillText(speaker.title, w / 2, 362);
-
-        // Panel pill
-        const panel = PANELS_DATA[speaker.assignedPanelId] || PANELS_DATA["panel-1"];
-        ctx.fillStyle = 'rgba(16, 22, 51, 0.8)';
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.roundRect(40, 395, w - 80, 85, 16);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#38bdf8';
-        ctx.font = 'bold 11px Inter, sans-serif';
-        ctx.fillText(panel.badge, w / 2, 422);
-
-        ctx.fillStyle = '#f8fafc';
-        ctx.font = 'bold 13px Inter, sans-serif';
-        ctx.fillText(panel.theme, w / 2, 445);
-
-        ctx.fillStyle = '#94a3b8';
-        ctx.font = '500 11px Inter, sans-serif';
-        ctx.fillText(`4:00 – 7:00 PM (PET) • Modalidad Virtual`, w / 2, 465);
-
-        // Footer note
-        ctx.fillStyle = '#64748b';
-        ctx.font = '500 11px Inter, sans-serif';
-        ctx.fillText('Polyglot Map & Comunidad YLAI (Young Leaders of the Americas Initiative)', w / 2, 545);
-      }
-
-      const downloadBtn = document.getElementById('downloadBadgeBtn');
-      downloadBtn.onclick = () => {
-        const link = document.createElement('a');
-        link.download = `Flyer-Speaker-${speaker.name.replace(/\s+/g, '-')}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        showToast("Flyer para LinkedIn / Instagram descargado.");
+          // Assigned Area / Category Badge (Y = 762)
+          const panel = PANELS_DATA[speaker.assignedPanelId] || PANELS_DATA["panel-1"];
+          ctx.fillStyle = '#1e3a8a';
+          ctx.font = 'bold 15px Inter, system-ui, sans-serif';
+          ctx.fillText(panel.badge.toUpperCase(), centerX, 762);
+          ctx.restore();
+        }
       };
+
+      // Hook up download button
+      const downloadBtn = document.getElementById('downloadBadgeBtn');
+      if (downloadBtn) {
+        downloadBtn.onclick = () => {
+          const link = document.createElement('a');
+          link.download = `Badge-Oficial-Speaker-${speaker.name.replace(/\s+/g, '-')}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          showToast("Badge oficial descargado en alta resolución (819x1024).");
+        };
+      }
     }
 
     // ==========================================================
