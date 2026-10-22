@@ -954,18 +954,19 @@
         email: "cristian@ronin.la",
         name: "Cristian Gutiérrez",
         title: "Fundador & CEO, RONIN",
-        category: "PANELISTA",
+        category: "INVITADO ESPECIAL",
         country: "Perú",
         flag: "🇵🇪",
         photo: "assets/speaker-cristian-gutierrez.jpg",
-        tag: "⚔️ CEO RONIN",
-        badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-bold",
-        bio: "Emprendedor serial de alto impacto, estratega de negocios, especialista en validación en mercado real, modelos comerciales de alta tracción y crecimiento escalable.",
+        photoPosition: "56% 25%",
+        tag: "⚔️ CEO RONIN • Desafío Kunan 2026",
+        badgeStyle: "bg-gradient-to-r from-amber-500/30 to-orange-500/30 text-amber-300 border border-amber-400/50 shadow-sm shadow-amber-500/20 font-black",
+        bio: "Fundador & CEO de RONIN, YLAI Fellow 2016 y profesor en UTEC. Pionero en biomateriales y calzado sostenible con caucho silvestre amazónico de shiringa extraído sin talar el árbol.",
         assignedPanelId: "panel-1",
-        roleInForum: "Panelista Área 1 (Emprendimiento & Negocios)",
+        roleInForum: "Invitado Especial • Panelista Área 1 (Emprendimiento & Negocios)",
         sessions: [
-          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Mentor de Emprendimiento" }
+          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista Especial" },
+          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Mentor de Emprendimiento & Biomateriales" }
         ]
       },
       {
@@ -973,18 +974,19 @@
         email: "mariagracia@goldencircle.la",
         name: "María Gracia Agurto",
         title: "Fundadora & CEO, Golden Circle",
-        category: "PANELISTA",
+        category: "INVITADA ESPECIAL",
         country: "Perú",
         flag: "🇵🇪",
         photo: "assets/speaker-maria-gracia.jpg",
-        tag: "🌟 Golden Circle",
-        badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-bold",
-        bio: "Estratega de marca, fundadora de Golden Circle. Experta en modelos de negocio centrados en el propósito, validación comercial y creación de valor en América Latina.",
+        photoPosition: "center",
+        tag: "🌟 CEO Golden Circle • Miami, FL",
+        badgeStyle: "bg-gradient-to-r from-amber-500/30 to-orange-500/30 text-amber-300 border border-amber-400/50 shadow-sm shadow-amber-500/20 font-black",
+        bio: "CEO de Golden Circle e inversionista ángel. Fellow del Departamento de Estado de EE. UU. Ex-evaluadora de VC en EE. UU., LatAm e Israel (OurCrowd, Magma, Ganas). Ha acompañado a +80 startups levantando +$7M USD.",
         assignedPanelId: "panel-1",
-        roleInForum: "Panelista Área 1 (Emprendimiento & Negocios)",
+        roleInForum: "Invitada Especial • Panelista Área 1 (Emprendimiento & Negocios)",
         sessions: [
-          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista" },
-          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Mentora de Negocios" }
+          { time: "4:25 – 4:55", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Panelista Especial" },
+          { time: "6:35 – 6:50", title: "Global Networking Rooms", role: "Mentora de Inversión & Fundraising" }
         ]
       },
       {
@@ -1413,43 +1415,53 @@
       container.innerHTML = '';
 
       SPEAKERS_DATABASE.forEach(speaker => {
+        const isSpecial = speaker.category === 'INVITADO ESPECIAL' || speaker.category === 'INVITADA ESPECIAL';
+        const cardBorderClass = isSpecial 
+          ? 'border-2 border-amber-400/60 bg-gradient-to-b from-amber-500/[0.08] via-polyglot-card to-polyglot-card shadow-xl shadow-amber-500/15 ring-1 ring-amber-400/30' 
+          : 'border border-slate-800';
+
+        const ringGradient = isSpecial
+          ? 'bg-gradient-to-tr from-amber-400 via-orange-500 to-yellow-400 ring-2 ring-amber-400/50 shadow-lg shadow-amber-500/30'
+          : 'bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 shadow-md';
+
+        const buttonStyle = isSpecial
+          ? 'bg-amber-500/20 hover:bg-amber-500 border border-amber-400/50 text-amber-300 hover:text-slate-950 group-hover:bg-amber-500 group-hover:text-slate-950 font-black'
+          : 'bg-indigo-600/30 hover:bg-indigo-600 border border-indigo-500/40 text-white group-hover:bg-indigo-600 font-bold';
+
         const card = document.createElement('div');
-        card.className = "glass-card glass-card-hover p-5 rounded-3xl border border-slate-800 flex flex-col justify-between text-center relative overflow-hidden group cursor-pointer transition-all";
+        card.className = `glass-card glass-card-hover p-5 rounded-3xl flex flex-col justify-between text-center relative overflow-hidden group cursor-pointer transition-all duration-300 ${cardBorderClass}`;
         
         let avatarHtml = '';
         if (speaker.photo) {
-          avatarHtml = `<img src="${speaker.photo}" alt="${speaker.name}" class="w-full h-full object-cover object-top rounded-[14px]" />`;
+          avatarHtml = `<img src="${speaker.photo}" alt="${speaker.name}" class="w-full h-full object-cover rounded-[14px]" style="object-position: ${speaker.photoPosition || 'center'};" />`;
         } else {
           avatarHtml = `<div class="w-full h-full rounded-[14px] bg-slate-900 flex items-center justify-center text-white font-black text-xl font-mono">${speaker.initials || 'SP'}</div>`;
         }
-
-        const isSpecial = speaker.category === 'INVITADO ESPECIAL' || speaker.category === 'INVITADA ESPECIAL';
-        const cardBorderClass = isSpecial ? 'border-amber-400/50 bg-gradient-to-b from-amber-500/[0.06] to-transparent ring-1 ring-amber-400/20' : '';
 
         card.innerHTML = `
           <div>
             <div class="flex items-center justify-between mb-3 text-xs">
               <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${speaker.badgeStyle}">
-                ${speaker.category}
+                ${isSpecial ? '⭐ ' : ''}${speaker.category}
               </span>
               <span class="text-base" title="${speaker.country}">${speaker.flag}</span>
             </div>
 
-            <div class="w-20 h-20 rounded-2xl p-0.5 mb-3 mx-auto shadow-md bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 overflow-hidden">
+            <div class="w-20 h-20 rounded-2xl p-0.5 mb-3 mx-auto ${ringGradient} overflow-hidden">
               <div class="w-full h-full bg-slate-950 rounded-[14px] overflow-hidden">
                 ${avatarHtml}
               </div>
             </div>
 
             <h4 class="text-base font-bold text-white group-hover:text-indigo-300 transition-colors">${speaker.name}</h4>
-            <p class="text-xs text-indigo-400 font-medium line-clamp-1 mt-0.5">${speaker.title}</p>
-            <div class="my-2 inline-block text-[10px] px-2 py-0.5 rounded bg-white/5 text-slate-300 font-mono">
+            <p class="text-xs ${isSpecial ? 'text-amber-300' : 'text-indigo-400'} font-medium line-clamp-1 mt-0.5">${speaker.title}</p>
+            <div class="my-2 inline-block text-[10px] px-2.5 py-0.5 rounded ${isSpecial ? 'bg-amber-500/15 text-amber-200 border border-amber-500/30 font-semibold' : 'bg-white/5 text-slate-300'} font-mono">
               ${speaker.tag}
             </div>
           </div>
 
           <div class="pt-3 border-t border-slate-800/80 mt-2">
-            <button class="w-full py-2 px-3 rounded-xl bg-indigo-600/30 hover:bg-indigo-600 border border-indigo-500/40 text-xs font-bold text-white transition-all flex items-center justify-center gap-1.5 shadow-sm group-hover:bg-indigo-600">
+            <button class="w-full py-2 px-3 rounded-xl ${buttonStyle} text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer">
               <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
               <span>Ingresar como ${speaker.name.split(' ')[0]}</span>
             </button>
@@ -1537,7 +1549,7 @@
       document.getElementById('navUserRole').innerText = speaker.title.split(',')[0];
       const navAvatarCont = document.getElementById('navAvatarContainer');
       if (speaker.photo) {
-        navAvatarCont.innerHTML = `<img src="${speaker.photo}" class="w-full h-full object-cover">`;
+        navAvatarCont.innerHTML = `<img src="${speaker.photo}" class="w-full h-full object-cover" style="object-position: ${speaker.photoPosition || 'center'};">`;
       } else {
         navAvatarCont.innerHTML = `<span>${speaker.initials || 'SP'}</span>`;
       }
@@ -1602,7 +1614,7 @@
 
       const photoCont = document.getElementById('dashPhotoContainer');
       if (speaker.photo) {
-        photoCont.innerHTML = `<img src="${speaker.photo}" alt="${speaker.name}" class="w-full h-full object-cover object-top" />`;
+        photoCont.innerHTML = `<img src="${speaker.photo}" alt="${speaker.name}" class="w-full h-full object-cover" style="object-position: ${speaker.photoPosition || 'center'};" />`;
       } else {
         photoCont.innerHTML = `<div class="w-full h-full bg-gradient-to-tr ${speaker.avatarGradient || 'from-indigo-600 to-purple-600'} flex items-center justify-center text-white font-black text-3xl font-mono">${speaker.initials || 'SP'}</div>`;
       }
@@ -1699,7 +1711,7 @@
           
           let cpAvatar = '';
           if (cp.photo) {
-            cpAvatar = `<img src="${cp.photo}" class="w-full h-full object-cover object-top rounded-xl">`;
+            cpAvatar = `<img src="${cp.photo}" class="w-full h-full object-cover rounded-xl" style="object-position: ${cp.photoPosition || 'center'};">`;
           } else {
             cpAvatar = `<div class="w-full h-full rounded-xl bg-gradient-to-tr ${cp.avatarGradient || 'from-indigo-600 to-purple-600'} flex items-center justify-center text-white font-bold text-xs font-mono">${cp.initials || 'CP'}</div>`;
           }
