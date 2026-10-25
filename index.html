@@ -498,7 +498,11 @@
         </button>
         <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="toolkit">
           <i data-lucide="download" class="w-4 h-4"></i>
-          <span>Kit de Speaker & Badge</span>
+          <span>Kit de Speaker &amp; Badge</span>
+        </button>
+        <button id="adminTabBtn" class="dash-tab-btn hidden px-4 py-2.5 rounded-xl text-xs font-bold transition-all glass-card text-amber-300 border border-amber-500/40 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="admin">
+          <i data-lucide="shield" class="w-4 h-4"></i>
+          <span>Administración (Acceso Total)</span>
         </button>
       </div>
 
@@ -666,6 +670,31 @@
       <!-- ======================================================== -->
       <!-- TAB CONTENT 4: KIT DE SPEAKER & DESCARGAS                -->
       <!-- ======================================================== -->
+      <div id="tabContentAdmin" class="tab-pane hidden space-y-8">
+        <div class="glass-card p-6 rounded-3xl border border-amber-500/40 bg-gradient-to-r from-amber-950/20 to-slate-900">
+          <div class="flex items-center gap-2 text-amber-300 font-black text-sm uppercase tracking-wider mb-1">
+            <i data-lucide="shield" class="w-4 h-4"></i>
+            <span>Panel de Administración • Acceso Total</span>
+          </div>
+          <p class="text-xs text-slate-300">Vista exclusiva de dirección: todos los bloques, preguntas del moderador, preguntas para copanelistas y las credenciales de cada speaker.</p>
+        </div>
+        <div id="adminPanelsContainer" class="space-y-6"></div>
+        <div class="glass-card p-6 rounded-3xl border border-slate-800">
+          <div class="flex items-center gap-2 text-indigo-300 font-bold text-sm uppercase tracking-wider mb-4">
+            <i data-lucide="key-round" class="w-4 h-4"></i>
+            <span>Credenciales de todos los speakers</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="text-slate-400 uppercase tracking-wider">
+                <tr><th class="py-2 pr-4">Speaker</th><th class="py-2 pr-4">Bloque</th><th class="py-2 pr-4">Usuario</th><th class="py-2">Contraseña</th></tr>
+              </thead>
+              <tbody id="adminCredentialsBody" class="font-mono text-slate-200 divide-y divide-slate-800"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <div id="tabContentToolkit" class="tab-pane hidden space-y-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -1095,6 +1124,38 @@
     // ==========================================================
     // 2. DETALLE DE PANELES Y PREGUNTAS GUÍA
     // ==========================================================
+    // ==========================================================
+    // CREDENCIALES ESPECIALES DE ADMINISTRACIÓN (ACCESO TOTAL)
+    // ==========================================================
+    const ADMIN_ACCOUNTS = [
+      { username: "admin.melanie", password: "Admin#Melanie2026", speakerId: "melanie-almeyda" },
+      { username: "admin.nataly", password: "Admin#Nataly2026", speakerId: "nataly-napanga" }
+    ];
+
+    // Preguntas cruzadas: lo que cada panelista puede preguntar a sus copanelistas
+    const PEER_QUESTIONS = {
+      "panel-1": [
+        "¿Qué validación rápida del mercado haría diferente tu proyecto si empezaras hoy con cero presupuesto? (pregunta para cada copanelista)",
+        "¿Qué opinas del enfoque de tu copanelista para emprender con recursos limitados? ¿Qué le adaptarías a tu realidad?",
+        "¿Cuál fue el error de tu copanelista que más aprendizaje te dejó observar desde afuera?"
+      ],
+      "panel-2": [
+        "¿Cómo conecta tu enfoque de liderazgo con propósito con el de tu copanelista? ¿Dónde se complementan?",
+        "¿Qué consejo le darías a tu copanelista para escalar una iniciativa social hacia la sostenibilidad?",
+        "¿Qué aprendiste del liderazgo auténtico de tu copanelista que aplicarías en tu organización?"
+      ],
+      "panel-3": [
+        "¿Dónde ves que la IA de tu copanelista y la automatización que tú aplicas pueden potenciarse mutuamente?",
+        "¿Qué habilidad digital crees que tu copanelista subestima y por qué es clave para el mercado global?",
+        "¿Cómo aplicarías la experiencia tecnológica de tu copanelista en tu sector?"
+      ],
+      "panel-4": [
+        "¿Cómo se complementan los idiomas y la empleabilidad remota según la experiencia de tus copanelistas?",
+        "¿Qué recomendación de marca personal o LinkedIn de tu copanelista te parece más accionable?",
+        "¿Qué errores comunes ve tu copanelista en jóvenes que buscan oportunidades globales?"
+      ]
+    };
+
     const PANELS_DATA = {
       "panel-1": {
         id: "panel-1",
@@ -1329,7 +1390,7 @@
       if (savedSpeakerId) {
         const found = SPEAKERS_DATABASE.find(s => s.id === savedSpeakerId);
         if (found) {
-          loginAsSpeaker(found);
+          loginAsSpeaker(found, localStorage.getItem('opportuneur_is_admin') === '1');
           return;
         }
       }
@@ -1369,6 +1430,19 @@
           const username = (userInput.value || '').trim().toLowerCase().replace(/^@/, '');
           const password = (passInput.value || '').trim();
 
+          // Special admin accounts (Melanie & Nataly): full access
+          const adminAcc = ADMIN_ACCOUNTS.find(a => a.username === username);
+          if (adminAcc) {
+            if (adminAcc.password !== password) {
+              errBox.classList.remove('hidden');
+              errText.innerText = 'Contraseña de administración incorrecta.';
+              return;
+            }
+            errBox.classList.add('hidden');
+            loginAsSpeaker(SPEAKERS_DATABASE.find(s => s.id === adminAcc.speakerId), true);
+            return;
+          }
+
           // Find speaker by username or id
           const speaker = SPEAKERS_DATABASE.find(s => 
             s.username.toLowerCase() === username ||
@@ -1397,9 +1471,17 @@
       if (switchSpeakerBtn) switchSpeakerBtn.addEventListener('click', logout);
     }
 
-    function loginAsSpeaker(speaker) {
+    function loginAsSpeaker(speaker, isAdmin = false) {
       currentSpeaker = speaker;
       localStorage.setItem('opportuneur_logged_speaker_id', speaker.id);
+      localStorage.setItem('opportuneur_is_admin', isAdmin ? '1' : '0');
+
+      // Admin tab only visible for special accounts
+      const adminBtn = document.getElementById('adminTabBtn');
+      if (adminBtn) adminBtn.classList.toggle('hidden', !isAdmin);
+      if (isAdmin) renderAdminPanel();
+      // Reset to first tab
+      document.querySelector('.dash-tab-btn[data-tab="panel"]').click();
 
       // Hide login, show dashboard
       document.getElementById('loginSection').classList.add('hidden');
@@ -1449,6 +1531,9 @@
 
     function logout() {
       localStorage.removeItem('opportuneur_logged_speaker_id');
+      localStorage.removeItem('opportuneur_is_admin');
+      const adminBtnLogout = document.getElementById('adminTabBtn');
+      if (adminBtnLogout) adminBtnLogout.classList.add('hidden');
       currentSpeaker = null;
 
       document.getElementById('dashboardSection').classList.add('hidden');
@@ -1659,6 +1744,7 @@
       const panes = {
         'panel': document.getElementById('tabContentPanel'),
         'agenda': document.getElementById('tabContentAgenda'),
+        'admin': document.getElementById('tabContentAdmin'),
         'toolkit': document.getElementById('tabContentToolkit')
       };
 
@@ -1709,6 +1795,56 @@
           showLockedZoomAlert();
         });
       }
+    }
+
+    // ==========================================================
+    // PANEL DE ADMINISTRACIÓN (MELANIE & NATALY): VISTA TOTAL
+    // ==========================================================
+    function renderAdminPanel() {
+      const container = document.getElementById('adminPanelsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const qItem = (q, i, color) => `
+        <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-200 flex items-start gap-3 leading-relaxed">
+          <span class="w-6 h-6 rounded-lg ${color} font-mono font-bold flex items-center justify-center shrink-0">${i + 1}</span>
+          <p class="mt-0.5">${q}</p>
+        </div>`;
+
+      Object.values(PANELS_DATA).forEach(panel => {
+        const members = panel.speakers.map(id => SPEAKERS_DATABASE.find(s => s.id === id)).filter(Boolean);
+        const card = document.createElement('div');
+        card.className = `glass-card p-6 rounded-3xl border-l-4 ${panel.borderAccent} bg-slate-900/60 space-y-5`;
+        card.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <span class="text-xs font-black uppercase px-3 py-1 rounded-full ${panel.colorBg} ${panel.colorText}">${panel.badge}</span>
+            <span class="text-xs font-mono text-slate-300">${panel.timePet} (PET)</span>
+          </div>
+          <h4 class="text-lg font-black text-white">${panel.theme}</h4>
+          <div class="flex flex-wrap gap-2">
+            ${members.map(m => `<span class="text-[11px] px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-200">${m.flag} ${m.name}</span>`).join('')}
+          </div>
+          <div>
+            <div class="text-[11px] font-bold text-indigo-300 uppercase tracking-wider mb-2">Preguntas para panelistas (moderador)</div>
+            <div class="space-y-2">${panel.questions.map((q, i) => qItem(q, i, 'bg-indigo-500/20 text-indigo-300')).join('')}</div>
+          </div>
+          <div>
+            <div class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider mb-2">Preguntas entre copanelistas</div>
+            <div class="space-y-2">${(PEER_QUESTIONS[panel.id] || []).map((q, i) => qItem(q, i, 'bg-emerald-500/20 text-emerald-300')).join('')}</div>
+          </div>`;
+        container.appendChild(card);
+      });
+
+      const tbody = document.getElementById('adminCredentialsBody');
+      if (tbody) {
+        const rows = SPEAKERS_DATABASE.map(s => {
+          const p = PANELS_DATA[s.assignedPanelId];
+          return `<tr><td class="py-2 pr-4 font-sans">${s.flag} ${s.name}</td><td class="py-2 pr-4 font-sans text-slate-400">${p ? p.badge.split('—')[0].trim() : ''}</td><td class="py-2 pr-4">${s.username}</td><td class="py-2">${s.password}</td></tr>`;
+        });
+        ADMIN_ACCOUNTS.forEach(a => rows.push(`<tr><td class="py-2 pr-4 font-sans text-amber-300">🛡️ Admin</td><td class="py-2 pr-4 font-sans text-slate-400">Acceso total</td><td class="py-2 pr-4">${a.username}</td><td class="py-2">${a.password}</td></tr>`));
+        tbody.innerHTML = rows.join('');
+      }
+      lucide.createIcons();
     }
 
     // ==========================================================
