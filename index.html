@@ -145,16 +145,18 @@
     }
 
     /* ========================================================== */
-    /* MODO CLARO & AMIGABLE PARA EL DASHBOARD                    */
+    /* MODO CLARO & EJECUTIVO PARA EL DASHBOARD                   */
     /* ========================================================== */
     body.dashboard-active-light {
-      background: #f1f5f9 !important;
+      background-color: #f8fafc !important;
+      background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px) !important;
+      background-size: 20px 20px !important;
       color: #0f172a !important;
     }
 
     body.dashboard-active-light .glass-nav {
-      background: rgba(255, 255, 255, 0.96) !important;
-      border-bottom: 1px solid #cbd5e1 !important;
+      background: rgba(255, 255, 255, 0.95) !important;
+      border-bottom: 1px solid #e2e8f0 !important;
       box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
     }
 
@@ -178,16 +180,15 @@
       color: #0f172a !important;
     }
 
-    body.dashboard-active-light #dashboardSection p,
-    body.dashboard-active-light #dashboardSection span.text-slate-300,
-    body.dashboard-active-light #dashboardSection span.text-slate-400 {
-      color: #475569 !important;
+    body.dashboard-active-light #dashboardSection p {
+      color: #334155 !important;
     }
 
-    /* Top Banner Hero */
-    body.dashboard-active-light #dashboardSection .bg-gradient-to-br {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 60%, #eef2ff 100%) !important;
+    /* Top Speaker Profile Card */
+    body.dashboard-active-light #dashboardSection > .glass-card:first-child {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #eff6ff 100%) !important;
       border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06) !important;
     }
 
     body.dashboard-active-light #dashSpeakerName {
@@ -204,9 +205,9 @@
 
     /* VIP Room Card */
     body.dashboard-active-light #vipRoomCard {
-      background: linear-gradient(135deg, #fffbeb 0%, #ffffff 50%, #eff6ff 100%) !important;
-      border: 2px solid #fbbf24 !important;
-      box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.12) !important;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 40%, #ffffff 100%) !important;
+      border: 2px solid #f59e0b !important;
+      box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.15) !important;
     }
 
     body.dashboard-active-light #vipRoomCard h3 {
@@ -214,7 +215,7 @@
     }
 
     body.dashboard-active-light #vipRoomCard p {
-      color: #475569 !important;
+      color: #451a03 !important;
     }
 
     /* Tabs Bar */
@@ -232,8 +233,8 @@
     body.dashboard-active-light .dash-tab-btn.bg-indigo-600 {
       background: #4f46e5 !important;
       color: #ffffff !important;
-      border-color: #4f46e5 !important;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25) !important;
+      border-color: #4338ca !important;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3) !important;
     }
 
     body.dashboard-active-light #adminTabBtn {
@@ -244,113 +245,52 @@
 
     /* Timezone Box */
     body.dashboard-active-light #timezoneSelect {
-      background: #f8fafc !important;
+      background: #ffffff !important;
       color: #0f172a !important;
       border: 1px solid #cbd5e1 !important;
     }
 
-    /* Cards Inside Tabs */
+    /* My Session Card */
     body.dashboard-active-light #mySessionDetailsCard {
       background: #ffffff !important;
       border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
     }
 
-    body.dashboard-active-light #mySessionDetailsCard .bg-slate-950\/70 {
-      background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
+    body.dashboard-active-light #mySessionDetailsCard h3 {
       color: #0f172a !important;
     }
 
-    body.dashboard-active-light #mySessionDetailsCard .bg-slate-950\/70 span {
-      color: #1e293b !important;
-    }
-
-    /* Highlighted Individual Question Card */
-    body.dashboard-active-light #guidingQuestionsList .from-amber-500\/15 {
-      background: linear-gradient(135deg, #fffdf5 0%, #ffffff 100%) !important;
-      border: 2px solid #f59e0b !important;
-      box-shadow: 0 6px 20px -2px rgba(245, 158, 11, 0.1) !important;
-    }
-
-    body.dashboard-active-light #guidingQuestionsList .from-amber-500\/15 p {
-      color: #78350f !important;
-    }
-
-    /* Dynamic Challenge Card */
-    body.dashboard-active-light #guidingQuestionsList .from-purple-950\/40 {
-      background: #faf5ff !important;
-      border: 1px solid #d8b4fe !important;
-    }
-
-    body.dashboard-active-light #guidingQuestionsList .from-purple-950\/40 p {
-      color: #3b0764 !important;
-    }
-
-    body.dashboard-active-light #guidingQuestionsList .from-purple-950\/40 .bg-slate-950\/90 {
-      background: #ffffff !important;
-      border: 1px solid #e9d5ff !important;
-      color: #581c87 !important;
-    }
-
-    /* Closing Question Card */
-    body.dashboard-active-light #guidingQuestionsList .from-indigo-950\/40 {
-      background: #eff6ff !important;
-      border: 1px solid #93c5fd !important;
-    }
-
-    body.dashboard-active-light #guidingQuestionsList .from-indigo-950\/40 p {
-      color: #1e3a8a !important;
-    }
-
-    /* Peer Questions Card */
-    body.dashboard-active-light #guidingQuestionsList .bg-slate-900\/70 {
-      background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
-    }
-
-    body.dashboard-active-light #guidingQuestionsList .bg-slate-900\/70 .bg-slate-950\/80 {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      color: #334155 !important;
-    }
-
-    /* Co-Panelists List */
-    body.dashboard-active-light #coPanelistsList .bg-white\/5 {
-      background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
-    }
-
-    body.dashboard-active-light #coPanelistsList span.text-white {
-      color: #0f172a !important;
+    body.dashboard-active-light #mySessionDetailsCard p {
+      color: #475569 !important;
     }
 
     /* Direct Contact Card */
     body.dashboard-active-light #directContactCard {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
+      background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #ffffff 100%) !important;
+      border: 2px solid #6ee7b7 !important;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.1) !important;
     }
 
     body.dashboard-active-light #directContactCard a {
-      background: #ecfdf5 !important;
-      border: 1px solid #6ee7b7 !important;
-      color: #047857 !important;
+      background: #059669 !important;
+      color: #ffffff !important;
+      border: none !important;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25) !important;
     }
 
-    /* Agenda Timeline Cards */
-    body.dashboard-active-light #timelineContainer .glass-card {
+    body.dashboard-active-light #directContactCard a i {
+      color: #ffffff !important;
+    }
+
+    /* Full Timeline Agenda */
+    body.dashboard-active-light #fullTimelineContainer .glass-card {
       background: #ffffff !important;
       border: 1px solid #e2e8f0 !important;
     }
 
-    body.dashboard-active-light #timelineContainer .bg-slate-900\/80 {
-      background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
-    }
-
-    /* Toolkit Canvas Cards */
-    body.dashboard-active-light #tabContentToolkit .glass-card {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
+    body.dashboard-active-light #fullTimelineContainer h4 {
+      color: #0f172a !important;
     }
 
     /* Admin Panel */
@@ -360,15 +300,17 @@
     }
 
     body.dashboard-active-light #tabContentAdmin table {
-      color: #1e293b !important;
+      color: #0f172a !important;
     }
 
     body.dashboard-active-light #tabContentAdmin th {
-      color: #64748b !important;
+      color: #475569 !important;
+      background: #f8fafc !important;
     }
 
     body.dashboard-active-light #tabContentAdmin td {
-      color: #1e293b !important;
+      color: #0f172a !important;
+      border-color: #e2e8f0 !important;
     }
 
     body.dashboard-active-light #tabContentAdmin tr:hover {
@@ -649,23 +591,23 @@
       <!-- CRITICAL VIP BACKSTAGE BAR -->
       <div id="vipRoomContainer" class="w-full">
         <!-- VIP Room Join Card - LOCKED ZOOM LINK -->
-        <div id="vipRoomCard" class="w-full glass-card p-6 sm:p-7 rounded-3xl border-2 border-amber-500/40 bg-gradient-to-r from-amber-950/20 via-slate-900 to-indigo-950/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative overflow-hidden">
+        <div id="vipRoomCard" class="w-full glass-card p-6 sm:p-7 rounded-3xl border-2 border-amber-400 bg-gradient-to-r from-amber-50 via-yellow-50/60 to-white flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative overflow-hidden shadow-lg shadow-amber-500/10">
           <div class="space-y-2">
             <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold text-xs border border-amber-500/40">
-                <i data-lucide="lock" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-black text-xs border border-amber-300 shadow-xs">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-amber-700"></i>
                 SALA VIP BACKSTAGE • BLOQUEADA
               </span>
-              <span class="text-xs text-slate-400 font-mono">Zoom Pro / Meet VIP</span>
+              <span class="text-xs text-slate-500 font-mono">Zoom Pro / Meet VIP</span>
             </div>
-            <h3 class="text-lg font-bold text-white">Sala Virtual Backstage (Ponentes & Producción)</h3>
-            <p class="text-xs text-slate-300 leading-relaxed max-w-2xl">
-              Conexión directa reservada para speakers. El acceso se habilitará automáticamente <strong class="text-amber-300">15 minutos antes (3:45 PM PET)</strong> para calibración de audio, prueba de cámara y soundcheck general.
+            <h3 class="text-lg font-black text-amber-950">Sala Virtual Backstage (Ponentes & Producción)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-2xl">
+              Conexión directa reservada para speakers. El acceso se habilitará automáticamente <strong class="text-amber-900 font-bold">15 minutos antes (3:45 PM PET)</strong> para calibración de audio, prueba de cámara y soundcheck general.
             </p>
-            <div class="flex items-center gap-4 text-xs font-mono text-slate-400 pt-1 flex-wrap">
-              <span>ID de Sala: <strong class="text-white">849 2026 7711</strong></span>
-              <span>Passcode: <strong class="text-amber-300">OPP2026VIP</strong></span>
-              <span class="text-amber-400/90 font-semibold flex items-center gap-1">
+            <div class="flex items-center gap-4 text-xs font-mono text-slate-600 pt-1 flex-wrap">
+              <span>ID de Sala: <strong class="text-slate-900 font-bold">849 2026 7711</strong></span>
+              <span>Passcode: <strong class="text-amber-950 bg-amber-200/80 px-2 py-0.5 rounded border border-amber-300 font-bold">OPP2026VIP</strong></span>
+              <span class="text-amber-800 font-bold flex items-center gap-1">
                 <i data-lucide="clock" class="w-3.5 h-3.5"></i>
                 Apertura: 3:45 PM PET
               </span>
@@ -673,12 +615,12 @@
           </div>
 
           <div class="flex flex-col sm:flex-row gap-2.5 w-full md:w-auto shrink-0">
-            <button type="button" onclick="showLockedZoomAlert()" class="px-5 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-slate-400 border border-slate-700/80 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-not-allowed shadow-md group">
-              <i data-lucide="lock" class="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform"></i>
+            <button type="button" onclick="showLockedZoomAlert()" class="px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-not-allowed shadow-md shadow-amber-600/20 group">
+              <i data-lucide="lock" class="w-4 h-4 text-white group-hover:scale-110 transition-transform"></i>
               <span>Sala VIP (Bloqueada)</span>
             </button>
-            <button id="copyVipLinkBtn" type="button" onclick="showLockedZoomAlert()" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-semibold text-slate-300 flex items-center justify-center gap-1.5 transition-colors">
-              <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-400"></i>
+            <button id="copyVipLinkBtn" type="button" onclick="showLockedZoomAlert()" class="px-4 py-2.5 rounded-xl bg-amber-100 hover:bg-amber-200 border border-amber-300 text-xs font-bold text-amber-950 flex items-center justify-center gap-1.5 transition-colors">
+              <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-amber-700"></i>
               <span id="copyVipLinkText">Disponible a las 3:45 PM</span>
             </button>
           </div>
@@ -686,20 +628,20 @@
       </div>
 
       <!-- MAIN TABS: 1. Mi Panel Asignado | 2. Agenda Completa | 3. Kit de Descargas -->
-      <div class="flex items-center gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
+      <div class="flex items-center gap-2 border-b border-slate-200 pb-2 overflow-x-auto">
         <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/30 flex items-center gap-2 shrink-0 cursor-pointer" data-tab="panel">
           <i data-lucide="mic" class="w-4 h-4"></i>
           <span>Mi Bloque Asignado</span>
         </button>
-        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="agenda">
+        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-700 hover:text-slate-900 flex items-center gap-2 shrink-0 cursor-pointer" data-tab="agenda">
           <i data-lucide="calendar" class="w-4 h-4"></i>
           <span>Agenda Completa del Forum</span>
         </button>
-        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-300 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="toolkit">
+        <button class="dash-tab-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all glass-card text-slate-700 hover:text-slate-900 flex items-center gap-2 shrink-0 cursor-pointer" data-tab="toolkit">
           <i data-lucide="download" class="w-4 h-4"></i>
           <span>Kit de Speaker &amp; Badge</span>
         </button>
-        <button id="adminTabBtn" class="dash-tab-btn hidden px-4 py-2.5 rounded-xl text-xs font-bold transition-all glass-card text-amber-300 border border-amber-500/40 hover:text-white flex items-center gap-2 shrink-0 cursor-pointer" data-tab="admin">
+        <button id="adminTabBtn" class="dash-tab-btn hidden px-4 py-2.5 rounded-xl text-xs font-bold transition-all glass-card text-amber-800 border border-amber-400 hover:text-amber-950 flex items-center gap-2 shrink-0 cursor-pointer" data-tab="admin">
           <i data-lucide="shield" class="w-4 h-4"></i>
           <span>Administración (Acceso Total)</span>
         </button>
@@ -711,7 +653,7 @@
       <div id="tabContentPanel" class="tab-pane space-y-6">
         
         <!-- Specific Session Details Card -->
-        <div id="mySessionDetailsCard" class="glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/40 relative">
+        <div id="mySessionDetailsCard" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200/90 relative bg-white shadow-sm">
           <!-- Dynamically populated session banner -->
         </div>
 
@@ -721,99 +663,97 @@
           <div class="lg:col-span-2 space-y-6">
             
             <!-- Guiding Questions -->
-            <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-800">
+            <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-white shadow-sm">
               <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm uppercase tracking-wider">
+                <div class="flex items-center gap-2 text-indigo-700 font-bold text-sm uppercase tracking-wider">
                   <i data-lucide="help-circle" class="w-4 h-4"></i>
                   <span>Preguntas Guía del Moderador</span>
                 </div>
-                <span class="text-xs bg-indigo-500/10 text-indigo-300 px-2.5 py-0.5 rounded-full border border-indigo-500/20 font-mono">
+                <span class="text-xs bg-indigo-50 text-indigo-700 px-2.5 py-0.5 rounded-full border border-indigo-200 font-mono font-bold">
                   Ejes de Diálogo
                 </span>
               </div>
-              <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+              <p class="text-xs text-slate-600 mb-4 leading-relaxed">
                 El moderador introducirá estas interrogantes durante el panel. No es necesario responderlas todas linealmente, sino utilizarlas para inspirar tus reflexiones prácticas:
               </p>
               
-              <div id="guidingQuestionsList" class="space-y-3">
+              <div id="guidingQuestionsList" class="space-y-4">
                 <!-- Dynamically populated -->
               </div>
             </div>
 
             <!-- Panel Dynamics & Time Allocation -->
-            <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-800">
-              <div class="flex items-center gap-2 text-amber-400 font-bold text-sm uppercase tracking-wider mb-4">
-                <i data-lucide="clock" class="w-4 h-4"></i>
+            <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-200/90 bg-white shadow-sm">
+              <div class="flex items-center gap-2 text-slate-900 font-bold text-sm uppercase tracking-wider mb-4">
+                <i data-lucide="clock" class="w-4 h-4 text-amber-500"></i>
                 <span>Estructura de Tiempos del Panel (30 min)</span>
               </div>
               
               <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-center">
-                <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
-                  <span class="text-xs font-mono font-bold text-indigo-400 block">3 Min</span>
-                  <span class="text-xs font-bold text-white block mt-0.5">Intro & Contexto</span>
-                  <span class="text-[10px] text-slate-400 block mt-1">Apertura del Moderador</span>
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                  <span class="text-xs font-mono font-bold text-indigo-700 block">3 Min</span>
+                  <span class="text-xs font-bold text-slate-900 block mt-0.5">Intro & Contexto</span>
+                  <span class="text-[10px] text-slate-500 block mt-1">Apertura del Moderador</span>
                 </div>
-                <div class="p-3 rounded-2xl bg-indigo-950/40 border border-indigo-800/60">
-                  <span class="text-xs font-mono font-bold text-emerald-400 block">15 Min</span>
-                  <span class="text-xs font-bold text-white block mt-0.5">Ronda Inicial</span>
-                  <span class="text-[10px] text-slate-400 block mt-1">4-5 min por panelista</span>
+                <div class="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200">
+                  <span class="text-xs font-mono font-bold text-emerald-700 block">15 Min</span>
+                  <span class="text-xs font-bold text-emerald-950 block mt-0.5">Ronda Inicial</span>
+                  <span class="text-[10px] text-emerald-800 block mt-1">4-5 min por panelista</span>
                 </div>
-                <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
-                  <span class="text-xs font-mono font-bold text-amber-400 block">8 Min</span>
-                  <span class="text-xs font-bold text-white block mt-0.5">Diálogo & Cruce</span>
-                  <span class="text-[10px] text-slate-400 block mt-1">Preguntas y debate ágil</span>
+                <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200">
+                  <span class="text-xs font-mono font-bold text-amber-700 block">8 Min</span>
+                  <span class="text-xs font-bold text-amber-950 block mt-0.5">Diálogo & Cruce</span>
+                  <span class="text-[10px] text-amber-800 block mt-1">Preguntas y debate ágil</span>
                 </div>
-                <div class="p-3 rounded-2xl bg-slate-900/80 border border-slate-800">
-                  <span class="text-xs font-mono font-bold text-purple-400 block">4 Min</span>
-                  <span class="text-xs font-bold text-white block mt-0.5">Q&A & Conclusión</span>
-                  <span class="text-[10px] text-slate-400 block mt-1">Mensaje final al público</span>
+                <div class="p-3.5 rounded-2xl bg-purple-50/80 border border-purple-200">
+                  <span class="text-xs font-mono font-bold text-purple-700 block">4 Min</span>
+                  <span class="text-xs font-bold text-purple-950 block mt-0.5">Q&A & Conclusión</span>
+                  <span class="text-[10px] text-purple-800 block mt-1">Mensaje final al público</span>
                 </div>
               </div>
             </div>
-
-
 
           </div>
 
           <!-- Right: Co-Panelists in this Session (1 col) -->
           <div class="space-y-6">
             
-            <div class="glass-card p-6 rounded-3xl border border-slate-800">
+            <div class="glass-card p-6 rounded-3xl border border-slate-200/90 bg-white shadow-sm">
               <div class="flex items-center justify-between mb-4">
-                <span class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <i data-lucide="users-2" class="w-4 h-4 text-purple-400"></i>
+                <span class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <i data-lucide="users-2" class="w-4 h-4 text-purple-600"></i>
                   Tus Co-Panelistas
                 </span>
-                <span id="coPanelistsCount" class="text-[11px] font-mono text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                <span id="coPanelistsCount" class="text-[11px] font-mono font-bold text-purple-800 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">
                   <!-- count -->
                 </span>
               </div>
-              <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+              <p class="text-xs text-slate-600 mb-4 leading-relaxed">
                 Compartirás el escenario virtual con estos destacados líderes:
               </p>
 
-              <div id="coPanelistsList" class="space-y-3.5">
+              <div id="coPanelistsList" class="space-y-3">
                 <!-- Dynamically populated -->
               </div>
             </div>
 
             <!-- Direct WhatsApp with Direction -->
-            <div id="directContactCard" class="glass-card p-6 rounded-3xl border border-indigo-500/30 bg-gradient-to-br from-indigo-950/30 to-purple-950/20">
-              <span class="text-xs font-bold text-indigo-300 uppercase tracking-wider flex items-center gap-1.5 mb-2">
-                <i data-lucide="headphones" class="w-4 h-4 text-emerald-400"></i>
+            <div id="directContactCard" class="glass-card p-6 rounded-3xl border-2 border-emerald-300 bg-gradient-to-br from-emerald-50 via-green-50/40 to-white shadow-sm">
+              <span class="text-xs font-black text-emerald-900 uppercase tracking-wider flex items-center gap-1.5 mb-2">
+                <i data-lucide="headphones" class="w-4 h-4 text-emerald-600"></i>
                 Contacto Directo con Dirección
               </span>
-              <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+              <p class="text-xs text-slate-700 mb-4 leading-relaxed">
                 ¿Dudas con tu intervención o soporte de conexión? La Dirección General está conectada en tiempo real.
               </p>
 
               <div class="space-y-2.5">
-                <a href="https://wa.me/51970891740?text=Hola%20Melanie,%20soy%20panelista%20del%20Opportuneur%20Impact%20Forum" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-3.5 rounded-xl bg-emerald-600/25 hover:bg-emerald-600/40 border border-emerald-500/50 text-emerald-200 text-xs font-bold flex items-center justify-between transition-all shadow-md shadow-emerald-950/30 group">
+                <a href="https://wa.me/51970891740?text=Hola%20Melanie,%20soy%20panelista%20del%20Opportuneur%20Impact%20Forum" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-between transition-all shadow-md shadow-emerald-600/25 group">
                   <span class="flex items-center gap-2.5">
-                    <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <i data-lucide="message-circle" class="w-4 h-4 text-white group-hover:scale-110 transition-transform"></i>
                     <span>Melanie Almeyda: +51 970 891 740</span>
                   </span>
-                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-white"></i>
                 </a>
               </div>
             </div>
@@ -1437,8 +1377,8 @@
         timePet: "4:25 – 4:55 PM",
         timeDuration: "30 minutos",
         borderAccent: "border-emerald-500",
-        colorText: "text-emerald-400",
-        colorBg: "bg-emerald-950/80 border-emerald-800",
+        colorText: "text-emerald-900 font-bold",
+        colorBg: "bg-emerald-100 border border-emerald-300",
         summary: "Validación en el mercado real sin sobrecostos, modelos de negocio de triple impacto, inversión ángel y errores y aprendizajes sin filtro de fundadores.",
         speakers: ["cristian-gutierrez", "maria-gracia", "alfonso-rangel"],
         dynamicChallenge: {
@@ -1467,8 +1407,8 @@
         timePet: "4:55 – 5:25 PM",
         timeDuration: "30 minutos",
         borderAccent: "border-purple-500",
-        colorText: "text-purple-400",
-        colorBg: "bg-purple-950/80 border-purple-800",
+        colorText: "text-purple-900 font-bold",
+        colorBg: "bg-purple-100 border border-purple-300",
         summary: "Modelos sostenibles, economía circular, proyectos de triple impacto, inclusión productiva femenina y liderazgo transformador desde Latinoamérica.",
         speakers: ["elizabeth-javier", "natalia-bejan", "rosa-centurion"],
         dynamicChallenge: {
@@ -1496,9 +1436,9 @@
         objective: "Despertar curiosidad por la inteligencia artificial, las herramientas digitales y las habilidades que permiten competir en un mercado global.",
         timePet: "5:35 – 6:05 PM",
         timeDuration: "30 minutos",
-        borderAccent: "border-cyan-500",
-        colorText: "text-cyan-400",
-        colorBg: "bg-cyan-950/80 border-cyan-800",
+        borderAccent: "border-cyan-600",
+        colorText: "text-cyan-900 font-bold",
+        colorBg: "bg-cyan-100 border border-cyan-300",
         summary: "Transformación digital en empresas, herramientas de IA y automatización, plataformas web que convierten y habilidades de alto valor para competir globalmente.",
         speakers: ["luis-avelan", "jorge-escalante", "roberto-romero"],
         dynamicChallenge: {
@@ -1532,8 +1472,8 @@
         timePet: "6:05 – 6:35 PM",
         timeDuration: "30 minutos",
         borderAccent: "border-amber-500",
-        colorText: "text-amber-400",
-        colorBg: "bg-amber-950/80 border-amber-800",
+        colorText: "text-amber-900 font-bold",
+        colorBg: "bg-amber-100 border border-amber-300",
         summary: "Rutas de empleo remoto, contratación internacional, el dominio del inglés como ventaja competitiva, monetización del conocimiento y proyección global sin fronteras.",
         speakers: ["jose-mendoza", "andrea-vivas", "gabriela-gaitan"],
         dynamicChallenge: {
@@ -1954,7 +1894,7 @@
 
       const convertedTime = convertTimeRange(panel.timePet, TIMEZONE_CONFIG[selectedTimezone].offsetHours);
 
-      sessionCard.className = `glass-card p-6 sm:p-8 rounded-3xl border-l-4 ${panel.borderAccent} relative overflow-hidden bg-slate-900/60`;
+      sessionCard.className = `glass-card p-6 sm:p-8 rounded-3xl border-l-4 ${panel.borderAccent} relative overflow-hidden bg-white border border-slate-200/90 shadow-sm`;
       
       sessionCard.innerHTML = `
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
@@ -1962,37 +1902,37 @@
             <span class="text-xs font-black tracking-wider uppercase px-3 py-1 rounded-full ${panel.colorBg} ${panel.colorText}">
               ${panel.badge}
             </span>
-            <span class="text-xs text-slate-400 font-mono">
-              Duración: <strong>${panel.timeDuration}</strong>
+            <span class="text-xs text-slate-500 font-mono">
+              Duración: <strong class="text-slate-800">${panel.timeDuration}</strong>
             </span>
           </div>
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-mono text-xs font-bold">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 font-mono text-xs font-bold shadow-xs">
             <i data-lucide="clock" class="w-3.5 h-3.5"></i>
             <span>${convertedTime} (${TIMEZONE_CONFIG[selectedTimezone].label})</span>
           </div>
         </div>
 
-        <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">${panel.theme}</h3>
-        <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed max-w-3xl">${panel.summary}</p>
+        <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">${panel.theme}</h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed max-w-3xl">${panel.summary}</p>
 
         <!-- Objetivo Estratégico del Bloque -->
-        <div class="mt-4 p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-start gap-3.5">
-          <div class="w-7 h-7 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center shrink-0 mt-0.5 border border-indigo-500/30">
-            <i data-lucide="target" class="w-4 h-4 text-indigo-400"></i>
+        <div class="mt-4 p-4 rounded-2xl bg-indigo-50/80 border border-indigo-200 flex items-start gap-3.5 shadow-xs">
+          <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+            <i data-lucide="target" class="w-4 h-4"></i>
           </div>
           <div>
-            <span class="text-[11px] font-black uppercase tracking-wider text-indigo-300 block">Objetivo del Panel:</span>
-            <p class="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed mt-0.5">${panel.objective}</p>
+            <span class="text-[11px] font-black uppercase tracking-wider text-indigo-900 block">Objetivo del Panel:</span>
+            <p class="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed mt-0.5">${panel.objective}</p>
           </div>
         </div>
 
-        <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center gap-3 text-xs text-slate-400 flex-wrap">
-          <span class="font-semibold text-slate-300">Tu Rol Oficial:</span>
-          <span class="px-2.5 py-0.5 rounded bg-white/5 text-indigo-300 font-semibold border border-white/5">
+        <div class="mt-4 pt-4 border-t border-slate-200 flex items-center gap-3 text-xs text-slate-600 flex-wrap">
+          <span class="font-bold text-slate-700">Tu Rol Oficial:</span>
+          <span class="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 font-bold border border-indigo-200">
             ${speaker.roleInForum}
           </span>
-          <span class="text-slate-500">•</span>
-          <span>Modalidad: <strong class="text-emerald-400">En Vivo (Plenaria Virtual)</strong></span>
+          <span class="text-slate-300">•</span>
+          <span>Modalidad: <strong class="text-emerald-700 font-bold">En Vivo (Plenaria Virtual)</strong></span>
         </div>
       `;
 
@@ -2006,57 +1946,61 @@
       const questionsList = document.getElementById('guidingQuestionsList');
       questionsList.innerHTML = '';
 
-      // 1. Highlighted Individual Question
+      // 1. Highlighted Individual Question: RADIANT AMBER/GOLD EXECUTIVE CARD
       if (speaker.individualQuestion) {
         const indCard = document.createElement('div');
-        indCard.className = "p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-500/15 via-slate-900/90 to-amber-950/20 border-2 border-amber-400/60 shadow-xl shadow-amber-500/10 relative overflow-hidden";
+        indCard.className = "p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-amber-50 via-amber-100/40 to-white border-2 border-amber-400 shadow-xl shadow-amber-500/10 relative overflow-hidden";
         indCard.innerHTML = `
-          <div class="flex items-center justify-between gap-3 mb-2 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-amber-500/25 text-amber-300 border border-amber-400/50 font-mono">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> TU PREGUNTA PERSONALIZADA (MODERADOR)
+          <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-200/90 text-amber-950 border border-amber-400/80 font-mono shadow-xs">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-800"></i> TU PREGUNTA PERSONALIZADA (MODERADOR)
             </span>
-            <span class="text-xs text-amber-300/90 font-semibold font-mono">Ronda de Intervención Individual</span>
+            <span class="text-xs text-amber-900 font-bold font-mono bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/70">Ronda de Intervención Individual</span>
           </div>
-          <p class="text-base sm:text-lg font-black text-white leading-relaxed mt-3 pl-3 border-l-4 border-amber-400">
-            “${speaker.individualQuestion}”
-          </p>
-          <div class="mt-3.5 pt-3 border-t border-amber-500/20 flex items-center justify-between text-[11px] text-slate-300 flex-wrap gap-2">
-            <span>Formulada para: <strong class="text-white">${speaker.flag} ${speaker.name}</strong></span>
-            <span class="text-slate-400">Tiempo de intervención estimado: <strong class="text-amber-300">3 a 4 minutos</strong></span>
+
+          <div class="mt-3 p-4 sm:p-5 rounded-2xl bg-white border-l-4 border-amber-500 border-r border-t border-b border-amber-200/80 shadow-xs">
+            <p class="text-base sm:text-xl font-black text-amber-950 font-serif leading-relaxed">
+              “${speaker.individualQuestion}”
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3.5 border-t border-amber-300/60 flex items-center justify-between text-xs text-amber-950 flex-wrap gap-2">
+            <span>Formulada para: <strong class="text-slate-900 font-bold bg-white px-2.5 py-1 rounded-md border border-amber-200">${speaker.flag} ${speaker.name}</strong></span>
+            <span class="text-slate-600">Tiempo de intervención estimado: <strong class="text-amber-950 font-black bg-amber-200/60 px-2 py-0.5 rounded border border-amber-300">3 a 4 minutos</strong></span>
           </div>
         `;
         questionsList.appendChild(indCard);
       } else {
         const hostCard = document.createElement('div');
-        hostCard.className = "p-4 sm:p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 text-xs text-indigo-200 leading-relaxed";
+        hostCard.className = "p-5 sm:p-6 rounded-2xl bg-indigo-50 border border-indigo-200 text-xs text-indigo-900 leading-relaxed";
         hostCard.innerHTML = `
-          <div class="flex items-center gap-2 font-bold text-white mb-1 text-sm">
+          <div class="flex items-center gap-2 font-black text-indigo-950 mb-1.5 text-sm">
             <span>👑 Co-Directora & Anfitriona General</span>
           </div>
-          <p>Como anfitriona tienes a cargo la conducción y keynotes del evento. Cuentas con visión global y guía de preguntas de todos los paneles en la pestaña de <strong>Administración</strong>.</p>
+          <p class="text-indigo-900">Como anfitriona tienes a cargo la conducción y keynotes del evento. Cuentas con visión global y guía de preguntas de todos los paneles en la pestaña de <strong>Administración</strong>.</p>
         `;
         questionsList.appendChild(hostCard);
       }
 
-      // 2. Innovative Dynamic Challenge
+      // 2. Innovative Dynamic Challenge: VIOLET/PURPLE EXECUTIVE CARD
       if (panel.dynamicChallenge) {
         const dynCard = document.createElement('div');
-        dynCard.className = "p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-indigo-950/40 border border-purple-500/40 shadow-sm relative";
+        dynCard.className = "p-6 rounded-3xl bg-gradient-to-r from-purple-50 via-purple-100/30 to-white border-2 border-purple-300 shadow-sm relative";
         dynCard.innerHTML = `
-          <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-purple-500/25 text-purple-300 border border-purple-400/40 font-mono">
-              <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-400"></i> DINÁMICA INNOVADORA: ${panel.dynamicChallenge.name}
+          <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-purple-200/80 text-purple-950 border border-purple-400 font-mono">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-700"></i> DINÁMICA INNOVADORA: ${panel.dynamicChallenge.name}
             </span>
-            <span class="text-[10px] font-bold text-purple-300 bg-purple-500/15 px-2.5 py-0.5 rounded-full border border-purple-500/25">RETO EN VIVO</span>
+            <span class="text-[11px] font-bold text-purple-900 bg-purple-100 px-2.5 py-0.5 rounded-full border border-purple-300 font-mono">RETO EN VIVO</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed mt-2.5">
+          <p class="text-xs sm:text-sm text-purple-950 font-semibold leading-relaxed mt-2 bg-white/70 p-3.5 rounded-2xl border border-purple-200/70">
             ${panel.dynamicChallenge.prompt}
           </p>
           ${panel.dynamicChallenge.prompts ? `
-            <div class="grid grid-cols-1 gap-2 mt-3">
+            <div class="grid grid-cols-1 gap-2.5 mt-3">
               ${panel.dynamicChallenge.prompts.map(p => `
-                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-purple-500/30 text-xs text-purple-200 font-mono flex items-center gap-2">
-                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-400 shrink-0"></i>
+                <div class="p-3 rounded-xl bg-white border border-purple-200 text-xs text-purple-950 font-mono font-medium flex items-center gap-2 shadow-xs">
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-purple-600 shrink-0"></i>
                   <span>${p}</span>
                 </div>
               `).join('')}
@@ -2066,42 +2010,46 @@
         questionsList.appendChild(dynCard);
       }
 
-      // 3. Closing Question
+      // 3. Closing Question: BLUE EXECUTIVE CARD
       if (panel.closingQuestion) {
         const closeCard = document.createElement('div');
-        closeCard.className = "p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-indigo-500/30 text-xs text-slate-200";
+        closeCard.className = "p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50/50 to-white border-2 border-blue-300 text-xs text-blue-950 shadow-xs";
         closeCard.innerHTML = `
-          <div class="flex items-center gap-2 mb-1.5 text-indigo-400 font-bold uppercase tracking-wider text-[11px]">
-            <i data-lucide="flag" class="w-4 h-4 text-indigo-400"></i>
+          <div class="flex items-center gap-2 mb-2 text-blue-800 font-bold uppercase tracking-wider text-xs">
+            <i data-lucide="flag" class="w-4 h-4 text-blue-600"></i>
             <span>Pregunta de Cierre del Bloque</span>
           </div>
-          <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">
-            “${panel.closingQuestion}”
-          </p>
+          <div class="p-3.5 rounded-xl bg-white border border-blue-200/80 shadow-xs">
+            <p class="text-xs sm:text-sm font-bold text-blue-950 font-serif leading-relaxed">
+              “${panel.closingQuestion}”
+            </p>
+          </div>
         `;
         questionsList.appendChild(closeCard);
       }
 
-      // 4. Questions for Co-Panelists (to understand full session context)
+      // 4. Questions for Co-Panelists: CLEAN, HIGH-CONTRAST LIGHT CARD
       if (coPanelists.length > 0) {
         const peersCard = document.createElement('div');
-        peersCard.className = "p-5 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-3";
+        peersCard.className = "p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-3.5";
         peersCard.innerHTML = `
-          <div class="flex items-center justify-between">
-            <span class="text-[11px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <i data-lucide="users" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 flex-wrap gap-2">
+            <span class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-2">
+              <i data-lucide="users" class="w-4 h-4 text-indigo-600"></i>
               <span>Preguntas de tus Co-Panelistas (Contexto del Diálogo)</span>
             </span>
-            <span class="text-[10px] text-slate-400 font-mono">Conoce la línea temática de tus compañeros</span>
+            <span class="text-[11px] text-slate-500 font-mono">Conoce la línea temática de tus compañeros</span>
           </div>
-          <div class="space-y-2.5">
+          <div class="space-y-3">
             ${coPanelists.map(cp => `
-              <div class="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800/80 text-xs">
-                <div class="flex items-center gap-2 mb-1 font-bold text-white">
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-slate-300 transition-all shadow-xs">
+                <div class="flex items-center gap-2 mb-2 font-black text-slate-900 text-sm">
                   <span>${cp.flag} ${cp.name}</span>
-                  <span class="text-[11px] text-slate-400 font-normal">(${cp.title})</span>
+                  <span class="text-xs text-slate-500 font-normal">(${cp.title})</span>
                 </div>
-                <p class="text-slate-300 italic text-[12px] leading-relaxed">“${cp.individualQuestion || 'Intervención temática en el bloque'}”</p>
+                <div class="bg-white p-3 rounded-xl border border-slate-200/80">
+                  <p class="text-slate-800 italic text-xs sm:text-sm leading-relaxed">“${cp.individualQuestion || 'Intervención temática en el bloque'}”</p>
+                </div>
               </div>
             `).join('')}
           </div>
@@ -2116,11 +2064,11 @@
       document.getElementById('coPanelistsCount').innerText = `${coPanelists.length} Ponentes`;
 
       if (coPanelists.length === 0) {
-        coPanelistsList.innerHTML = `<p class="text-xs text-slate-400 italic">Sesión unipersonal / anfitrionas.</p>`;
+        coPanelistsList.innerHTML = `<p class="text-xs text-slate-500 italic">Sesión unipersonal / anfitrionas.</p>`;
       } else {
         coPanelists.forEach(cp => {
           const cpCard = document.createElement('div');
-          cpCard.className = "p-3 rounded-2xl bg-slate-900/90 border border-slate-800 flex items-center gap-3 hover:border-slate-700 transition-colors";
+          cpCard.className = "p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-3 hover:bg-slate-100/80 transition-colors shadow-xs";
           
           let cpAvatar = '';
           if (cp.photo) {
@@ -2130,16 +2078,16 @@
           }
 
           cpCard.innerHTML = `
-            <div class="w-11 h-11 rounded-xl p-0.5 bg-slate-800 shrink-0 overflow-hidden">
+            <div class="w-12 h-12 rounded-xl p-0.5 bg-white border border-slate-200 shrink-0 overflow-hidden shadow-xs">
               ${cpAvatar}
             </div>
             <div class="flex-grow min-w-0">
               <div class="flex items-center gap-1.5">
-                <span class="text-xs font-bold text-white truncate">${cp.name}</span>
+                <span class="text-xs font-black text-slate-900 truncate">${cp.name}</span>
                 <span class="text-xs">${cp.flag}</span>
               </div>
-              <p class="text-[11px] text-indigo-400 truncate">${cp.title}</p>
-              <span class="text-[10px] text-slate-400 block">${cp.tag}</span>
+              <p class="text-[11px] text-indigo-700 font-semibold truncate">${cp.title}</p>
+              <span class="text-[10px] text-slate-500 block truncate">${cp.tag}</span>
             </div>
           `;
           coPanelistsList.appendChild(cpCard);
@@ -2169,31 +2117,34 @@
         
         let highlightStyle = '';
         let badgeMine = '';
+        let timeBoxStyle = '';
         if (isMySession) {
-          highlightStyle = 'border-2 border-indigo-400/80 bg-indigo-950/20 shadow-lg shadow-indigo-950/40 ring-1 ring-indigo-400/30';
-          badgeMine = `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 font-mono">⭐ TU PARTICIPACIÓN</span>`;
+          highlightStyle = 'border-2 border-indigo-400 bg-gradient-to-r from-indigo-50/70 via-purple-50/40 to-white shadow-md shadow-indigo-500/10 ring-1 ring-indigo-300';
+          badgeMine = `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-600 text-white font-mono shadow-xs">⭐ TU PARTICIPACIÓN</span>`;
+          timeBoxStyle = 'bg-indigo-600 text-white border-indigo-700';
         } else {
-          highlightStyle = `border-l-4 ${item.colorBorder} bg-slate-900/60 border border-slate-800/80`;
+          highlightStyle = `border-l-4 ${item.colorBorder} bg-white border border-slate-200 shadow-xs hover:border-slate-300`;
+          timeBoxStyle = 'bg-slate-50 text-slate-800 border-slate-200';
         }
 
-        row.className = `glass-card p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${highlightStyle}`;
+        row.className = `p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all ${highlightStyle}`;
 
         row.innerHTML = `
           <div class="flex items-start sm:items-center gap-4">
-            <div class="bg-slate-900 px-3 py-2 rounded-xl text-center min-w-[110px] shrink-0 border border-slate-700">
-              <span class="text-xs font-bold text-white font-mono block">${convertedTime}</span>
-              <span class="text-[10px] text-slate-400">${item.duration}</span>
+            <div class="${timeBoxStyle} px-3 py-2 rounded-xl text-center min-w-[110px] shrink-0 border">
+              <span class="text-xs font-bold font-mono block">${convertedTime}</span>
+              <span class="text-[10px] opacity-80">${item.duration}</span>
             </div>
             <div>
               <div class="flex items-center gap-2 flex-wrap mb-1">
-                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">${item.type}</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">${item.type}</span>
                 ${badgeMine}
               </div>
-              <h4 class="text-sm sm:text-base font-bold text-white">${item.title}</h4>
-              <p class="text-xs text-slate-300 mt-0.5 leading-relaxed">${item.desc}</p>
+              <h4 class="text-sm sm:text-base font-black text-slate-900">${item.title}</h4>
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">${item.desc}</p>
             </div>
           </div>
-          <span class="text-xs text-slate-400 self-start sm:self-center bg-white/5 px-2.5 py-1 rounded-full border border-white/5 shrink-0">
+          <span class="text-xs text-slate-600 self-start sm:self-center bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200 shrink-0 font-medium">
             ${item.isVipOnly ? 'Backstage' : 'Plenaria'}
           </span>
         `;
@@ -2276,24 +2227,24 @@
       Object.values(PANELS_DATA).forEach(panel => {
         const members = panel.speakers.map(id => SPEAKERS_DATABASE.find(s => s.id === id)).filter(Boolean);
         const card = document.createElement('div');
-        card.className = `glass-card p-6 sm:p-7 rounded-3xl border-l-4 ${panel.borderAccent} bg-slate-900/70 space-y-6`;
+        card.className = `glass-card p-6 sm:p-7 rounded-3xl border-l-4 ${panel.borderAccent} bg-white border border-slate-200/90 shadow-sm space-y-6`;
         card.innerHTML = `
           <!-- Header Area -->
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
             <div class="flex items-center gap-3">
               <span class="text-xs font-black uppercase px-3 py-1 rounded-full ${panel.colorBg} ${panel.colorText}">${panel.badge}</span>
-              <span class="text-xs text-slate-400 font-mono">Duración: ${panel.timeDuration}</span>
+              <span class="text-xs text-slate-500 font-mono">Duración: <strong class="text-slate-800">${panel.timeDuration}</strong></span>
             </div>
-            <span class="text-xs font-mono font-bold text-white bg-slate-800 px-3 py-1 rounded-xl border border-slate-700">${panel.timePet} (Hora Oficial PET)</span>
+            <span class="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-3 py-1 rounded-xl border border-slate-200">${panel.timePet} (Hora Oficial PET)</span>
           </div>
 
           <div>
-            <h4 class="text-xl font-black text-white">${panel.theme}</h4>
+            <h4 class="text-xl font-black text-slate-900">${panel.theme}</h4>
             <!-- Objetivo -->
-            <div class="mt-3 p-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-start gap-3">
-              <i data-lucide="target" class="w-4 h-4 text-indigo-400 shrink-0 mt-0.5"></i>
-              <div class="text-xs text-slate-200 leading-relaxed">
-                <strong class="text-indigo-300 font-bold block text-[11px] uppercase tracking-wider">Objetivo del Panel:</strong>
+            <div class="mt-3 p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-start gap-3">
+              <i data-lucide="target" class="w-4 h-4 text-indigo-600 shrink-0 mt-0.5"></i>
+              <div class="text-xs text-slate-800 leading-relaxed">
+                <strong class="text-indigo-900 font-bold block text-[11px] uppercase tracking-wider">Objetivo del Panel:</strong>
                 ${panel.objective}
               </div>
             </div>
@@ -2301,24 +2252,26 @@
 
           <!-- Preguntas Personalizadas para cada Panelista -->
           <div>
-            <div class="text-[11px] font-black text-amber-300 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+            <div class="text-[11px] font-black text-amber-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600"></i>
               <span>Preguntas Personalizadas por Panelista (Moderador)</span>
             </div>
             <div class="space-y-3">
               ${members.map(m => `
-                <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 transition-colors">
+                <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 hover:border-amber-300 transition-colors">
                   <div class="flex items-center justify-between gap-2 mb-2">
                     <div class="flex items-center gap-2">
                       <span class="text-base">${m.flag}</span>
-                      <span class="text-xs font-bold text-white">${m.name}</span>
-                      <span class="text-[11px] text-slate-400 font-mono">(${m.title})</span>
+                      <span class="text-xs font-bold text-slate-900">${m.name}</span>
+                      <span class="text-[11px] text-slate-500 font-mono">(${m.title})</span>
                     </div>
-                    <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-slate-300">${m.country}</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded bg-white border border-amber-200 text-slate-700 font-semibold">${m.country}</span>
                   </div>
-                  <p class="text-xs sm:text-sm font-semibold text-amber-200/90 pl-3 border-l-2 border-amber-400 leading-relaxed">
-                    “${m.individualQuestion || 'Intervención principal'}”
-                  </p>
+                  <div class="bg-white p-3 rounded-xl border border-amber-200/80">
+                    <p class="text-xs sm:text-sm font-serif font-black text-amber-950 pl-3 border-l-3 border-amber-500 leading-relaxed">
+                      “${m.individualQuestion || 'Intervención principal'}”
+                    </p>
+                  </div>
                 </div>
               `).join('')}
             </div>
@@ -2326,19 +2279,19 @@
 
           <!-- Dinámica Innovadora del Panel -->
           ${panel.dynamicChallenge ? `
-            <div class="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/30 text-xs text-slate-200">
+            <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-950">
               <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="text-[11px] font-black text-purple-300 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                  <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-400"></i>
+                <span class="text-[11px] font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-600"></i>
                   <span>Dinámica Innovadora: ${panel.dynamicChallenge.name}</span>
                 </span>
-                <span class="text-[10px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">Reto en Vivo</span>
+                <span class="text-[10px] font-bold text-purple-900 bg-purple-200/70 px-2 py-0.5 rounded">Reto en Vivo</span>
               </div>
-              <p class="text-slate-100 font-medium leading-relaxed mt-1">${panel.dynamicChallenge.prompt}</p>
+              <p class="text-slate-800 font-medium leading-relaxed mt-1">${panel.dynamicChallenge.prompt}</p>
               ${panel.dynamicChallenge.prompts ? `
                 <div class="space-y-1.5 mt-2.5">
                   ${panel.dynamicChallenge.prompts.map(p => `
-                    <div class="p-2 rounded-xl bg-slate-950/90 border border-purple-500/20 text-purple-200 text-xs font-mono">
+                    <div class="p-2.5 rounded-xl bg-white border border-purple-200 text-purple-950 text-xs font-mono font-medium">
                       ${p}
                     </div>
                   `).join('')}
@@ -2349,25 +2302,25 @@
 
           <!-- Pregunta de Cierre -->
           ${panel.closingQuestion ? `
-            <div class="p-4 rounded-2xl bg-indigo-950/30 border border-indigo-500/30 text-xs text-slate-200">
-              <div class="text-[11px] font-black text-indigo-300 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                <i data-lucide="flag" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-xs text-blue-950">
+              <div class="text-[11px] font-black text-blue-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                <i data-lucide="flag" class="w-3.5 h-3.5 text-blue-600"></i>
                 <span>Pregunta de Cierre del Bloque</span>
               </div>
-              <p class="text-slate-100 font-medium leading-relaxed italic">“${panel.closingQuestion}”</p>
+              <p class="text-slate-900 font-semibold leading-relaxed italic bg-white p-3 rounded-xl border border-blue-200">“${panel.closingQuestion}”</p>
             </div>
           ` : ''}
 
-          <!-- Preguntas Cruzadas -->
+          <!-- Preguntas Cruzadas (Visible en Admin) -->
           <div>
-            <div class="text-[11px] font-black text-emerald-300 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-              <i data-lucide="message-square" class="w-3.5 h-3.5 text-emerald-400"></i>
-              <span>Preguntas entre Copanelistas (Diálogo)</span>
+            <div class="text-[11px] font-black text-emerald-800 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+              <i data-lucide="message-square" class="w-3.5 h-3.5 text-emerald-600"></i>
+              <span>Preguntas entre Copanelistas (Diálogo - Referencia Admin)</span>
             </div>
             <div class="space-y-2">
               ${(PEER_QUESTIONS[panel.id] || []).map((q, i) => `
-                <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-xs text-slate-300 flex items-start gap-2.5 leading-relaxed">
-                  <span class="w-5 h-5 rounded-lg bg-emerald-500/20 text-emerald-300 font-mono font-bold flex items-center justify-center shrink-0 text-[11px]">${i + 1}</span>
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 flex items-start gap-2.5 leading-relaxed">
+                  <span class="w-5 h-5 rounded-lg bg-emerald-100 text-emerald-800 font-mono font-bold flex items-center justify-center shrink-0 text-[11px]">${i + 1}</span>
                   <p class="mt-0.5">${q}</p>
                 </div>
               `).join('')}
@@ -2383,21 +2336,21 @@
           const p = PANELS_DATA[s.assignedPanelId];
           const areaLabel = p ? p.badge.split('—')[0].replace(/[^0-9A-Za-zÁÉÍÓÚáéíóú ]/g, '').trim() : 'Dirección';
           return `
-            <tr class="border-b border-slate-800/80 hover:bg-slate-800/30 transition-colors">
-              <td class="py-2.5 pr-4 font-sans font-bold text-white">${s.flag} ${s.name}</td>
-              <td class="py-2.5 pr-4 font-sans text-xs text-slate-300">${areaLabel}</td>
-              <td class="py-2.5 pr-4 font-mono text-xs text-indigo-300 select-all font-semibold">${s.username}</td>
-              <td class="py-2.5 font-mono text-xs text-amber-300 select-all font-semibold">${s.password}</td>
+            <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+              <td class="py-2.5 pr-4 font-sans font-bold text-slate-900">${s.flag} ${s.name}</td>
+              <td class="py-2.5 pr-4 font-sans text-xs text-slate-600">${areaLabel}</td>
+              <td class="py-2.5 pr-4 font-mono text-xs text-indigo-700 select-all font-semibold">${s.username}</td>
+              <td class="py-2.5 font-mono text-xs text-amber-800 select-all font-bold">${s.password}</td>
             </tr>
           `;
         });
         ADMIN_ACCOUNTS.forEach(a => {
           rows.unshift(`
-            <tr class="border-b border-amber-500/30 bg-amber-500/5 hover:bg-amber-500/10 transition-colors">
-              <td class="py-2.5 pr-4 font-sans font-bold text-amber-300">🛡️ Admin (${a.username.includes('melanie') ? 'Melanie' : 'Nataly'})</td>
-              <td class="py-2.5 pr-4 font-sans text-xs text-amber-200 font-semibold">Acceso Total</td>
-              <td class="py-2.5 pr-4 font-mono text-xs text-indigo-300 select-all font-semibold">${a.username}</td>
-              <td class="py-2.5 font-mono text-xs text-amber-300 select-all font-semibold">${a.password}</td>
+            <tr class="border-b border-amber-300 bg-amber-50/80 hover:bg-amber-100/70 transition-colors">
+              <td class="py-2.5 pr-4 font-sans font-black text-amber-950">🛡️ Admin (${a.username.includes('melanie') ? 'Melanie' : 'Nataly'})</td>
+              <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">Acceso Total</td>
+              <td class="py-2.5 pr-4 font-mono text-xs text-indigo-700 select-all font-semibold">${a.username}</td>
+              <td class="py-2.5 font-mono text-xs text-amber-900 select-all font-black">${a.password}</td>
             </tr>
           `);
         });
