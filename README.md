@@ -1,36 +1,52 @@
 # OPPORTUNEUR IMPACT FORUM 2026 — PORTAL DE PANELISTAS 🎙️
 > **Portal VIP y Dashboard Privado para Ponentes y Moderadores**  
-> **Organiza:** Polyglot Map & SPLENDIA • Red YLAI Fellows
+> **Subdominio Oficial:** [speakers.polyglotmap.com](https://speakers.polyglotmap.com)  
+> **Repositorio Oficial:** [melaniealmeyda7/Opportuneur-Impact-Forum](https://github.com/melaniealmeyda7/Opportuneur-Impact-Forum)
 
 ---
 
-## 📌 Datos del Portal
-- **URL Local:** `http://localhost:3000`
-- **PIN de Acceso VIP:** `OPP2026`
-- **Ubicación:** `/Users/melaniealmeyda/.gemini/antigravity/scratch/opportuneur-portal-panelistas/`
+## 🌐 Configuración DNS en Namecheap para Vercel (`speakers.polyglotmap.com`)
+
+Para vincular este repositorio en Vercel y asociarlo con el subdominio en Namecheap:
+
+### 1. En Vercel:
+1. Conecta el repositorio `melaniealmeyda7/Opportuneur-Impact-Forum`.
+2. Ve a **Project Settings** > **Domains**.
+3. Añade: `speakers.polyglotmap.com`.
+
+### 2. En Namecheap (Advanced DNS):
+1. Inicia sesión en **Namecheap** > **Domain List** > Haz clic en **Manage** al lado de `polyglotmap.com`.
+2. Ve a la pestaña **Advanced DNS**.
+3. En la sección **Host Records**, haz clic en **Add New Record**:
+
+| Tipo de Registro | Host | Valor / Target | TTL |
+| :--- | :--- | :--- | :--- |
+| **CNAME Record** | `speakers` | `cname.vercel-dns.com.` | `Automatic` (o `1 min`) |
+
+*(Nota: Si Vercel solicita verificación de propiedad mediante TXT)*:
+
+| Tipo de Registro | Host | Valor / Target | TTL |
+| :--- | :--- | :--- | :--- |
+| **TXT Record** | `_vercel` *(o el proporcionado por Vercel)* | `vc-domain-verify=speakers.polyglotmap.com,...` | `Automatic` |
 
 ---
 
-## 🎯 4 Áreas Temáticas Oficiales
-1. 🟢 **Área 1 — Emprendimiento & Negocios:** *De la idea a la oportunidad* (4:25 – 4:55 PM)
-   - Panelistas: Cristian Gutiérrez (Perú), María Gracia Agurto (Golden Circle), Alfonso Rangel (Panamá).
-2. 🟣 **Área 2 — Liderazgo & Impacto:** *“Liderar para generar impacto”* (4:55 – 5:25 PM)
-   - Panelistas: Pedro Crisóstomo (Perú), Natalia Bejan (Perú).
-3. 🔵 **Área 3 — Innovación Digital & Habilidades del Futuro:** *“La tecnología no reemplaza al talento. Lo potencia.”* (5:35 – 6:05 PM)
-   - Panelistas: Luis Avelán (Costa Rica), Jorge Escalante (El Salvador / Protolab Agency).
-4. 🟡 **Área 4 — Empleabilidad & Talento Global:** *“Convierte tu talento en oportunidades globales”* (6:05 – 6:35 PM)
-   - Panelistas: José Mendoza (Bolivia / Trabajito.com), Andrea Vivas (Venezuela / Bespoke Education).
+## 🔑 Credenciales de Acceso
 
-- **Dirección & Hosts:** Melanie Almeyda (Polyglot Map) & Nataly Napanga (SPLENDIA).
-- **Mentora Invitada:** Gabriela Gaitán (Parlare).
+### Moderación General (Acceso Total & Directorio)
+- **Melanie Almeyda**: Usuario: `admin.melanie` | Clave: `Admin#Melanie2026`
+- **Nataly Napanga**: Usuario: `admin.nataly` | Clave: `Admin#Nataly2026`
 
----
-
-## 🚀 Funcionalidades
-- Directorio de ponentes con inicio de sesión en 1 clic.
-- Enlace directo a Sala VIP Backstage (Zoom ID `849 2026 7711`, Passcode `OPP2026VIP`).
-- Conversor de zona horaria por país (Perú, Colombia, Panamá, Costa Rica, El Salvador, Bolivia, Venezuela, Argentina).
-- Generador y descarga de **Fondo Virtual Oficial Full HD** (1920x1080).
-- Generador de **Flyer para Redes Sociales** (LinkedIn / Instagram).
-- Integración con Google Calendar y descarga de archivo `.ICS`.
-- Apuntes privados del ponente (guardado automático en localStorage).
+### Panelistas Oficiales (Aislamiento Total — Cada uno ve su panel y preguntas)
+1. **Cristian Gutiérrez** (Área 1): `cristian.gutierrez` | `Opp2026!Cristian`
+2. **María Gracia Agurto** (Área 1): `mariagracia.agurto` | `Opp2026!MariaGracia`
+3. **Alfonso Rangel** (Área 1): `alfonso.rangel` | `Opp2026!Alfonso`
+4. **Elizabeth Javier** (Área 2): `elizabeth.javier` | `Opp2026!Elizabeth`
+5. **Natalia Bejar** (Área 2): `natalia.bejar` | `Opp2026!Natalia`
+6. **Rosa Centurión** (Área 2): `rosa.centurion` | `Opp2026!Rosa`
+7. **Luis Avelán** (Área 3): `luis.avellan` | `Opp2026!Luis`
+8. **Jorge Escalante** (Área 3): `jorge.escalante` | `Opp2026!Jorge`
+9. **Roberto Romero** (Área 3): `roberto.romero` | `Opp2026!Roberto`
+10. **José Mendoza** (Área 4): `jose.mendoza` | `Opp2026!Jose`
+11. **Andrea Vivas** (Área 4): `andrea.vivas` | `Opp2026!Andrea`
+12. **Gabriela Gaitán** (Área 4): `gabriela.gaitan` | `Opp2026!Gabriela`
