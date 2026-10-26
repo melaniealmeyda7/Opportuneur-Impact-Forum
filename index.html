@@ -1211,6 +1211,7 @@
         flag: "🇵🇪",
         timezone: "PET",
         photo: "assets/speaker-cristian-gutierrez.jpg",
+        flyer: "assets/flyer-cristian-gutierrez.png",
         photoPosition: "56% 25%",
         tag: "⚔️ CEO RONIN • Desafío Kunan 2026",
         badgeStyle: "bg-gradient-to-r from-amber-500/30 to-orange-500/30 text-amber-300 border border-amber-400/50 shadow-sm shadow-amber-500/20 font-black",
@@ -1237,6 +1238,7 @@
         flag: "🇵🇪",
         timezone: "PET",
         photo: "assets/speaker-maria-gracia.jpg",
+        flyer: "assets/flyer-maria-gracia.png",
         photoPosition: "center",
         tag: "🌟 CEO Golden Circle • Miami, FL",
         badgeStyle: "bg-gradient-to-r from-amber-500/30 to-orange-500/30 text-amber-300 border border-amber-400/50 shadow-sm shadow-amber-500/20 font-black",
@@ -1263,6 +1265,7 @@
         flag: "🇵🇦",
         timezone: "PET",
         photo: "assets/speaker-alfonso-rangel.png",
+        flyer: "assets/flyer-alfonso-rangel.png",
         photoPosition: "top",
         tag: "YLAI Fellow",
         badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
@@ -1289,6 +1292,7 @@
         flag: "🇵🇪",
         timezone: "PET",
         photo: "assets/speaker-elizabeth-javier.jpg",
+        flyer: "assets/flyer-elizabeth-javier.png",
         photoPosition: "top",
         tag: "YLAI Fellow",
         badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
@@ -1315,6 +1319,7 @@
         flag: "🇵🇪",
         timezone: "PET",
         photo: "assets/speaker-natalia-bejar.jpg",
+        flyer: "assets/flyer-natalia-bejar.png",
         photoPosition: "top",
         initials: "NB",
         avatarGradient: "from-purple-600 to-pink-600",
@@ -1343,6 +1348,7 @@
         flag: "🇵🇾",
         timezone: "PYT",
         photo: "assets/speaker-rosa-centurion.jpg",
+        flyer: "assets/flyer-rosa-centurion.png",
         photoPosition: "top",
         initials: "RC",
         avatarGradient: "from-purple-600 to-indigo-600",
@@ -1371,6 +1377,7 @@
         flag: "🇨🇷",
         timezone: "CST",
         photo: "assets/speaker-luis-avellan.jpg",
+        flyer: "assets/flyer-luis-avellan.png",
         photoPosition: "top",
         initials: "LA",
         avatarGradient: "from-cyan-600 to-blue-500",
@@ -1399,6 +1406,7 @@
         flag: "🇸🇻",
         timezone: "CST",
         photo: "assets/speaker-jorge-escalante.jpg",
+        flyer: "assets/flyer-jorge-escalante.png",
         photoPosition: "top",
         initials: "JE",
         avatarGradient: "from-cyan-600 to-teal-500",
@@ -1427,6 +1435,7 @@
         flag: "🇻🇪",
         timezone: "VET",
         photo: "assets/speaker-roberto-romero.jpg",
+        flyer: "assets/flyer-roberto-romero.png",
         photoPosition: "top",
         initials: "RR",
         avatarGradient: "from-cyan-600 to-blue-500",
@@ -1455,6 +1464,7 @@
         flag: "🇧🇴",
         timezone: "BOT",
         photo: "assets/speaker-jose-mendoza.jpg",
+        flyer: "assets/flyer-jose-mendoza.png",
         tag: "YLAI Fellow",
         badgeStyle: "bg-amber-500/20 text-amber-300 border-amber-500/30",
         bio: "CTO y co-founder de Trabajito, plataforma HR Tech con más de 190k usuarios y +350 empresas clientes para contratación y gestión de talento.",
@@ -1480,6 +1490,7 @@
         flag: "🇻🇪",
         timezone: "VET",
         photo: "assets/speaker-andrea-vivas.png",
+        flyer: "assets/flyer-andrea-vivas.png",
         photoPosition: "top",
         tag: "YLAI Fellow",
         badgeStyle: "bg-amber-500/20 text-amber-300 border-amber-500/30",
@@ -1506,6 +1517,7 @@
         flag: "🇵🇪",
         timezone: "PET",
         photo: "assets/speaker-gabriela-gaitan.jpg",
+        flyer: "assets/flyer-gabriela-gaitan.png",
         tag: "YLAI Fellow",
         badgeStyle: "bg-rose-500/20 text-rose-300 border-rose-500/30",
         bio: "Mentora en comunicación de alto impacto, oratoria estratégica, pitch profesional y desarrollo de marca personal para el mercado internacional.",
@@ -2937,14 +2949,10 @@
         ctx.stroke();
       }
 
-      // Top-Left Branding
+      // Top-Left Branding (clean title only)
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 26px Inter, sans-serif';
-      ctx.fillText('OPPORTUNEUR IMPACT FORUM 2026', 40, 50);
-
-      ctx.fillStyle = '#818cf8';
-      ctx.font = '500 13px Inter, sans-serif';
-      ctx.fillText('Polyglot Map & SPLENDIA • Red YLAI Fellows', 40, 72);
+      ctx.font = 'bold 28px Inter, sans-serif';
+      ctx.fillText('OPPORTUNEUR IMPACT FORUM 2026', 40, 55);
 
       // Bottom Right Speaker Badge Box
       const boxW = 380;
@@ -3015,38 +3023,71 @@
       const canvases = [canvas1, canvas2].filter(Boolean);
       if (canvases.length === 0) return;
 
-      // Photo priority: In-memory uploaded > localStorage saved > speaker.photo in DB
-      let photoSrc = customSpeakerPhoto;
-      if (!photoSrc) {
+      // Check if user uploaded a custom photo (memory or localStorage)
+      let hasCustomPhoto = !!customSpeakerPhoto;
+      if (!hasCustomPhoto) {
         try {
-          photoSrc = localStorage.getItem('opportuneur_custom_photo_' + speaker.id);
+          if (localStorage.getItem('opportuneur_custom_photo_' + speaker.id)) {
+            hasCustomPhoto = true;
+          }
         } catch(e) {}
-      }
-      if (!photoSrc) {
-        photoSrc = speaker.photo;
       }
 
       // Initialize control listeners once
       setupFlyerPhotoControls();
 
-      // Load official flyer template
-      const templateImg = new Image();
-      templateImg.src = 'assets/flyer-template-official.png';
-      templateImg.onload = () => {
-        canvases.forEach(cv => {
-          drawFlyerOnCanvas(cv, templateImg, speaker, photoSrc, pillText, flyerOffsetY, flyerZoom);
-        });
-      };
-      templateImg.onerror = () => {
-        // Fallback to badge-template-official.png if needed
-        const fallbackImg = new Image();
-        fallbackImg.src = 'assets/badge-template-official.png';
-        fallbackImg.onload = () => {
+      // If speaker has an official pre-composed flyer and no custom photo is requested:
+      if (!hasCustomPhoto && speaker.flyer) {
+        const officialImg = new Image();
+        officialImg.src = speaker.flyer;
+        officialImg.onload = () => {
           canvases.forEach(cv => {
-            drawFlyerOnCanvas(cv, fallbackImg, speaker, photoSrc, pillText, flyerOffsetY, flyerZoom);
+            cv.width = 819;
+            cv.height = 1024;
+            const ctx = cv.getContext('2d');
+            ctx.clearRect(0, 0, 819, 1024);
+            ctx.drawImage(officialImg, 0, 0, 819, 1024);
           });
         };
-      };
+        officialImg.onerror = () => {
+          loadTemplateAndDraw();
+        };
+        return;
+      }
+
+      function loadTemplateAndDraw() {
+        // Photo priority: In-memory uploaded > localStorage saved > speaker.photo in DB
+        let photoSrc = customSpeakerPhoto;
+        if (!photoSrc) {
+          try {
+            photoSrc = localStorage.getItem('opportuneur_custom_photo_' + speaker.id);
+          } catch(e) {}
+        }
+        if (!photoSrc) {
+          photoSrc = speaker.photo;
+        }
+
+        // Load official flyer template
+        const templateImg = new Image();
+        templateImg.src = 'assets/flyer-template-official.png';
+        templateImg.onload = () => {
+          canvases.forEach(cv => {
+            drawFlyerOnCanvas(cv, templateImg, speaker, photoSrc, pillText, flyerOffsetY, flyerZoom);
+          });
+        };
+        templateImg.onerror = () => {
+          // Fallback to badge-template-official.png if needed
+          const fallbackImg = new Image();
+          fallbackImg.src = 'assets/badge-template-official.png';
+          fallbackImg.onload = () => {
+            canvases.forEach(cv => {
+              drawFlyerOnCanvas(cv, fallbackImg, speaker, photoSrc, pillText, flyerOffsetY, flyerZoom);
+            });
+          };
+        };
+      }
+
+      loadTemplateAndDraw();
     }
 
     function drawFlyerOnCanvas(canvas, templateImg, speaker, photoSrc, pillText, offsetY, zoom) {
@@ -3267,41 +3308,54 @@
         resetBtn.addEventListener('click', () => {
           flyerOffsetY = 0;
           flyerZoom = 1.0;
+          customSpeakerPhoto = null;
+          if (currentSpeaker) {
+            try {
+              localStorage.removeItem('opportuneur_custom_photo_' + currentSpeaker.id);
+            } catch(e) {}
+          }
           if (ySlider) ySlider.value = 0;
           if (zoomSlider) zoomSlider.value = 100;
           if (yVal) yVal.textContent = "0px";
           if (zoomVal) zoomVal.textContent = "100%";
           if (currentSpeaker) renderSpeakerOfficialFlyer(currentSpeaker);
+          showToast("Flyer oficial de speaker restablecido.");
         });
+      }
+
+      function downloadSpeakerFlyer() {
+        if (!currentSpeaker) return;
+        let hasCustomPhoto = !!customSpeakerPhoto;
+        if (!hasCustomPhoto) {
+          try {
+            if (localStorage.getItem('opportuneur_custom_photo_' + currentSpeaker.id)) {
+              hasCustomPhoto = true;
+            }
+          } catch(e) {}
+        }
+
+        const link = document.createElement('a');
+        link.download = `Flyer-Oficial-${currentSpeaker.name.replace(/\s+/g, '-')}-Opportuneur.png`;
+        if (!hasCustomPhoto && currentSpeaker.flyer) {
+          link.href = currentSpeaker.flyer;
+        } else {
+          const canvas = document.getElementById('officialFlyerCanvas') || document.getElementById('officialBadgeCanvas');
+          if (!canvas) return;
+          link.href = canvas.toDataURL('image/png');
+        }
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast(`Flyer oficial de ${currentSpeaker.name} descargado en alta resolución.`);
       }
 
       // Download Button (Panel)
       const downloadBtn1 = document.getElementById('downloadOfficialFlyerBtn');
-      if (downloadBtn1) {
-        downloadBtn1.onclick = () => {
-          const canvas = document.getElementById('officialFlyerCanvas') || document.getElementById('officialBadgeCanvas');
-          if (!canvas || !currentSpeaker) return;
-          const link = document.createElement('a');
-          link.download = `Flyer-Oficial-${currentSpeaker.name.replace(/\s+/g, '-')}-Opportuneur.png`;
-          link.href = canvas.toDataURL('image/png');
-          link.click();
-          showToast(`Flyer oficial de ${currentSpeaker.name} descargado en alta resolución.`);
-        };
-      }
+      if (downloadBtn1) downloadBtn1.onclick = downloadSpeakerFlyer;
 
       // Download Button (Toolkit)
       const downloadBtn2 = document.getElementById('downloadBadgeBtn');
-      if (downloadBtn2) {
-        downloadBtn2.onclick = () => {
-          const canvas = document.getElementById('officialBadgeCanvas') || document.getElementById('officialFlyerCanvas');
-          if (!canvas || !currentSpeaker) return;
-          const link = document.createElement('a');
-          link.download = `Flyer-Oficial-${currentSpeaker.name.replace(/\s+/g, '-')}-Opportuneur.png`;
-          link.href = canvas.toDataURL('image/png');
-          link.click();
-          showToast(`Flyer oficial de ${currentSpeaker.name} descargado en alta resolución.`);
-        };
-      }
+      if (downloadBtn2) downloadBtn2.onclick = downloadSpeakerFlyer;
     }
 
     // ==========================================================
