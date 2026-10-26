@@ -760,6 +760,131 @@
 
         </div>
 
+        <!-- ======================================================== -->
+        <!-- FLYER OFICIAL DE SPEAKER (TEMPLATE OFICIAL 819x1024)      -->
+        <!-- ======================================================== -->
+        <div id="speakerOfficialFlyerSection" class="glass-card p-6 sm:p-8 rounded-3xl border border-slate-200/90 bg-white shadow-sm space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-black uppercase tracking-wider px-3 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
+                  ⭐ Flyer Oficial de Difusión
+                </span>
+                <span class="text-[11px] font-mono text-slate-500 font-bold bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                  819 × 1024 PX (HD)
+                </span>
+              </div>
+              <h4 class="text-lg sm:text-xl font-black text-slate-900">Tu Flyer Oficial como Speaker del Forum</h4>
+              <p class="text-xs text-slate-600 mt-1 max-w-2xl leading-relaxed">
+                Generado con la plantilla institucional con tu panel, fotografía, nombre completo y empresa listos en la barra inferior para compartir en LinkedIn, Instagram y notas de prensa.
+              </p>
+            </div>
+
+            <!-- Upload Photo Trigger -->
+            <div class="flex items-center gap-2.5 shrink-0">
+              <label for="panelFlyerPhotoUpload" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-2 cursor-pointer transition-all shadow-md shadow-indigo-600/20 active:scale-95">
+                <i data-lucide="camera" class="w-4 h-4 text-amber-300"></i>
+                <span>Subir / Cambiar mi Foto</span>
+              </label>
+              <input type="file" id="panelFlyerPhotoUpload" accept="image/*" class="hidden">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Canvas Preview Column -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center">
+              <div class="rounded-3xl border-2 border-slate-300 overflow-hidden bg-slate-950 max-w-[310px] w-full shadow-2xl relative group">
+                <canvas id="officialFlyerCanvas" width="819" height="1024" class="w-full h-auto object-contain block"></canvas>
+                <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  <span class="text-xs font-bold text-white bg-slate-900/90 px-3 py-1.5 rounded-xl border border-white/20 shadow-lg">Vista Previa 819×1024</span>
+                </div>
+              </div>
+              <span class="text-[11px] text-slate-400 font-mono mt-2">Plantilla Oficial Opportuneur Impact Forum</span>
+            </div>
+
+            <!-- Configuration & Details Column -->
+            <div class="lg:col-span-7 space-y-5">
+              
+              <!-- Data Preview in White Bar -->
+              <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-slate-200 space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                    <i data-lucide="badge-check" class="w-4 h-4 text-emerald-600"></i>
+                    Datos en la Barra Blanca del Flyer:
+                  </span>
+                  <span class="text-[10px] font-mono font-bold text-indigo-700 bg-white px-2.5 py-0.5 rounded-full border border-indigo-200">
+                    Sincronizado
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Nombre Completo</span>
+                    <span id="flyerDataName" class="text-sm font-black text-slate-900 block mt-0.5">--</span>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Empresa / Organización</span>
+                    <span id="flyerDataCompany" class="text-sm font-bold text-indigo-700 block mt-0.5">--</span>
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-between text-xs text-amber-950">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="tag" class="w-3.5 h-3.5 text-amber-600"></i>
+                    <span>Insignia Superior del Flyer:</span>
+                  </div>
+                  <strong id="flyerDataPanelPill" class="font-mono bg-amber-200/80 text-amber-950 px-2.5 py-0.5 rounded-lg border border-amber-300">PANEL 1</strong>
+                </div>
+              </div>
+
+              <!-- Interactive Controls for Photo Alignment -->
+              <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                    <i data-lucide="sliders-horizontal" class="w-4 h-4 text-indigo-600"></i>
+                    Calibración de la Fotografía en el Flyer
+                  </span>
+                  <button id="resetFlyerPhotoBtn" class="text-[11px] text-indigo-600 hover:text-indigo-800 font-bold underline cursor-pointer">
+                    Restablecer
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <div class="flex justify-between text-[11px] text-slate-600 mb-1.5 font-medium">
+                      <span>Ajuste Vertical (Y)</span>
+                      <span id="flyerYVal" class="font-mono font-bold text-slate-900">0px</span>
+                    </div>
+                    <input type="range" id="flyerYSlider" min="-140" max="140" value="0" class="w-full accent-indigo-600 cursor-pointer">
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-[11px] text-slate-600 mb-1.5 font-medium">
+                      <span>Zoom / Escala</span>
+                      <span id="flyerZoomVal" class="font-mono font-bold text-slate-900">100%</span>
+                    </div>
+                    <input type="range" id="flyerZoomSlider" min="70" max="160" value="100" class="w-full accent-indigo-600 cursor-pointer">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Download and Action Buttons -->
+              <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                <button id="downloadOfficialFlyerBtn" class="flex-1 py-3.5 px-5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:brightness-105 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/25 transition-all cursor-pointer">
+                  <i data-lucide="download" class="w-4 h-4 text-slate-950"></i>
+                  <span>Descargar Flyer Oficial en Alta Resolución (PNG)</span>
+                </button>
+                <label for="panelFlyerPhotoUpload" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-colors border border-slate-200">
+                  <i data-lucide="image-plus" class="w-4 h-4 text-slate-600"></i>
+                  <span>Elegir Otra Foto</span>
+                </label>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <!-- ======================================================== -->
@@ -852,20 +977,20 @@
             </button>
           </div>
 
-          <!-- Generator 2: Official Speaker Lanyard Badge (Template 819x1024) -->
+          <!-- Generator 2: Official Speaker Flyer (Template 819x1024) -->
           <div class="glass-card p-6 sm:p-7 rounded-3xl border border-amber-500/40 bg-gradient-to-b from-amber-500/[0.04] to-transparent space-y-5">
             <div>
               <div class="flex items-center justify-between mb-1">
                 <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">
-                  ⭐ Credencial Oficial de Speaker
+                  ⭐ Flyer Oficial de Speaker
                 </span>
                 <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 font-bold">
-                  819 × 1024 Lanyard
+                  819 × 1024 HD
                 </span>
               </div>
-              <h4 class="text-lg font-bold text-white">Badge Oficial OPPORTUNEUR IMPACT FORUM</h4>
+              <h4 class="text-lg font-bold text-white">Flyer Oficial OPPORTUNEUR IMPACT FORUM</h4>
               <p class="text-xs text-slate-400 mt-1">
-                Generado con la plantilla institucional con tu fotografía, nombre, rol y área con el respaldo de Polyglot Map, YLAI e IREX.
+                Generado con la plantilla institucional con tu fotografía, panel, nombre completo y empresa para difusión en redes.
               </p>
             </div>
 
@@ -876,7 +1001,7 @@
 
             <button id="downloadBadgeBtn" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:brightness-110 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/25 transition-all cursor-pointer">
               <i data-lucide="download" class="w-4 h-4 text-slate-950"></i>
-              <span>Descargar Badge Oficial de Speaker (PNG)</span>
+              <span>Descargar Flyer Oficial de Speaker (PNG)</span>
             </button>
           </div>
 
@@ -973,6 +1098,7 @@
         altPasswords: ["Admin#Melanie2026", "Melanie#Opp2026", "Admin2026", "admin2026", "PolyglotMap26", "polyglot2026", "OPP2026", "admin"],
         email: "melanie@polyglotmap.com",
         name: "Melanie Almeyda",
+        company: "Polyglot Map",
         title: "Founder & CEO, Polyglot Map",
         category: "CO-DIRECTORA",
         country: "Perú",
@@ -1001,6 +1127,7 @@
         altPasswords: ["Admin#Nataly2026", "Nataly#Opp2026", "Admin2026", "admin2026", "Splendia26", "splendia2026", "OPP2026", "admin"],
         email: "nataly@splendia.pe",
         name: "Nataly Napanga",
+        company: "SPLENDIA",
         title: "CEO, SPLENDIA",
         category: "CO-DIRECTORA",
         country: "Perú",
@@ -1031,6 +1158,7 @@
         altPasswords: ["sanantonio2026", "sanantonio", "SanAntonio26", "Opp2026!Ruben", "OPP2026", "opp2026", "Speaker2026"],
         email: "ruben.sanchez@sanantonio.pe",
         name: "Speaker Invitado",
+        company: "Special CEO Session",
         title: "Líder Empresarial & CEO Invitado",
         category: "SPECIAL CEO SESSION — BUSINESS LEADERSHIP",
         country: "Perú",
@@ -1076,6 +1204,7 @@
         altPasswords: ["roninbio2026", "Ronin2026", "ronin2026", "Ronin*Per2026", "Opp2026!Cristian", "OPP2026", "opp2026"],
         email: "cristian@ronin.la",
         name: "Cristian Gutiérrez",
+        company: "RONIN",
         title: "Fundador & CEO, RONIN",
         category: "INVITADO ESPECIAL",
         country: "Perú",
@@ -1101,6 +1230,7 @@
         altPasswords: ["goldenvc2026", "GoldenCircle26", "Golden*VC2026", "goldencircle", "goldencircle2026", "Opp2026!MariaGracia", "OPP2026", "opp2026"],
         email: "mariagracia@goldencircle.la",
         name: "María Gracia Agurto",
+        company: "Golden Circle",
         title: "Fundadora & CEO, Golden Circle",
         category: "INVITADA ESPECIAL",
         country: "Perú",
@@ -1126,6 +1256,7 @@
         altPasswords: ["incuba21panama", "Incubadora2026", "Panama*Ag2026", "panama", "panama2026", "Opp2026!Alfonso", "OPP2026", "opp2026"],
         email: "alfonso@incubadora21.com",
         name: "Alfonso Rangel",
+        company: "Incubadora 21",
         title: "Fundador, Incubadora 21",
         category: "PANELISTA INTERNACIONAL",
         country: "Panamá",
@@ -1151,6 +1282,7 @@
         altPasswords: ["titibrand2026", "Titi2026", "titi", "titibrand", "Titi*Brand2026", "Opp2026!Elizabeth", "OPP2026", "opp2026"],
         email: "elizabeth@titibrand.pe",
         name: "Elizabeth Javier",
+        company: "TITI Brand",
         title: "Cofundadora & CEO, TITI Brand",
         category: "PANELISTA",
         country: "Perú",
@@ -1176,6 +1308,7 @@
         altPasswords: ["preservando26", "Preserva2026", "preservando", "Impacto*Sost26", "Opp2026!Natalia", "OPP2026", "opp2026"],
         email: "natalia.bejan@preservando.org",
         name: "Natalia Bejar",
+        company: "Preservando",
         title: "Especialista en M&A • Cofundadora Preservando",
         category: "PANELISTA",
         country: "Perú",
@@ -1203,6 +1336,7 @@
         altPasswords: ["rositapy2026", "TiendaRosita26", "rosita", "latiendaderosita", "Rosa*Paraguay26", "Opp2026!Rosa", "OPP2026", "opp2026"],
         email: "rosa@latiendaderosita.com",
         name: "Rosa Centurión",
+        company: "La Tienda de Rosita",
         title: "Cofundadora, La Tienda de Rosita",
         category: "PANELISTA INTERNACIONAL",
         country: "Paraguay",
@@ -1230,6 +1364,7 @@
         altPasswords: ["britanicacr26", "Farmacia2026", "farmaciabritanica", "costarica", "CostaRica*Dig26", "Opp2026!Luis", "OPP2026", "opp2026"],
         email: "luis.avelan@farmaciabritanica.cr",
         name: "Luis Avelán",
+        company: "Farmacia Británica",
         title: "Líder, Farmacia Británica",
         category: "PANELISTA INTERNACIONAL",
         country: "Costa Rica",
@@ -1257,6 +1392,7 @@
         altPasswords: ["protolabsv26", "Protolab2026", "protolab", "protolab2026", "Protolab*AI2026", "Opp2026!Jorge", "OPP2026", "opp2026"],
         email: "jorge@protolabagency.com",
         name: "Jorge Escalante",
+        company: "Protolab Agency",
         title: "Director y Cofundador, Protolab Agency",
         category: "PANELISTA INTERNACIONAL",
         country: "El Salvador",
@@ -1284,6 +1420,7 @@
         altPasswords: ["multiproweb26", "Multipro2026", "multipro", "multiproweb", "Roberto*Web26", "Opp2026!Roberto", "OPP2026", "opp2026"],
         email: "roberto@multiprowebstudio.com",
         name: "Roberto Romero",
+        company: "Multipro Web Studio",
         title: "CEO & Fundador, Multipro Web Studio",
         category: "PANELISTA INTERNACIONAL",
         country: "Venezuela",
@@ -1311,6 +1448,7 @@
         altPasswords: ["trabajitobo26", "Trabajito2026", "trabajito", "trabajito2026", "Trabajito*Bol26", "Opp2026!Jose", "OPP2026", "opp2026"],
         email: "jose@trabajito.com",
         name: "José Mendoza",
+        company: "Trabajito",
         title: "CTO y Co-founder, Trabajito",
         category: "PANELISTA INTERNACIONAL",
         country: "Bolivia",
@@ -1335,6 +1473,7 @@
         altPasswords: ["bespokeedu26", "Bespoke2026", "bespoke", "bespoke2026", "Bespoke*Edu2026", "Opp2026!Andrea", "OPP2026", "opp2026"],
         email: "andrea@bespokeedu.com",
         name: "Andrea Vivas",
+        company: "Bespoke Education",
         title: "Fundadora, Bespoke Education",
         category: "PANELISTA INTERNACIONAL",
         country: "Venezuela",
@@ -1360,6 +1499,7 @@
         altPasswords: ["parlareperu26", "Parlare2026", "parlare", "parlare2026", "Parlare*Talent26", "Opp2026!Gabriela", "OPP2026", "opp2026"],
         email: "gabriela@parlare.pe",
         name: "Gabriela Gaitán",
+        company: "Parlare",
         title: "Directora General, Parlare",
         category: "PANELISTA",
         country: "Perú",
@@ -1917,17 +2057,42 @@
       // Update Dashboard Hero Profile
       updateDashboardSpeakerProfile(speaker);
 
+      // Check for previously saved custom photo in localStorage
+      flyerOffsetY = 0;
+      flyerZoom = 1.0;
+      customSpeakerPhoto = null;
+      try {
+        const savedCustom = localStorage.getItem('opportuneur_custom_photo_' + speaker.id);
+        if (savedCustom) {
+          customSpeakerPhoto = savedCustom;
+          const photoCont = document.getElementById('dashPhotoContainer');
+          if (photoCont) {
+            photoCont.innerHTML = `<img src="${savedCustom}" class="w-full h-full object-cover rounded-2xl shadow-md">`;
+          }
+        }
+      } catch(e) {}
+
+      const ySl = document.getElementById('flyerYSlider');
+      const zoomSl = document.getElementById('flyerZoomSlider');
+      const yV = document.getElementById('flyerYVal');
+      const zoomV = document.getElementById('flyerZoomVal');
+      if (ySl) ySl.value = 0;
+      if (zoomSl) zoomSl.value = 100;
+      if (yV) yV.textContent = "0px";
+      if (zoomV) zoomV.textContent = "100%";
+
       // Render Personalized Panels & Agenda
       renderPersonalizedPanelSection(speaker);
       renderFullTimeline(speaker);
 
-      // Generate Toolkit Canvas Downloads
+      // Generate Toolkit & Official Flyer Downloads
       generateVirtualBackground(speaker);
-      generateOfficialBadge(speaker);
+      renderSpeakerOfficialFlyer(speaker);
       updateCalendarLinks(speaker);
 
       // Load saved preferences
       loadPreferences(speaker.id);
+      lucide.createIcons();
 
       // Scroll smoothly to dashboard
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2451,6 +2616,12 @@
               }
             }
           });
+
+          if ((target === 'panel' || target === 'toolkit') && currentSpeaker) {
+            setTimeout(() => {
+              renderSpeakerOfficialFlyer(currentSpeaker);
+            }, 50);
+          }
         });
       });
 
@@ -2813,128 +2984,322 @@
       };
     }
 
+    let flyerOffsetY = 0;
+    let flyerZoom = 1.0;
+    let customSpeakerPhoto = null;
+    let flyerControlsInitialized = false;
+
     // ==========================================================
-    // 16. GENERADOR DE BADGE OFICIAL DE SPEAKER (819x1024)
+    // 16. GENERADOR DE FLYER OFICIAL DE SPEAKER (819x1024)
     // ==========================================================
-    function generateOfficialBadge(speaker) {
-      const canvas = document.getElementById('officialBadgeCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+    function renderSpeakerOfficialFlyer(speaker) {
+      if (!speaker) return;
+
+      // Update Data Preview fields in the UI
+      const nameEl = document.getElementById('flyerDataName');
+      const compEl = document.getElementById('flyerDataCompany');
+      const pillEl = document.getElementById('flyerDataPanelPill');
+
+      if (nameEl) nameEl.textContent = speaker.name;
+      if (compEl) compEl.textContent = speaker.company || speaker.title;
+
+      let pillText = "PANEL 1";
+      if (speaker.assignedPanelId === 'panel-2') pillText = "PANEL 2";
+      else if (speaker.assignedPanelId === 'panel-3') pillText = "PANEL 3";
+      else if (speaker.assignedPanelId === 'panel-4') pillText = "PANEL 4";
+      else if (speaker.assignedPanelId === 'panel-ceo') pillText = "SPECIAL CEO";
+      if (pillEl) pillEl.textContent = pillText;
+
+      const canvas1 = document.getElementById('officialFlyerCanvas');
+      const canvas2 = document.getElementById('officialBadgeCanvas');
+      const canvases = [canvas1, canvas2].filter(Boolean);
+      if (canvases.length === 0) return;
+
+      // Photo priority: In-memory uploaded > localStorage saved > speaker.photo in DB
+      let photoSrc = customSpeakerPhoto;
+      if (!photoSrc) {
+        try {
+          photoSrc = localStorage.getItem('opportuneur_custom_photo_' + speaker.id);
+        } catch(e) {}
+      }
+      if (!photoSrc) {
+        photoSrc = speaker.photo;
+      }
+
+      // Initialize control listeners once
+      setupFlyerPhotoControls();
+
+      // Load official flyer template
+      const templateImg = new Image();
+      templateImg.src = 'assets/flyer-template-official.png';
+      templateImg.onload = () => {
+        canvases.forEach(cv => {
+          drawFlyerOnCanvas(cv, templateImg, speaker, photoSrc, pillText, flyerOffsetY, flyerZoom);
+        });
+      };
+      templateImg.onerror = () => {
+        // Fallback to badge-template-official.png if needed
+        const fallbackImg = new Image();
+        fallbackImg.src = 'assets/badge-template-official.png';
+        fallbackImg.onload = () => {
+          canvases.forEach(cv => {
+            drawFlyerOnCanvas(cv, fallbackImg, speaker, photoSrc, pillText, flyerOffsetY, flyerZoom);
+          });
+        };
+      };
+    }
+
+    function drawFlyerOnCanvas(canvas, templateImg, speaker, photoSrc, pillText, offsetY, zoom) {
       const w = 819;
       const h = 1024;
       canvas.width = w;
       canvas.height = h;
+      const ctx = canvas.getContext('2d');
 
-      // Load official lanyard template image
-      const templateImg = new Image();
-      templateImg.src = 'assets/badge-template-official.png';
-      templateImg.onload = () => {
-        ctx.clearRect(0, 0, w, h);
-        ctx.drawImage(templateImg, 0, 0, w, h);
+      // 1. Draw base flyer template
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(templateImg, 0, 0, w, h);
 
-        // Coordinates based on lanyard template:
-        // Center X = 409.5, Center Y = 528, Radius = 106
-        const centerX = 409.5;
-        const centerY = 528;
-        const radius = 106;
+      // 2. Draw dynamic yellow pill at top right (x=[648, 788], y=[34, 75])
+      const pillX = 648;
+      const pillY = 34;
+      const pillW = 140;
+      const pillH = 41;
+      const pillR = 20.5;
 
-        if (speaker.photo) {
-          const photoImg = new Image();
-          photoImg.src = speaker.photo;
-          photoImg.onload = () => {
-            drawAvatarAndBadgeDetails(photoImg);
-          };
-          photoImg.onerror = () => {
-            drawAvatarAndBadgeDetails(null);
-          };
+      ctx.save();
+      ctx.fillStyle = '#f6c445'; // Matching exact yellow gold of the template
+      ctx.beginPath();
+      if (ctx.roundRect) {
+        ctx.roundRect(pillX, pillY, pillW, pillH, pillR);
+      } else {
+        ctx.rect(pillX, pillY, pillW, pillH);
+      }
+      ctx.fill();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '900 16px Inter, system-ui, -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(pillText, pillX + pillW / 2, pillY + pillH / 2 + 1);
+      ctx.restore();
+
+      // 3. Draw speaker photo in the right region above the white bar
+      const frameX = 434;
+      const frameY = 92;
+      const frameW = 360;
+      const frameH = 595;
+      const frameR = 26;
+
+      function renderPhotoAndText(photoImage) {
+        // Draw photo container with rounded corners
+        ctx.save();
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(frameX, frameY, frameW, frameH, frameR);
         } else {
-          drawAvatarAndBadgeDetails(null);
+          ctx.rect(frameX, frameY, frameW, frameH);
         }
+        ctx.closePath();
+        ctx.clip();
 
-        function drawAvatarAndBadgeDetails(avatarImg) {
-          // Circular Avatar Clip
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
-          ctx.closePath();
-          ctx.clip();
+        // Background gradient inside frame so transparent or cropped photos blend seamlessly
+        const bgGrad = ctx.createLinearGradient(frameX, frameY, frameX, frameY + frameH);
+        bgGrad.addColorStop(0, '#001a70');
+        bgGrad.addColorStop(1, '#0025a8');
+        ctx.fillStyle = bgGrad;
+        ctx.fill();
 
-          if (avatarImg) {
-            // Draw photo covering circle
-            const aspect = avatarImg.width / avatarImg.height;
-            let drawW, drawH, drawX, drawY;
-            if (aspect > 1) {
-              drawH = radius * 2;
-              drawW = drawH * aspect;
-              drawX = centerX - drawW / 2;
-              drawY = centerY - radius;
-            } else {
-              drawW = radius * 2;
-              drawH = drawW / aspect;
-              drawX = centerX - radius;
-              drawY = centerY - drawH / 2;
-            }
-            ctx.drawImage(avatarImg, drawX, drawY, drawW, drawH);
+        if (photoImage) {
+          const imgAspect = photoImage.width / photoImage.height;
+          const frameAspect = frameW / frameH;
+          let drawW, drawH, drawX, drawY;
+
+          if (imgAspect > frameAspect) {
+            drawH = frameH * zoom;
+            drawW = drawH * imgAspect;
           } else {
-            // Gradient circle for speaker initials
-            const grad = ctx.createLinearGradient(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
-            grad.addColorStop(0, '#1e3a8a');
-            grad.addColorStop(1, '#0284c7');
-            ctx.fillStyle = grad;
-            ctx.fill();
-
-            ctx.fillStyle = '#ffffff';
-            ctx.font = '900 68px Inter, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(speaker.initials || 'SP', centerX, centerY);
+            drawW = frameW * zoom;
+            drawH = drawW / imgAspect;
           }
-          ctx.restore();
+          drawX = frameX + (frameW - drawW) / 2;
+          drawY = frameY + (frameH - drawH) / 2 + offsetY;
 
-          // Circular Ring Border
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
-          ctx.lineWidth = 6;
-          ctx.strokeStyle = '#ffffff';
-          ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
-          ctx.shadowBlur = 10;
-          ctx.stroke();
-          ctx.restore();
-
-          // Speaker Name (Y = 664)
-          ctx.save();
+          ctx.drawImage(photoImage, drawX, drawY, drawW, drawH);
+        } else {
+          // Elegant initials fallback if photo is absent
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '900 72px Inter, system-ui, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillStyle = '#0f172a';
-          ctx.font = '900 32px Inter, system-ui, sans-serif';
-          ctx.fillText(speaker.name.toUpperCase(), centerX, 664);
+          ctx.textBaseline = 'middle';
+          ctx.fillText(speaker.initials || 'SP', frameX + frameW / 2, frameY + frameH / 2 - 20);
 
-          // Speaker Title / Organization (Y = 705)
-          ctx.fillStyle = '#334155';
-          ctx.font = 'bold 16px Inter, system-ui, sans-serif';
-          const titleText = (speaker.title || '').length > 48 
-            ? speaker.title.substring(0, 46) + '...' 
-            : speaker.title;
-          ctx.fillText(titleText, centerX, 705);
-
-          // Assigned Area / Category Badge (Y = 762)
-          const panel = PANELS_DATA[speaker.assignedPanelId] || PANELS_DATA["panel-1"];
-          ctx.fillStyle = '#1e3a8a';
-          ctx.font = 'bold 15px Inter, system-ui, sans-serif';
-          ctx.fillText(panel.badge.toUpperCase(), centerX, 762);
-          ctx.restore();
+          ctx.font = 'bold 20px Inter, system-ui, sans-serif';
+          ctx.fillStyle = '#93c5fd';
+          ctx.fillText('SPEAKER OFICIAL', frameX + frameW / 2, frameY + frameH / 2 + 40);
         }
-      };
+        ctx.restore();
 
-      // Hook up download button
-      const downloadBtn = document.getElementById('downloadBadgeBtn');
-      if (downloadBtn) {
-        downloadBtn.onclick = () => {
+        // Draw clean white border around photo frame
+        ctx.save();
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(frameX, frameY, frameW, frameH, frameR);
+        } else {
+          ctx.rect(frameX, frameY, frameW, frameH);
+        }
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.stroke();
+        ctx.restore();
+
+        // 4. White Bar at bottom right (x=434 to 818, y=704 to 817, height=113)
+        // Redraw crisp solid white card with rounded left corners:
+        ctx.save();
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(434, 704, 385, 113, [24, 0, 0, 24]);
+        } else {
+          ctx.rect(434, 704, 385, 113);
+        }
+        ctx.fill();
+
+        // Text inside White Bar
+        const textCenterX = 626;
+
+        // Nombre Completo (line 1)
+        const nameUpper = speaker.name.toUpperCase();
+        let nameSize = 27;
+        if (nameUpper.length > 20) nameSize = 22;
+        else if (nameUpper.length > 16) nameSize = 24;
+
+        ctx.fillStyle = '#0f172a'; // Deep navy black
+        ctx.font = `900 ${nameSize}px Inter, system-ui, -apple-system, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText(nameUpper, textCenterX, 750);
+
+        // Empresa / Organización (line 2)
+        const companyText = speaker.company || speaker.title;
+        let compSize = 18;
+        if (companyText.length > 28) compSize = 15;
+        else if (companyText.length > 22) compSize = 16;
+
+        ctx.fillStyle = '#1d4ed8'; // Vibrant corporate blue
+        ctx.font = `700 ${compSize}px Inter, system-ui, -apple-system, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText(companyText, textCenterX, 784);
+        ctx.restore();
+      }
+
+      if (photoSrc) {
+        const pImg = new Image();
+        pImg.src = photoSrc;
+        pImg.onload = () => renderPhotoAndText(pImg);
+        pImg.onerror = () => renderPhotoAndText(null);
+      } else {
+        renderPhotoAndText(null);
+      }
+    }
+
+    // Alias for compatibility
+    function generateOfficialBadge(speaker) {
+      renderSpeakerOfficialFlyer(speaker);
+    }
+
+    function setupFlyerPhotoControls() {
+      if (flyerControlsInitialized) return;
+      flyerControlsInitialized = true;
+
+      // Photo file upload input
+      const photoInput = document.getElementById('panelFlyerPhotoUpload');
+      if (photoInput) {
+        photoInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file && currentSpeaker) {
+            const reader = new FileReader();
+            reader.onload = (evt) => {
+              const dataUrl = evt.target.result;
+              customSpeakerPhoto = dataUrl;
+              try {
+                localStorage.setItem('opportuneur_custom_photo_' + currentSpeaker.id, dataUrl);
+              } catch(err) {}
+
+              // Also update dashboard avatar
+              const dashImg = document.querySelector('#dashPhotoContainer img');
+              if (dashImg) dashImg.src = dataUrl;
+
+              renderSpeakerOfficialFlyer(currentSpeaker);
+              showToast("¡Fotografía actualizada con éxito en tu flyer oficial!");
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      // Vertical position slider
+      const ySlider = document.getElementById('flyerYSlider');
+      const yVal = document.getElementById('flyerYVal');
+      if (ySlider) {
+        ySlider.addEventListener('input', (e) => {
+          flyerOffsetY = parseInt(e.target.value, 10);
+          if (yVal) yVal.textContent = `${flyerOffsetY}px`;
+          if (currentSpeaker) renderSpeakerOfficialFlyer(currentSpeaker);
+        });
+      }
+
+      // Zoom slider
+      const zoomSlider = document.getElementById('flyerZoomSlider');
+      const zoomVal = document.getElementById('flyerZoomVal');
+      if (zoomSlider) {
+        zoomSlider.addEventListener('input', (e) => {
+          flyerZoom = parseInt(e.target.value, 10) / 100;
+          if (zoomVal) zoomVal.textContent = `${e.target.value}%`;
+          if (currentSpeaker) renderSpeakerOfficialFlyer(currentSpeaker);
+        });
+      }
+
+      // Reset photo adjustments button
+      const resetBtn = document.getElementById('resetFlyerPhotoBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          flyerOffsetY = 0;
+          flyerZoom = 1.0;
+          if (ySlider) ySlider.value = 0;
+          if (zoomSlider) zoomSlider.value = 100;
+          if (yVal) yVal.textContent = "0px";
+          if (zoomVal) zoomVal.textContent = "100%";
+          if (currentSpeaker) renderSpeakerOfficialFlyer(currentSpeaker);
+        });
+      }
+
+      // Download Button (Panel)
+      const downloadBtn1 = document.getElementById('downloadOfficialFlyerBtn');
+      if (downloadBtn1) {
+        downloadBtn1.onclick = () => {
+          const canvas = document.getElementById('officialFlyerCanvas') || document.getElementById('officialBadgeCanvas');
+          if (!canvas || !currentSpeaker) return;
           const link = document.createElement('a');
-          link.download = `Badge-Oficial-Speaker-${speaker.name.replace(/\s+/g, '-')}.png`;
+          link.download = `Flyer-Oficial-${currentSpeaker.name.replace(/\s+/g, '-')}-Opportuneur.png`;
           link.href = canvas.toDataURL('image/png');
           link.click();
-          showToast("Badge oficial descargado en alta resolución (819x1024).");
+          showToast(`Flyer oficial de ${currentSpeaker.name} descargado en alta resolución.`);
+        };
+      }
+
+      // Download Button (Toolkit)
+      const downloadBtn2 = document.getElementById('downloadBadgeBtn');
+      if (downloadBtn2) {
+        downloadBtn2.onclick = () => {
+          const canvas = document.getElementById('officialBadgeCanvas') || document.getElementById('officialFlyerCanvas');
+          if (!canvas || !currentSpeaker) return;
+          const link = document.createElement('a');
+          link.download = `Flyer-Oficial-${currentSpeaker.name.replace(/\s+/g, '-')}-Opportuneur.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          showToast(`Flyer oficial de ${currentSpeaker.name} descargado en alta resolución.`);
         };
       }
     }
