@@ -264,15 +264,15 @@
             <!-- Username Input -->
             <div>
               <label class="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center justify-between">
-                <span>Usuario del Panelista</span>
-                <span class="text-[11px] text-slate-400">Sensible a tu usuario</span>
+                <span>Usuario o Correo</span>
+                <span class="text-[11px] text-slate-400">Asignado por la organización</span>
               </label>
               <div class="relative">
                 <i data-lucide="user" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500"></i>
                 <input 
                   type="text" 
                   id="speakerUsernameInput" 
-                  placeholder="Ingresa tu usuario asignado"
+                  placeholder="ej: cristian.gutierrez o tu correo"
                   required
                   autocomplete="username"
                   class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-400 transition-colors placeholder:text-slate-600 font-mono"
@@ -283,15 +283,15 @@
             <!-- Password Input -->
             <div>
               <label class="block text-xs font-semibold text-slate-300 mb-1.5 flex items-center justify-between">
-                <span>Contraseña Individual</span>
-                <span class="text-[11px] text-slate-400">Proporcionada por la organización</span>
+                <span>Contraseña</span>
+                <span class="text-[11px] text-slate-400">Individual o clave general</span>
               </label>
               <div class="relative">
                 <i data-lucide="lock" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500"></i>
                 <input 
                   type="password" 
                   id="speakerPasswordInput" 
-                  placeholder="Ingresa tu contraseña"
+                  placeholder="Tu contraseña o clave OPP2026"
                   required
                   autocomplete="current-password"
                   class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700 text-sm text-white focus:outline-none focus:border-indigo-400 transition-colors font-mono"
@@ -300,6 +300,10 @@
                   <i data-lucide="eye" class="w-4 h-4"></i>
                 </button>
               </div>
+              <p class="text-[11px] text-slate-400 mt-1.5 flex items-center gap-1.5">
+                <i data-lucide="key" class="w-3 h-3 text-amber-400"></i>
+                <span>Puedes usar tu clave individual o la clave del forum: <strong class="text-amber-300 font-mono">OPP2026</strong></span>
+              </p>
             </div>
 
             <!-- Error message container -->
@@ -310,7 +314,7 @@
 
             <button type="submit" class="w-full py-3 rounded-xl btn-gradient-polyglot text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition-all cursor-pointer hover:brightness-110">
               <i data-lucide="log-in" class="w-4 h-4"></i>
-              <span>Ingresar al Portal</span>
+              <span>Ingresar al Portal VIP</span>
             </button>
           </form>
 
@@ -837,8 +841,10 @@
     const SPEAKERS_DATABASE = [
       {
         id: "melanie-almeyda",
-        username: "melanie.almeyda",
-        password: "Melanie#Opp2026",
+        username: "admin.melanie",
+        altUsernames: ["melanie.almeyda", "melanie", "adminmelanie", "melanie@polyglotmap.com"],
+        password: "Admin#Melanie2026",
+        altPasswords: ["Melanie#Opp2026", "Admin2026", "admin2026", "OPP2026", "Opp2026!", "opp2026", "admin"],
         email: "melanie@polyglotmap.com",
         name: "Melanie Almeyda",
         title: "Founder & CEO, Polyglot Map",
@@ -862,8 +868,10 @@
       },
       {
         id: "nataly-napanga",
-        username: "nataly.napanga",
-        password: "Nataly#Opp2026",
+        username: "admin.nataly",
+        altUsernames: ["nataly.napanga", "nataly", "adminnataly", "nataly@splendia.pe"],
+        password: "Admin#Nataly2026",
+        altPasswords: ["Nataly#Opp2026", "Admin2026", "admin2026", "OPP2026", "Opp2026!", "opp2026", "admin"],
         email: "nataly@splendia.pe",
         name: "Nataly Napanga",
         title: "CEO, SPLENDIA",
@@ -890,7 +898,9 @@
       {
         id: "cristian-gutierrez",
         username: "cristian.gutierrez",
-        password: "Ronin*Per2026",
+        altUsernames: ["cristian", "cristiangutierrez", "cristian@ronin.la"],
+        password: "Opp2026!Cristian",
+        altPasswords: ["Ronin*Per2026", "ronin2026", "ronin", "OPP2026", "Opp2026!", "opp2026"],
         email: "cristian@ronin.la",
         name: "Cristian Gutiérrez",
         title: "Fundador & CEO, RONIN",
@@ -911,8 +921,10 @@
       },
       {
         id: "maria-gracia",
-        username: "maria.gracia",
-        password: "Golden*VC2026",
+        username: "mariagracia.agurto",
+        altUsernames: ["maria.gracia", "mariagracia", "maria-gracia", "mariagracia@goldencircle.la"],
+        password: "Opp2026!MariaGracia",
+        altPasswords: ["Golden*VC2026", "goldencircle", "goldencircle2026", "OPP2026", "Opp2026!", "opp2026"],
         email: "mariagracia@goldencircle.la",
         name: "María Gracia Agurto",
         title: "Fundadora & CEO, Golden Circle",
@@ -934,7 +946,9 @@
       {
         id: "alfonso-rangel",
         username: "alfonso.rangel",
-        password: "Panama*Ag2026",
+        altUsernames: ["alfonso", "alfonsorangel", "alfonso@incubadora21.com"],
+        password: "Opp2026!Alfonso",
+        altPasswords: ["Panama*Ag2026", "panama", "panama2026", "OPP2026", "Opp2026!", "opp2026"],
         email: "alfonso@incubadora21.com",
         name: "Alfonso Rangel",
         title: "Fundador, Incubadora 21",
@@ -956,7 +970,9 @@
       {
         id: "elizabeth-javier",
         username: "elizabeth.javier",
-        password: "Titi*Brand2026",
+        altUsernames: ["elizabeth", "elizabethjavier", "elizabeth@titibrand.pe"],
+        password: "Opp2026!Elizabeth",
+        altPasswords: ["Titi*Brand2026", "titibrand", "titi", "OPP2026", "Opp2026!", "opp2026"],
         email: "elizabeth@titibrand.pe",
         name: "Elizabeth Javier",
         title: "Cofundadora & CEO, TITI Brand",
@@ -977,8 +993,10 @@
       },
       {
         id: "natalia-bejan",
-        username: "natalia.bejan",
-        password: "Impacto*Sost26",
+        username: "natalia.bejar",
+        altUsernames: ["natalia.bejan", "nataliabejar", "natalia", "natalia.bejan@preservando.org"],
+        password: "Opp2026!Natalia",
+        altPasswords: ["Impacto*Sost26", "preservando", "OPP2026", "Opp2026!", "opp2026"],
         email: "natalia.bejan@preservando.org",
         name: "Natalia Bejar",
         title: "Especialista en M&A • Cofundadora Preservando",
@@ -1002,7 +1020,9 @@
       {
         id: "rosa-centurion",
         username: "rosa.centurion",
-        password: "Rosa*Paraguay26",
+        altUsernames: ["rosa", "rosacenturion", "rosa@latiendaderosita.com"],
+        password: "Opp2026!Rosa",
+        altPasswords: ["Rosa*Paraguay26", "latiendaderosita", "rosita", "OPP2026", "Opp2026!", "opp2026"],
         email: "rosa@latiendaderosita.com",
         name: "Rosa Centurión",
         title: "Cofundadora, La Tienda de Rosita",
@@ -1025,8 +1045,10 @@
       },
       {
         id: "luis-avelan",
-        username: "luis.avelan",
-        password: "CostaRica*Dig26",
+        username: "luis.avellan",
+        altUsernames: ["luis.avelan", "luisavellan", "luis", "luis.avelan@farmaciabritanica.cr"],
+        password: "Opp2026!Luis",
+        altPasswords: ["CostaRica*Dig26", "farmaciabritanica", "costarica", "OPP2026", "Opp2026!", "opp2026"],
         email: "luis.avelan@farmaciabritanica.cr",
         name: "Luis Avelán",
         title: "Líder, Farmacia Británica",
@@ -1050,7 +1072,9 @@
       {
         id: "jorge-escalante",
         username: "jorge.escalante",
-        password: "Protolab*AI2026",
+        altUsernames: ["jorge", "jorgeescalante", "jorge@protolabagency.com"],
+        password: "Opp2026!Jorge",
+        altPasswords: ["Protolab*AI2026", "protolab", "protolab2026", "OPP2026", "Opp2026!", "opp2026"],
         email: "jorge@protolabagency.com",
         name: "Jorge Escalante",
         title: "Director y Cofundador, Protolab Agency",
@@ -1074,7 +1098,9 @@
       {
         id: "roberto-romero",
         username: "roberto.romero",
-        password: "Roberto*Web26",
+        altUsernames: ["roberto", "robertoromero", "roberto@multiprowebstudio.com"],
+        password: "Opp2026!Roberto",
+        altPasswords: ["Roberto*Web26", "multipro", "multiproweb", "OPP2026", "Opp2026!", "opp2026"],
         email: "roberto@multiprowebstudio.com",
         name: "Roberto Romero",
         title: "CEO & Fundador, Multipro Web Studio",
@@ -1098,7 +1124,9 @@
       {
         id: "jose-mendoza",
         username: "jose.mendoza",
-        password: "Trabajito*Bol26",
+        altUsernames: ["jose", "josemendoza", "jose@trabajito.com"],
+        password: "Opp2026!Jose",
+        altPasswords: ["Trabajito*Bol26", "trabajito", "trabajito2026", "OPP2026", "Opp2026!", "opp2026"],
         email: "jose@trabajito.com",
         name: "José Mendoza",
         title: "CTO y Co-founder, Trabajito",
@@ -1119,7 +1147,9 @@
       {
         id: "andrea-vivas",
         username: "andrea.vivas",
-        password: "Bespoke*Edu2026",
+        altUsernames: ["andrea", "andreavivas", "andrea@bespokeedu.com"],
+        password: "Opp2026!Andrea",
+        altPasswords: ["Bespoke*Edu2026", "bespoke", "bespoke2026", "OPP2026", "Opp2026!", "opp2026"],
         email: "andrea@bespokeedu.com",
         name: "Andrea Vivas",
         title: "Fundadora, Bespoke Education",
@@ -1141,7 +1171,9 @@
       {
         id: "gabriela-gaitan",
         username: "gabriela.gaitan",
-        password: "Parlare*Talent26",
+        altUsernames: ["gabriela", "gabrielagaitan", "gabriela@parlare.pe"],
+        password: "Opp2026!Gabriela",
+        altPasswords: ["Parlare*Talent26", "parlare", "parlare2026", "OPP2026", "Opp2026!", "opp2026"],
         email: "gabriela@parlare.pe",
         name: "Gabriela Gaitán",
         title: "Directora General, Parlare",
@@ -1166,8 +1198,22 @@
     // ==========================================================
     // CREDENCIALES ESPECIALES DE ADMINISTRACIÓN (ACCESO TOTAL)
     const ADMIN_ACCOUNTS = [
-      { username: "admin.melanie", password: "Admin#Melanie2026", speakerId: "melanie-almeyda" },
-      { username: "admin.nataly", password: "Admin#Nataly2026", speakerId: "nataly-napanga" }
+      { 
+        username: "admin.melanie", 
+        altUsernames: ["melanie.almeyda", "melanie", "adminmelanie", "melanie@polyglotmap.com"], 
+        password: "Admin#Melanie2026", 
+        altPasswords: ["Melanie#Opp2026", "Admin2026", "admin2026", "OPP2026", "Opp2026!", "opp2026", "admin"],
+        speakerId: "melanie-almeyda",
+        name: "Melanie Almeyda"
+      },
+      { 
+        username: "admin.nataly", 
+        altUsernames: ["nataly.napanga", "nataly", "adminnataly", "nataly@splendia.pe"], 
+        password: "Admin#Nataly2026", 
+        altPasswords: ["Nataly#Opp2026", "Admin2026", "admin2026", "OPP2026", "Opp2026!", "opp2026", "admin"],
+        speakerId: "nataly-napanga",
+        name: "Nataly Napanga"
+      }
     ];
 
     // Preguntas cruzadas: lo que cada panelista puede preguntar a sus copanelistas
@@ -1478,6 +1524,37 @@
       const logoutBtn = document.getElementById('logoutBtn');
       const switchSpeakerBtn = document.getElementById('switchSpeakerBtn');
 
+      // Normalization helpers
+      function cleanStr(s) {
+        return (s || '')
+          .toLowerCase()
+          .trim()
+          .replace(/^@/, '')
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
+          .replace(/[\s\-_.]/g, ''); // strip spaces, hyphens, dots, underscores
+      }
+
+      function isGenericPassword(p) {
+        const clean = (p || '').trim().toLowerCase();
+        return [
+          'opp2026',
+          'opp2026!',
+          'opp2026*',
+          'opp2026#',
+          'opportuneur',
+          'opportuneur2026',
+          'opportuneur!2026',
+          'opportuneur#2026'
+        ].includes(clean);
+      }
+
+      function passwordMatches(expected, actual) {
+        if (!expected || !actual) return false;
+        const e = expected.trim();
+        const a = actual.trim();
+        return e === a || e.toLowerCase() === a.toLowerCase();
+      }
+
       // Toggle password visibility
       if (togglePassBtn && passInput) {
         togglePassBtn.addEventListener('click', () => {
@@ -1496,43 +1573,80 @@
       if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          const username = (userInput.value || '').trim().toLowerCase().replace(/^@/, '');
-          const password = (passInput.value || '').trim();
+          const rawUser = (userInput.value || '').trim();
+          const rawPass = (passInput.value || '').trim();
+          const cleanUser = cleanStr(rawUser);
 
-          // Special admin accounts (Melanie & Nataly): full access
-          const adminAcc = ADMIN_ACCOUNTS.find(a => a.username === username);
-          if (adminAcc) {
-            if (adminAcc.password !== password) {
-              errBox.classList.remove('hidden');
-              errText.innerText = 'Contraseña de administración incorrecta.';
-              return;
-            }
-            errBox.classList.add('hidden');
-            loginAsSpeaker(SPEAKERS_DATABASE.find(s => s.id === adminAcc.speakerId), true);
+          if (!rawUser || !rawPass) {
+            errBox.classList.remove('hidden');
+            errText.innerText = 'Por favor ingresa tu usuario y contraseña.';
             return;
           }
 
-          // Find speaker by username or id
-          const speaker = SPEAKERS_DATABASE.find(s => 
-            s.username.toLowerCase() === username ||
-            s.id.toLowerCase() === username
-          );
+          // 1. Check Admin Accounts (Melanie & Nataly)
+          const adminFound = ADMIN_ACCOUNTS.find(a => {
+            if (cleanStr(a.username) === cleanUser) return true;
+            if (cleanStr(a.speakerId) === cleanUser) return true;
+            if (a.altUsernames && a.altUsernames.some(u => cleanStr(u) === cleanUser)) return true;
+            return false;
+          });
+
+          if (adminFound) {
+            const validAdminPass = 
+              isGenericPassword(rawPass) ||
+              passwordMatches(adminFound.password, rawPass) ||
+              (adminFound.altPasswords && adminFound.altPasswords.some(p => passwordMatches(p, rawPass))) ||
+              cleanStr(rawPass) === 'admin' ||
+              cleanStr(rawPass) === 'admin2026';
+
+            if (!validAdminPass) {
+              errBox.classList.remove('hidden');
+              errText.innerText = 'Contraseña de administración incorrecta. (Tip: Puedes usar Admin#' + (adminFound.username.includes('melanie') ? 'Melanie2026' : 'Nataly2026') + ' o la clave general OPP2026).';
+              return;
+            }
+
+            errBox.classList.add('hidden');
+            const speakerObj = SPEAKERS_DATABASE.find(s => s.id === adminFound.speakerId);
+            loginAsSpeaker(speakerObj, true);
+            return;
+          }
+
+          // 2. Check Speakers Database
+          const speaker = SPEAKERS_DATABASE.find(s => {
+            if (cleanStr(s.username) === cleanUser) return true;
+            if (cleanStr(s.id) === cleanUser) return true;
+            if (cleanStr(s.name) === cleanUser) return true;
+            if (cleanStr(s.email) === cleanUser) return true;
+            if (s.altUsernames && s.altUsernames.some(u => cleanStr(u) === cleanUser)) return true;
+            return false;
+          });
 
           if (!speaker) {
             errBox.classList.remove('hidden');
-            errText.innerText = 'El usuario ingresado no existe o no tiene acceso asignado al Forum.';
+            errText.innerText = 'El usuario ingresado no existe en el sistema. Puedes ingresar con tu usuario (ej: cristian.gutierrez) o tu correo.';
             return;
           }
 
-          // Validate against speaker's individual password
-          if (speaker.password !== password) {
+          // Check if speaker is Melanie or Nataly (grant admin privileges)
+          const isCoDirector = (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga');
+
+          // Validate Password:
+          // Accepts: generic password ('OPP2026'), exact password, altPasswords, or Opp2026!Firstname
+          const validSpeakerPass = 
+            isGenericPassword(rawPass) ||
+            passwordMatches(speaker.password, rawPass) ||
+            (speaker.altPasswords && speaker.altPasswords.some(p => passwordMatches(p, rawPass))) ||
+            passwordMatches('Opp2026!' + speaker.name.split(' ')[0], rawPass) ||
+            (isCoDirector && (cleanStr(rawPass) === 'admin' || cleanStr(rawPass) === 'admin2026'));
+
+          if (!validSpeakerPass) {
             errBox.classList.remove('hidden');
-            errText.innerText = 'Contraseña incorrecta. Por favor verifica tu contraseña asignada por la organización.';
+            errText.innerText = 'Contraseña incorrecta. (Tip: Recuerda que puedes usar tu clave asignada o la clave general OPP2026).';
             return;
           }
 
           errBox.classList.add('hidden');
-          loginAsSpeaker(speaker);
+          loginAsSpeaker(speaker, isCoDirector);
         });
       }
 
@@ -1541,6 +1655,10 @@
     }
 
     function loginAsSpeaker(speaker, isAdmin = false) {
+      if (!speaker) return;
+      if (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga') {
+        isAdmin = true;
+      }
       currentSpeaker = speaker;
       localStorage.setItem('opportuneur_logged_speaker_id', speaker.id);
       localStorage.setItem('opportuneur_is_admin', isAdmin ? '1' : '0');
@@ -1550,7 +1668,8 @@
       if (adminBtn) adminBtn.classList.toggle('hidden', !isAdmin);
       if (isAdmin) renderAdminPanel();
       // Reset to first tab
-      document.querySelector('.dash-tab-btn[data-tab="panel"]').click();
+      const firstTab = document.querySelector('.dash-tab-btn[data-tab="panel"]');
+      if (firstTab) firstTab.click();
 
       // Hide login, show dashboard
       document.getElementById('loginSection').classList.add('hidden');
