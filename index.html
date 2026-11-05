@@ -2305,15 +2305,18 @@
       `;
       questionsList.appendChild(overviewCard);
 
-      // 2. Preguntas Individuales por Ponente (Exactamente lo que le sale a cada panelista)
+      // 2. Preguntas Individuales por Ponente (Personalizadas para cada panelista)
       const questionsHeader = document.createElement('div');
       questionsHeader.className = "flex items-center justify-between gap-2 mt-4 mb-2 flex-wrap";
       questionsHeader.innerHTML = `
-        <span class="text-xs font-black uppercase tracking-wider text-amber-950 flex items-center gap-1.5 font-mono">
-          <i data-lucide="sparkles" class="w-4 h-4 text-amber-600"></i>
-          <span>Preguntas Guía por Ponente (${members.length} Panelistas)</span>
-        </span>
-        <span class="text-[11px] text-slate-500 font-mono font-bold">Intervención: 3 a 4 minutos c/u</span>
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs font-black uppercase tracking-wider text-amber-950 flex items-center gap-1.5 font-mono">
+            <i data-lucide="user-check" class="w-4 h-4 text-amber-600"></i>
+            <span>1. Preguntas Personalizadas Individuales (${members.length} Panelistas)</span>
+          </span>
+          <span class="text-[10px] font-black uppercase text-amber-950 bg-amber-200/90 px-2.5 py-0.5 rounded-full border border-amber-400 font-mono">1 Por Ponente</span>
+        </div>
+        <span class="text-[11px] text-slate-500 font-mono font-bold">Intervención Individual: 3 a 4 min c/u</span>
       `;
       questionsList.appendChild(questionsHeader);
 
@@ -2361,11 +2364,14 @@
                 <span class="text-[11px] text-slate-600 font-mono">${m.company || m.title}</span>
               </div>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-200/90 text-amber-950 font-black font-mono border border-amber-400">
+                PREGUNTA INDIVIDUAL
+              </span>
               <span class="text-[10px] px-2.5 py-1 rounded-xl bg-white border border-amber-300 text-slate-800 font-bold font-mono shadow-2xs">
                 ⏰ ${mBadgeTime}
               </span>
-              <span class="text-[10px] px-2 py-1 rounded-xl bg-amber-200/80 text-amber-950 font-black font-mono">
+              <span class="text-[10px] px-2 py-1 rounded-xl bg-amber-300 text-amber-950 font-black font-mono">
                 3-4 MIN
               </span>
             </div>
@@ -2375,18 +2381,28 @@
         questionsList.appendChild(qCard);
       });
 
-      // 3. Dinámica Innovadora del Panel (Reto en Vivo)
+      // 3. Dinámica Innovadora del Panel (Reto en Vivo - ACTIVIDAD GRUPAL)
       if (panel.dynamicChallenge) {
         const dynCard = document.createElement('div');
-        dynCard.className = "p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-purple-50 via-purple-100/30 to-white border-2 border-purple-300 shadow-sm space-y-3 mt-4";
+        dynCard.className = "p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-purple-50 via-purple-100/30 to-white border-2 border-purple-300 shadow-sm space-y-3 mt-5";
         dynCard.innerHTML = `
           <div class="flex items-center justify-between gap-2 flex-wrap">
-            <span class="text-xs font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-              <i data-lucide="zap" class="w-4 h-4 text-purple-600"></i>
-              <span>Dinámica Innovadora: ${panel.dynamicChallenge.name}</span>
-            </span>
-            <span class="text-[10px] font-black text-purple-900 bg-purple-200/80 px-2.5 py-0.5 rounded-full border border-purple-400 font-mono">RETO EN VIVO</span>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <i data-lucide="zap" class="w-4 h-4 text-purple-600"></i>
+                <span>2. Dinámica Innovadora: ${panel.dynamicChallenge.name}</span>
+              </span>
+              <span class="text-[10px] font-black uppercase text-purple-950 bg-purple-200 px-2.5 py-0.5 rounded-full border border-purple-400 font-mono flex items-center gap-1">
+                <i data-lucide="users" class="w-3 h-3 text-purple-700"></i> PARTICIPACIÓN GRUPAL (TODO EL PANEL)
+              </span>
+            </div>
+            <span class="text-[10px] font-black text-purple-900 bg-purple-100 px-2.5 py-0.5 rounded-full border border-purple-300 font-mono">RETO EN VIVO</span>
           </div>
+
+          <div class="p-3 rounded-xl bg-purple-100/80 border border-purple-300 text-xs text-purple-950 font-medium">
+            👥 <strong>Instrucción para el Moderador (Dinámica Grupal):</strong> Esta actividad es <strong>colectiva</strong>. Lanza el reto para que interactúen y respondan <strong>todos los panelistas del bloque en conjunto</strong>.
+          </div>
+
           <p class="text-xs sm:text-sm text-slate-800 font-semibold leading-relaxed bg-white/90 p-3.5 rounded-2xl border border-purple-200 shadow-2xs">
             ${panel.dynamicChallenge.prompt}
           </p>
@@ -2404,15 +2420,28 @@
         questionsList.appendChild(dynCard);
       }
 
-      // 4. Pregunta de Cierre
+      // 4. Pregunta de Cierre (PREGUNTA GRUPAL)
       if (panel.closingQuestion) {
         const closeCard = document.createElement('div');
-        closeCard.className = "p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-blue-50 via-sky-50/50 to-white border-2 border-blue-300 shadow-xs space-y-2 mt-4";
+        closeCard.className = "p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-blue-50 via-sky-50/50 to-white border-2 border-blue-300 shadow-xs space-y-3 mt-5";
         closeCard.innerHTML = `
-          <div class="text-[11px] font-black text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-            <i data-lucide="flag" class="w-4 h-4 text-blue-600"></i>
-            <span>Pregunta de Cierre del Bloque (Ronda Relámpago)</span>
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-[11px] font-black text-blue-900 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                <i data-lucide="flag" class="w-4 h-4 text-blue-600"></i>
+                <span>3. Pregunta de Cierre del Bloque (Ronda Relámpago)</span>
+              </span>
+              <span class="text-[10px] font-black uppercase text-blue-950 bg-blue-200 px-2.5 py-0.5 rounded-full border border-blue-400 font-mono flex items-center gap-1">
+                <i data-lucide="users" class="w-3 h-3 text-blue-700"></i> PREGUNTA GRUPAL (TODO EL PANEL)
+              </span>
+            </div>
+            <span class="text-[10px] font-bold text-blue-900 bg-blue-100 px-2.5 py-0.5 rounded-full border border-blue-200 font-mono">1 MIN C/U</span>
           </div>
+
+          <div class="p-3 rounded-xl bg-blue-100/80 border border-blue-300 text-xs text-blue-950 font-medium">
+            👥 <strong>Instrucción para el Moderador (Pregunta Grupal):</strong> Esta pregunta es <strong>compartida</strong> para todo el panel. Formula la pregunta abierta para que <strong>cada panelista responda sucesivamente</strong> con su reflexión final de 1 minuto para cerrar el bloque.
+          </div>
+
           <p class="text-slate-900 font-serif font-black text-xs sm:text-sm leading-relaxed italic bg-white p-4 rounded-2xl border border-blue-200 shadow-2xs">
             “${panel.closingQuestion}”
           </p>
@@ -2693,6 +2722,37 @@
       const questionsList = document.getElementById('guidingQuestionsList');
       questionsList.innerHTML = '';
 
+      // 0. Banner Explicativo de Formato del Panel (Pregunta Individual + Dinámica y Cierre Grupales)
+      const formatBanner = document.createElement('div');
+      formatBanner.className = "p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-50 via-indigo-50/40 to-amber-50/40 border border-slate-200/90 shadow-2xs mb-4";
+      formatBanner.innerHTML = `
+        <div class="flex items-center gap-2 text-xs font-black uppercase text-slate-900 mb-2 tracking-wider">
+          <i data-lucide="compass" class="w-4 h-4 text-indigo-600"></i>
+          <span>Estructura de Participación en tu Panel</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+          <div class="p-3 rounded-xl bg-white border border-amber-200 shadow-2xs">
+            <div class="flex items-center gap-1.5 text-amber-950 font-black mb-1">
+              <span class="w-5 h-5 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold text-[10px]">1</span>
+              <span>Pregunta Personalizada (Individual)</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed text-[11px]">
+              Tienes <strong>1 pregunta exclusiva para ti</strong> formulada por el moderador para que desarrolles tu experiencia (<strong>3 a 4 minutos</strong>).
+            </p>
+          </div>
+          <div class="p-3 rounded-xl bg-white border border-purple-200 shadow-2xs">
+            <div class="flex items-center gap-1.5 text-purple-950 font-black mb-1">
+              <span class="w-5 h-5 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-[10px]">2</span>
+              <span>Dinámica y Cierre (Grupales)</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed text-[11px]">
+              La <strong>Dinámica Innovadora</strong> y la <strong>Pregunta de Cierre</strong> son <strong>grupales</strong>; participan y responden todos los panelistas del bloque juntos.
+            </p>
+          </div>
+        </div>
+      `;
+      questionsList.appendChild(formatBanner);
+
       // 1. Highlighted Individual Question(s): RADIANT AMBER/GOLD EXECUTIVE CARD(S)
       if (speaker.individualQuestions && Array.isArray(speaker.individualQuestions) && speaker.individualQuestions.length > 0) {
         speaker.individualQuestions.forEach((q, idx) => {
@@ -2700,10 +2760,13 @@
           indCard.className = "p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-amber-50 via-amber-100/40 to-white border-2 border-amber-400 shadow-xl shadow-amber-500/10 relative overflow-hidden";
           indCard.innerHTML = `
             <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-200/90 text-amber-950 border border-amber-400/80 font-mono shadow-xs">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-800"></i> EJE ESTRATÉGICO ${q.number || (idx + 1)} · ${q.axis}
-              </span>
-              <span class="text-xs text-amber-900 font-bold font-mono bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/70">${q.subtitle}</span>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-200/90 text-amber-950 border border-amber-400/80 font-mono shadow-xs">
+                  <i data-lucide="user-check" class="w-3.5 h-3.5 text-amber-800"></i> PREGUNTA PERSONALIZADA INDIVIDUAL
+                </span>
+                <span class="text-xs text-amber-900 font-bold font-mono bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/70">${q.number || (idx + 1)} · ${q.axis}</span>
+              </div>
+              <span class="text-xs text-amber-950 font-bold font-mono bg-white px-2.5 py-1 rounded-lg border border-amber-300">Exclusiva para ti · 3 a 4 min</span>
             </div>
 
             <div class="mt-3 p-4 sm:p-5 rounded-2xl bg-white border-l-4 border-amber-500 border-r border-t border-b border-amber-200/80 shadow-xs">
@@ -2725,9 +2788,9 @@
         indCard.innerHTML = `
           <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
             <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-200/90 text-amber-950 border border-amber-400/80 font-mono shadow-xs">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-800"></i> TU PREGUNTA PERSONALIZADA (MODERADOR)
+              <i data-lucide="user-check" class="w-3.5 h-3.5 text-amber-800"></i> TU PREGUNTA PERSONALIZADA INDIVIDUAL
             </span>
-            <span class="text-xs text-amber-900 font-bold font-mono bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/70">Ronda de Intervención Individual</span>
+            <span class="text-xs text-amber-900 font-bold font-mono bg-amber-100/80 px-2.5 py-1 rounded-lg border border-amber-300/70">Exclusiva para ti · 3 a 4 min</span>
           </div>
 
           <div class="mt-3 p-4 sm:p-5 rounded-2xl bg-white border-l-4 border-amber-500 border-r border-t border-b border-amber-200/80 shadow-xs">
@@ -2754,18 +2817,28 @@
         questionsList.appendChild(hostCard);
       }
 
-      // 2. Innovative Dynamic Challenge: VIOLET/PURPLE EXECUTIVE CARD
+      // 2. Innovative Dynamic Challenge: VIOLET/PURPLE EXECUTIVE CARD (GRUPAL)
       if (panel.dynamicChallenge) {
         const dynCard = document.createElement('div');
         dynCard.className = "p-6 rounded-3xl bg-gradient-to-r from-purple-50 via-purple-100/30 to-white border-2 border-purple-300 shadow-sm relative";
         dynCard.innerHTML = `
           <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-purple-200/80 text-purple-950 border border-purple-400 font-mono">
-              <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-700"></i> DINÁMICA INNOVADORA: ${panel.dynamicChallenge.name}
-            </span>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-purple-200/80 text-purple-950 border border-purple-400 font-mono">
+                <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-700"></i> DINÁMICA INNOVADORA: ${panel.dynamicChallenge.name}
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-purple-300 text-purple-950 border border-purple-500 font-mono shadow-2xs">
+                <i data-lucide="users" class="w-3 h-3 text-purple-800"></i> ACTIVIDAD GRUPAL (TODO EL PANEL)
+              </span>
+            </div>
             <span class="text-[11px] font-bold text-purple-900 bg-purple-100 px-2.5 py-0.5 rounded-full border border-purple-300 font-mono">RETO EN VIVO</span>
           </div>
-          <p class="text-xs sm:text-sm text-purple-950 font-semibold leading-relaxed mt-2 bg-white/70 p-3.5 rounded-2xl border border-purple-200/70">
+
+          <div class="p-3 rounded-xl bg-purple-100/80 border border-purple-300 text-xs text-purple-950 font-medium mb-3">
+            👥 <strong>Dinámica Grupal:</strong> Esta actividad es <strong>colectiva</strong>. El moderador planteará el reto para que participen e interactúen <strong>todos los panelistas del bloque en conjunto</strong>.
+          </div>
+
+          <p class="text-xs sm:text-sm text-purple-950 font-semibold leading-relaxed mt-2 bg-white/90 p-3.5 rounded-2xl border border-purple-200/70 shadow-2xs">
             ${panel.dynamicChallenge.prompt}
           </p>
           ${panel.dynamicChallenge.prompts ? `
@@ -2782,15 +2855,28 @@
         questionsList.appendChild(dynCard);
       }
 
-      // 3. Closing Question: BLUE EXECUTIVE CARD
+      // 3. Closing Question: BLUE EXECUTIVE CARD (GRUPAL)
       if (panel.closingQuestion) {
         const closeCard = document.createElement('div');
         closeCard.className = "p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50/50 to-white border-2 border-blue-300 text-xs text-blue-950 shadow-xs";
         closeCard.innerHTML = `
-          <div class="flex items-center gap-2 mb-2 text-blue-800 font-bold uppercase tracking-wider text-xs">
-            <i data-lucide="flag" class="w-4 h-4 text-blue-600"></i>
-            <span>Pregunta de Cierre del Bloque</span>
+          <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="flex items-center gap-2 text-blue-900 font-bold uppercase tracking-wider text-xs font-mono">
+                <i data-lucide="flag" class="w-4 h-4 text-blue-600"></i>
+                <span>Pregunta de Cierre del Bloque</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-blue-200 text-blue-950 border border-blue-400 font-mono shadow-2xs">
+                <i data-lucide="users" class="w-3 h-3 text-blue-800"></i> PREGUNTA GRUPAL (TODO EL PANEL)
+              </span>
+            </div>
+            <span class="text-[11px] font-mono font-bold text-blue-900 bg-blue-100 px-2.5 py-0.5 rounded-full border border-blue-200">1 MIN C/U</span>
           </div>
+
+          <div class="p-3 rounded-xl bg-blue-100/80 border border-blue-300 text-xs text-blue-950 font-medium mb-3">
+            👥 <strong>Pregunta Grupal de Cierre:</strong> Esta pregunta es <strong>compartida</strong> por todo el panel. Cada panelista responderá de forma ágil y concisa (1 minuto aprox.) como mensaje final antes de concluir el bloque.
+          </div>
+
           <div class="p-3.5 rounded-xl bg-white border border-blue-200/80 shadow-xs">
             <p class="text-xs sm:text-sm font-bold text-blue-950 font-serif leading-relaxed">
               “${panel.closingQuestion}”
@@ -3188,12 +3274,15 @@
           <!-- Dinámica Innovadora del Panel -->
           ${panel.dynamicChallenge ? `
             <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 text-xs text-purple-950">
-              <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="text-[11px] font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 font-mono">
-                  <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-600"></i>
-                  <span>Dinámica Innovadora: ${panel.dynamicChallenge.name}</span>
-                </span>
-                <span class="text-[10px] font-bold text-purple-900 bg-purple-200/70 px-2 py-0.5 rounded">Reto en Vivo</span>
+              <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-[11px] font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                    <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-600"></i>
+                    <span>Dinámica Innovadora: ${panel.dynamicChallenge.name}</span>
+                  </span>
+                  <span class="text-[10px] font-black text-purple-900 bg-purple-200/90 px-2 py-0.5 rounded font-mono">👥 ACTIVIDAD GRUPAL</span>
+                </div>
+                <span class="text-[10px] font-bold text-purple-900 bg-purple-100 px-2 py-0.5 rounded font-mono">Reto en Vivo</span>
               </div>
               <p class="text-slate-800 font-medium leading-relaxed mt-1">${panel.dynamicChallenge.prompt}</p>
               ${panel.dynamicChallenge.prompts ? `
@@ -3211,9 +3300,15 @@
           <!-- Pregunta de Cierre -->
           ${panel.closingQuestion ? `
             <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-xs text-blue-950">
-              <div class="text-[11px] font-black text-blue-900 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                <i data-lucide="flag" class="w-3.5 h-3.5 text-blue-600"></i>
-                <span>Pregunta de Cierre del Bloque</span>
+              <div class="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-[11px] font-black text-blue-900 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                    <i data-lucide="flag" class="w-3.5 h-3.5 text-blue-600"></i>
+                    <span>Pregunta de Cierre del Bloque</span>
+                  </span>
+                  <span class="text-[10px] font-black text-blue-900 bg-blue-200 px-2 py-0.5 rounded font-mono">👥 PREGUNTA GRUPAL</span>
+                </div>
+                <span class="text-[10px] font-mono text-blue-800 bg-blue-100 px-2 py-0.5 rounded">1 min c/u</span>
               </div>
               <p class="text-slate-900 font-semibold leading-relaxed italic bg-white p-3 rounded-xl border border-blue-200">“${panel.closingQuestion}”</p>
             </div>
