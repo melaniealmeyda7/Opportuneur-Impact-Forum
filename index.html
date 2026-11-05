@@ -1224,13 +1224,11 @@
         bio: "Cofundador y COO de Preservando, organización socioambiental de conservación de ecosistemas de montaña. Con amplia experiencia en liderazgo de proyectos, voluntariados e innovación, conduce y modera los paneles estratégicos del Opportuneur Impact Forum 2026.",
         assignedPanelId: "all-panels",
         isModerator: true,
-        roleInForum: "Moderador General del Forum (Todos los Paneles)",
+        roleInForum: "Moderador Oficial (Paneles 1, 2 y 3)",
         sessions: [
-          { time: "4:10 – 4:25 PM", title: "Special CEO Session — Business Leadership: Diálogo con Speaker Invitado", role: "Co-Moderador" },
-          { time: "4:25 – 4:55 PM", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Moderador Principal" },
-          { time: "4:55 – 5:25 PM", title: "Área 2 — Impacto Social y Sostenibilidad: Liderar para transformar", role: "Moderador Principal" },
-          { time: "5:35 – 6:05 PM", title: "Área 3 — Innovación Digital: La tecnología no reemplaza al talento", role: "Moderador Principal" },
-          { time: "6:05 – 6:35 PM", title: "Área 4 — Empleabilidad: Convierte tu talento en oportunidades globales", role: "Moderador Principal" }
+          { time: "4:25 – 4:55 PM", title: "Panel 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Moderador Principal" },
+          { time: "4:55 – 5:25 PM", title: "Panel 2 — Impacto Social y Sostenibilidad: Liderar para transformar", role: "Moderador Principal" },
+          { time: "5:35 – 6:05 PM", title: "Panel 3 — Innovación Digital: La tecnología no reemplaza al talento", role: "Moderador Principal" }
         ]
       },
       {
@@ -2122,7 +2120,7 @@
       // Customize Tab 1 button label for Moderator
       const tab1Btn = document.querySelector('.dash-tab-btn[data-tab="panel"] span');
       if (tab1Btn) {
-        tab1Btn.innerText = speaker.isModerator ? "Guía de Paneles & Preguntas (Moderador)" : "Mi Bloque Asignado";
+        tab1Btn.innerText = speaker.isModerator ? "Guía de los 3 Paneles (Moderador)" : "Mi Bloque Asignado";
       }
 
       // Reset to first tab
@@ -2283,10 +2281,10 @@
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
           <div class="flex items-center gap-2.5 flex-wrap">
             <span class="text-xs font-black tracking-wider uppercase px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-950 font-mono flex items-center gap-1.5 shadow-2xs">
-              <i data-lucide="mic" class="w-3.5 h-3.5 text-emerald-700"></i> CONSOLA MAESTRA DEL MODERADOR GENERAL
+              <i data-lucide="mic" class="w-3.5 h-3.5 text-emerald-700"></i> CONSOLA MAESTRA DEL MODERADOR
             </span>
             <span class="text-xs text-slate-500 font-mono">
-              Cobertura: <strong class="text-slate-800">5 Bloques Oficiales (100% del Forum)</strong>
+              Cobertura: <strong class="text-slate-800">3 Paneles Oficiales de Debate</strong>
             </span>
           </div>
 
@@ -2294,7 +2292,7 @@
           <div class="flex flex-wrap items-center gap-2">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white font-mono text-xs sm:text-sm font-black shadow-md shadow-emerald-600/20">
               <i data-lucide="clock" class="w-4 h-4 text-amber-300"></i>
-              <span>TRANSMISIÓN EN VIVO: 4:00 PM – 7:00 PM PET</span>
+              <span>PANELES EN VIVO: 4:25 PM – 6:05 PM PET</span>
             </div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 font-mono text-xs font-bold shadow-xs">
               <span>🇵🇪 Sede Oficial: Lima, Perú</span>
@@ -2310,7 +2308,7 @@
             </div>
             <div>
               <span class="font-bold text-slate-900 block text-sm">Prueba Técnica & Soundcheck de Moderación: <strong class="text-emerald-900 font-mono font-black">${convertedSoundcheck} (${speaker.flag} ${tzInfo.shortCode})</strong></span>
-              <span class="text-[11px] text-slate-600">Por favor conéctate 15 minutos antes a la Sala VIP Zoom para calibrar audio, coordinar tiempos con Melanie y Nataly, y recibir a los panelistas.</span>
+              <span class="text-[11px] text-slate-600">Por favor conéctate 15 minutos antes (3:45 PM) a la Sala VIP Zoom para calibrar audio y recibir a los panelistas de tus 3 bloques.</span>
             </div>
           </div>
           <div class="shrink-0 bg-white px-3.5 py-2 rounded-xl border border-emerald-300 text-xs font-mono font-bold text-emerald-950 flex items-center gap-2 shadow-2xs">
@@ -2319,23 +2317,20 @@
           </div>
         </div>
 
-        <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Guía Maestra de Conducción, Cronograma y Preguntas de Todos los Paneles</h3>
+        <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Guía de Conducción, Cronograma y Preguntas de los 3 Paneles</h3>
         <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed max-w-4xl">
-          Felipe, este es tu panel de control como <strong>Moderador Oficial del Forum</strong>. Aquí tienes acceso a la estructura completa, horarios exactos, objetivo de cada panel, las preguntas individuales preparadas para cada ponente con su tiempo asignado, la dinámica en vivo y las preguntas de cierre.
+          Felipe, este es tu panel de control como <strong>Moderador Oficial</strong>. Aquí tienes acceso exclusivo a los 3 paneles oficiales de debate: horarios exactos, objetivos estratégicos, preguntas personalizadas por panelista con tiempo de intervención, dinámicas en vivo y preguntas de cierre.
         </p>
 
         <!-- Barra Interactiva de Filtro Rápido por Panel -->
         <div class="mt-5 pt-4 border-t border-slate-200">
           <div class="text-[11px] font-black uppercase tracking-wider text-slate-500 mb-2.5 flex items-center gap-1.5">
             <i data-lucide="filter" class="w-3.5 h-3.5 text-indigo-600"></i>
-            <span>Filtro de Visualización Rápida en Vivo:</span>
+            <span>Filtro de Visualización en Vivo:</span>
           </div>
           <div class="flex items-center gap-2 flex-wrap">
             <button onclick="window.filterModPanel('all')" data-filter="all" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-black bg-emerald-600 text-white shadow-md shadow-emerald-600/30 border border-emerald-700 cursor-pointer transition-all">
-              ⭐ Ver Todos los Paneles
-            </button>
-            <button onclick="window.filterModPanel('panel-ceo')" data-filter="panel-ceo" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
-              👑 Special CEO (4:10 PM)
+              ⭐ Ver los 3 Paneles
             </button>
             <button onclick="window.filterModPanel('panel-1')" data-filter="panel-1" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
               🟢 Panel 1: Emprendimiento (4:25 PM)
@@ -2346,9 +2341,6 @@
             <button onclick="window.filterModPanel('panel-3')" data-filter="panel-3" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
               🔵 Panel 3: Innovación Digital (5:35 PM)
             </button>
-            <button onclick="window.filterModPanel('panel-4')" data-filter="panel-4" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
-              🟡 Panel 4: Empleabilidad (6:05 PM)
-            </button>
           </div>
         </div>
       `;
@@ -2358,11 +2350,14 @@
         vipTimeEl.innerHTML = `<i data-lucide="clock" class="w-3.5 h-3.5"></i> Apertura Sala VIP: <strong>3:45 PM</strong> (PET) • Soundcheck de Moderación`;
       }
 
-      // Render Guiding Questions for ALL Panels in guidingQuestionsList
+      // Render Guiding Questions for ONLY THE 3 PANELS (panel-1, panel-2, panel-3)
       const questionsList = document.getElementById('guidingQuestionsList');
       questionsList.innerHTML = '';
 
-      Object.values(PANELS_DATA).forEach(panel => {
+      const MODERATOR_PANEL_IDS = ["panel-1", "panel-2", "panel-3"];
+      const moderatorPanels = MODERATOR_PANEL_IDS.map(id => PANELS_DATA[id]).filter(Boolean);
+
+      moderatorPanels.forEach(panel => {
         const members = panel.speakers.map(id => SPEAKERS_DATABASE.find(s => s.id === id)).filter(Boolean);
         const card = document.createElement('div');
         card.setAttribute('data-panel-id', panel.id);
@@ -2548,7 +2543,10 @@
       // Populate Co-Panelists / Speakers Directory in Right Column
       const coPanelistsList = document.getElementById('coPanelistsList');
       const coPanelistsCount = document.getElementById('coPanelistsCount');
-      if (coPanelistsCount) coPanelistsCount.innerText = "13 Ponentes Oficiales";
+
+      // List speakers only from the 3 moderated panels
+      const speakersToDisplay = SPEAKERS_DATABASE.filter(s => !s.isModerator && s.id !== 'melanie-almeyda' && s.id !== 'nataly-napanga' && MODERATOR_PANEL_IDS.includes(s.assignedPanelId));
+      if (coPanelistsCount) coPanelistsCount.innerText = `${speakersToDisplay.length} Panelistas (3 Paneles)`;
 
       if (coPanelistsList) {
         coPanelistsList.innerHTML = '';
@@ -2578,8 +2576,6 @@
         `;
         coPanelistsList.appendChild(tipsCard);
 
-        // List speakers
-        const speakersToDisplay = SPEAKERS_DATABASE.filter(s => !s.isModerator && s.id !== 'melanie-almeyda' && s.id !== 'nataly-napanga');
         speakersToDisplay.forEach(sp => {
           const spPanel = PANELS_DATA[sp.assignedPanelId];
           const spTz = TIMEZONE_CONFIG[sp.timezone] || TIMEZONE_CONFIG["PET"];
@@ -3004,7 +3000,8 @@
       container.appendChild(tzNotice);
 
       AGENDA_DATA.forEach(item => {
-        const isMySession = item.speakers.includes(speaker.id) || (item.panelId && (item.panelId === speaker.assignedPanelId || speaker.isModerator)) || item.isVipOnly;
+        const isMyModeratedPanel = speaker.isModerator && item.panelId && ["panel-1", "panel-2", "panel-3"].includes(item.panelId);
+        const isMySession = item.speakers.includes(speaker.id) || (item.panelId && item.panelId === speaker.assignedPanelId) || isMyModeratedPanel || item.isVipOnly;
 
         if (filterOnlyMine && !isMySession) return;
 
@@ -3017,7 +3014,7 @@
         let timeBoxStyle = '';
         if (isMySession) {
           highlightStyle = 'border-2 border-indigo-400 bg-gradient-to-r from-indigo-50/70 via-purple-50/40 to-white shadow-md shadow-indigo-500/10 ring-1 ring-indigo-300';
-          badgeMine = `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-600 text-white font-mono shadow-xs">${speaker.isModerator ? '⭐ TU MODERACIÓN' : '⭐ TU PARTICIPACIÓN'}</span>`;
+          badgeMine = `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-600 text-white font-mono shadow-xs">${isMyModeratedPanel ? '⭐ TU MODERACIÓN' : '⭐ TU PARTICIPACIÓN'}</span>`;
           timeBoxStyle = 'bg-indigo-600 text-white border-indigo-700';
         } else {
           highlightStyle = `border-l-4 ${item.colorBorder} bg-white border border-slate-200 shadow-xs hover:border-slate-300`;
@@ -3821,7 +3818,7 @@
     // ==========================================================
     function updateCalendarLinks(speaker) {
       const panel = (speaker && speaker.assignedPanelId && PANELS_DATA[speaker.assignedPanelId]) ? PANELS_DATA[speaker.assignedPanelId] : PANELS_DATA["panel-1"];
-      const sessionTheme = speaker.isModerator ? "Conducción y Moderación Oficial de Paneles" : panel.theme;
+      const sessionTheme = speaker.isModerator ? "Moderación Oficial de Paneles 1, 2 y 3" : panel.theme;
       
       const title = encodeURIComponent(speaker.isModerator ? `OPPORTUNEUR IMPACT FORUM 2026 - Moderación ${speaker.name}` : `OPPORTUNEUR IMPACT FORUM 2026 - Ponencia ${speaker.name}`);
       const details = encodeURIComponent(
