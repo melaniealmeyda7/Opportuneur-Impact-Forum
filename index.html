@@ -1614,14 +1614,6 @@
         altPasswords: ["Admin#Nataly2026", "Nataly#Opp2026", "Admin2026", "admin2026", "Splendia26", "splendia2026", "OPP2026", "admin"],
         speakerId: "nataly-napanga",
         name: "Nataly Napanga"
-      },
-      { 
-        username: "admin.felipe", 
-        altUsernames: ["felipe.rosas", "felipe", "feliperosas", "felipe.preservando", "felipe@preservando.org"], 
-        password: "PreservandoMod26", 
-        altPasswords: ["preservandomod26", "Preservando2026", "preservando2026", "Moderador2026", "Preservando26", "Opp2026!Felipe", "OPP2026", "admin"],
-        speakerId: "felipe-rosas",
-        name: "Felipe Rosas (Moderador)"
       }
     ];
 
@@ -2094,8 +2086,10 @@
 
     function loginAsSpeaker(speaker, isAdmin = false) {
       if (!speaker) return;
-      if (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga' || speaker.isModerator) {
+      if (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga') {
         isAdmin = true;
+      } else {
+        isAdmin = false;
       }
       currentSpeaker = speaker;
       localStorage.setItem('opportuneur_logged_speaker_id', speaker.id);
@@ -3262,13 +3256,12 @@
           `;
         });
         ADMIN_ACCOUNTS.forEach(a => {
-          const adminTitle = a.username.includes('melanie') ? 'Melanie' : (a.username.includes('nataly') ? 'Nataly' : 'Felipe');
-          const accessScope = a.speakerId === 'felipe-rosas' ? 'Moderador General' : 'Acceso Total';
+          const adminTitle = a.username.includes('melanie') ? 'Melanie' : 'Nataly';
           rows.unshift(`
             <tr class="border-b border-amber-300 bg-amber-50/80 hover:bg-amber-100/70 transition-colors">
               <td class="py-2.5 pr-4 font-sans font-black text-amber-950">🛡️ Admin (${adminTitle})</td>
               <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">🇵🇪 Perú (PET)</td>
-              <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">${accessScope}</td>
+              <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">Acceso Total</td>
               <td class="py-2.5 pr-4 font-mono text-xs text-indigo-700 select-all font-semibold">${a.username}</td>
               <td class="py-2.5 font-mono text-xs text-amber-900 select-all font-black">${a.password}</td>
             </tr>
