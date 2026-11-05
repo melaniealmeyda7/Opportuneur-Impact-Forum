@@ -1197,6 +1197,43 @@
         ]
       },
       {
+        id: "felipe-rosas",
+        username: "felipe.rosas",
+        altUsernames: ["felipe", "feliperosas", "moderador", "felipe.preservando", "felipe@preservando.org", "felipe.rosas@preservando.org"],
+        password: "PreservandoMod26",
+        altPasswords: [
+          "preservandomod26", "Preservando2026", "preservando2026", "Preservando26", 
+          "preservando", "Moderador2026", "moderador2026", "moderador", "Felipe2026", 
+          "Opp2026!Felipe", "OPP2026", "opp2026"
+        ],
+        email: "felipe@preservando.org",
+        name: "Felipe Rosas",
+        company: "Preservando",
+        title: "Cofundador & COO, Preservando • Moderador Oficial",
+        category: "MODERADOR GENERAL DEL FORUM",
+        country: "Perú",
+        flag: "🇵🇪",
+        timezone: "PET",
+        photo: null,
+        flyer: null,
+        photoPosition: "top",
+        initials: "FR",
+        avatarGradient: "from-emerald-600 via-teal-600 to-cyan-600",
+        tag: "🎙️ Moderador Oficial",
+        badgeStyle: "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-800 border border-emerald-400 font-black shadow-xs",
+        bio: "Cofundador y COO de Preservando, organización socioambiental de conservación de ecosistemas de montaña. Con amplia experiencia en liderazgo de proyectos, voluntariados e innovación, conduce y modera los paneles estratégicos del Opportuneur Impact Forum 2026.",
+        assignedPanelId: "all-panels",
+        isModerator: true,
+        roleInForum: "Moderador General del Forum (Todos los Paneles)",
+        sessions: [
+          { time: "4:10 – 4:25 PM", title: "Special CEO Session — Business Leadership: Diálogo con Speaker Invitado", role: "Co-Moderador" },
+          { time: "4:25 – 4:55 PM", title: "Área 1 — Emprendimiento & Negocios: De la idea a la oportunidad", role: "Moderador Principal" },
+          { time: "4:55 – 5:25 PM", title: "Área 2 — Impacto Social y Sostenibilidad: Liderar para transformar", role: "Moderador Principal" },
+          { time: "5:35 – 6:05 PM", title: "Área 3 — Innovación Digital: La tecnología no reemplaza al talento", role: "Moderador Principal" },
+          { time: "6:05 – 6:35 PM", title: "Área 4 — Empleabilidad: Convierte tu talento en oportunidades globales", role: "Moderador Principal" }
+        ]
+      },
+      {
         id: "cristian-gutierrez",
         username: "cristian.gutierrez",
         altUsernames: ["cristian", "cristiangutierrez", "cristian@ronin.la"],
@@ -1579,6 +1616,14 @@
         altPasswords: ["Admin#Nataly2026", "Nataly#Opp2026", "Admin2026", "admin2026", "Splendia26", "splendia2026", "OPP2026", "admin"],
         speakerId: "nataly-napanga",
         name: "Nataly Napanga"
+      },
+      { 
+        username: "admin.felipe", 
+        altUsernames: ["felipe.rosas", "felipe", "feliperosas", "felipe.preservando", "felipe@preservando.org"], 
+        password: "PreservandoMod26", 
+        altPasswords: ["preservandomod26", "Preservando2026", "preservando2026", "Moderador2026", "Preservando26", "Opp2026!Felipe", "OPP2026", "admin"],
+        speakerId: "felipe-rosas",
+        name: "Felipe Rosas (Moderador)"
       }
     ];
 
@@ -2022,8 +2067,8 @@
             return;
           }
 
-          // Check if speaker is Melanie or Nataly (grant admin privileges)
-          const isCoDirector = (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga');
+          // Check if speaker is Melanie, Nataly, or Moderator Felipe (grant admin privileges)
+          const isCoDirector = (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga' || speaker.isModerator);
 
           // Validate Password:
           // Accepts: generic password ('OPP2026'), exact password, altPasswords, or Opp2026!Firstname
@@ -2051,7 +2096,7 @@
 
     function loginAsSpeaker(speaker, isAdmin = false) {
       if (!speaker) return;
-      if (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga') {
+      if (speaker.id === 'melanie-almeyda' || speaker.id === 'nataly-napanga' || speaker.isModerator) {
         isAdmin = true;
       }
       currentSpeaker = speaker;
@@ -2073,6 +2118,13 @@
       const adminBtn = document.getElementById('adminTabBtn');
       if (adminBtn) adminBtn.classList.toggle('hidden', !isAdmin);
       if (isAdmin) renderAdminPanel();
+
+      // Customize Tab 1 button label for Moderator
+      const tab1Btn = document.querySelector('.dash-tab-btn[data-tab="panel"] span');
+      if (tab1Btn) {
+        tab1Btn.innerText = speaker.isModerator ? "Guía de Paneles & Preguntas (Moderador)" : "Mi Bloque Asignado";
+      }
+
       // Reset to first tab
       const firstTab = document.querySelector('.dash-tab-btn[data-tab="panel"]');
       if (firstTab) firstTab.click();
@@ -2198,9 +2250,382 @@
     }
 
     // ==========================================================
+    // 9B. CONSOLA MAESTRA DEL MODERADOR (FELIPE ROSAS - PRESERVANDO)
+    // ==========================================================
+    window.filterModPanel = function(filterId) {
+      const cards = document.querySelectorAll('.mod-panel-card');
+      const buttons = document.querySelectorAll('.mod-filter-btn');
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === filterId) {
+          btn.className = "mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-black bg-emerald-600 text-white shadow-md shadow-emerald-600/30 border border-emerald-700 cursor-pointer transition-all";
+        } else {
+          btn.className = "mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all";
+        }
+      });
+
+      cards.forEach(card => {
+        if (filterId === 'all' || card.getAttribute('data-panel-id') === filterId) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    function renderModeratorMasterDeck(speaker) {
+      const sessionCard = document.getElementById('mySessionDetailsCard');
+      const tzInfo = TIMEZONE_CONFIG[selectedTimezone] || TIMEZONE_CONFIG["PET"];
+      const convertedSoundcheck = convertTimeRange("3:45 – 4:00 PM", tzInfo.offsetHours);
+
+      sessionCard.className = `glass-card p-6 sm:p-8 rounded-3xl border-l-4 border-emerald-500 relative overflow-hidden bg-white border border-slate-200/90 shadow-sm`;
+
+      sessionCard.innerHTML = `
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+          <div class="flex items-center gap-2.5 flex-wrap">
+            <span class="text-xs font-black tracking-wider uppercase px-3.5 py-1.5 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-950 font-mono flex items-center gap-1.5 shadow-2xs">
+              <i data-lucide="mic" class="w-3.5 h-3.5 text-emerald-700"></i> CONSOLA MAESTRA DEL MODERADOR GENERAL
+            </span>
+            <span class="text-xs text-slate-500 font-mono">
+              Cobertura: <strong class="text-slate-800">5 Bloques Oficiales (100% del Forum)</strong>
+            </span>
+          </div>
+
+          <!-- Prominent Time Badges: Local + Official Sede -->
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white font-mono text-xs sm:text-sm font-black shadow-md shadow-emerald-600/20">
+              <i data-lucide="clock" class="w-4 h-4 text-amber-300"></i>
+              <span>TRANSMISIÓN EN VIVO: 4:00 PM – 7:00 PM PET</span>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 font-mono text-xs font-bold shadow-xs">
+              <span>🇵🇪 Sede Oficial: Lima, Perú</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner Explicativo de Moderación & Soundcheck -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50/60 to-white border border-emerald-300 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+          <div class="flex items-center gap-3 text-xs text-emerald-950">
+            <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="headphones" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="font-bold text-slate-900 block text-sm">Prueba Técnica & Soundcheck de Moderación: <strong class="text-emerald-900 font-mono font-black">${convertedSoundcheck} (${speaker.flag} ${tzInfo.shortCode})</strong></span>
+              <span class="text-[11px] text-slate-600">Por favor conéctate 15 minutos antes a la Sala VIP Zoom para calibrar audio, coordinar tiempos con Melanie y Nataly, y recibir a los panelistas.</span>
+            </div>
+          </div>
+          <div class="shrink-0 bg-white px-3.5 py-2 rounded-xl border border-emerald-300 text-xs font-mono font-bold text-emerald-950 flex items-center gap-2 shadow-2xs">
+            <i data-lucide="radio" class="w-3.5 h-3.5 text-emerald-600 animate-pulse"></i>
+            <span>Sala VIP Lista</span>
+          </div>
+        </div>
+
+        <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Guía Maestra de Conducción, Cronograma y Preguntas de Todos los Paneles</h3>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed max-w-4xl">
+          Felipe, este es tu panel de control como <strong>Moderador Oficial del Forum</strong>. Aquí tienes acceso a la estructura completa, horarios exactos, objetivo de cada panel, las preguntas individuales preparadas para cada ponente con su tiempo asignado, la dinámica en vivo y las preguntas de cierre.
+        </p>
+
+        <!-- Barra Interactiva de Filtro Rápido por Panel -->
+        <div class="mt-5 pt-4 border-t border-slate-200">
+          <div class="text-[11px] font-black uppercase tracking-wider text-slate-500 mb-2.5 flex items-center gap-1.5">
+            <i data-lucide="filter" class="w-3.5 h-3.5 text-indigo-600"></i>
+            <span>Filtro de Visualización Rápida en Vivo:</span>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button onclick="window.filterModPanel('all')" data-filter="all" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-black bg-emerald-600 text-white shadow-md shadow-emerald-600/30 border border-emerald-700 cursor-pointer transition-all">
+              ⭐ Ver Todos los Paneles
+            </button>
+            <button onclick="window.filterModPanel('panel-ceo')" data-filter="panel-ceo" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
+              👑 Special CEO (4:10 PM)
+            </button>
+            <button onclick="window.filterModPanel('panel-1')" data-filter="panel-1" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
+              🟢 Panel 1: Emprendimiento (4:25 PM)
+            </button>
+            <button onclick="window.filterModPanel('panel-2')" data-filter="panel-2" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
+              🟣 Panel 2: Impacto Social (4:55 PM)
+            </button>
+            <button onclick="window.filterModPanel('panel-3')" data-filter="panel-3" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
+              🔵 Panel 3: Innovación Digital (5:35 PM)
+            </button>
+            <button onclick="window.filterModPanel('panel-4')" data-filter="panel-4" class="mod-filter-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs cursor-pointer transition-all">
+              🟡 Panel 4: Empleabilidad (6:05 PM)
+            </button>
+          </div>
+        </div>
+      `;
+
+      const vipTimeEl = document.getElementById('vipAperturaTime');
+      if (vipTimeEl) {
+        vipTimeEl.innerHTML = `<i data-lucide="clock" class="w-3.5 h-3.5"></i> Apertura Sala VIP: <strong>3:45 PM</strong> (PET) • Soundcheck de Moderación`;
+      }
+
+      // Render Guiding Questions for ALL Panels in guidingQuestionsList
+      const questionsList = document.getElementById('guidingQuestionsList');
+      questionsList.innerHTML = '';
+
+      Object.values(PANELS_DATA).forEach(panel => {
+        const members = panel.speakers.map(id => SPEAKERS_DATABASE.find(s => s.id === id)).filter(Boolean);
+        const card = document.createElement('div');
+        card.setAttribute('data-panel-id', panel.id);
+        card.className = `mod-panel-card p-6 sm:p-7 rounded-3xl border-l-4 ${panel.borderAccent} bg-white border border-slate-200/90 shadow-sm space-y-6 transition-all`;
+
+        card.innerHTML = `
+          <!-- Header Area -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-black uppercase px-3.5 py-1 rounded-full ${panel.colorBg} ${panel.colorText} shadow-2xs">${panel.badge}</span>
+              <span class="text-xs text-slate-500 font-mono">Duración: <strong class="text-slate-800">${panel.timeDuration}</strong></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold text-slate-800 bg-slate-100 px-3 py-1 rounded-xl border border-slate-200">
+                ⏰ ${panel.timePet} (Hora Oficial PET)
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xl font-black text-slate-900">${panel.theme}</h4>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">${panel.summary}</p>
+            <!-- Objetivo Estratégico -->
+            <div class="mt-3 p-3.5 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-start gap-3 shadow-2xs">
+              <i data-lucide="target" class="w-4 h-4 text-indigo-600 shrink-0 mt-0.5"></i>
+              <div class="text-xs text-slate-800 leading-relaxed">
+                <strong class="text-indigo-900 font-bold block text-[11px] uppercase tracking-wider">Objetivo Estratégico del Bloque:</strong>
+                ${panel.objective}
+              </div>
+            </div>
+          </div>
+
+          <!-- Panelistas del Bloque y sus Preguntas Formativas -->
+          <div>
+            <div class="text-[11px] font-black text-amber-900 uppercase tracking-wider mb-3 flex items-center justify-between gap-2 flex-wrap">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>Preguntas Individuales por Ponente (3 a 4 min c/u)</span>
+              </span>
+              <span class="text-[10px] text-slate-500 font-mono font-normal">Intervención guiada por el moderador</span>
+            </div>
+            <div class="space-y-3.5">
+              ${members.map(m => {
+                const mTz = TIMEZONE_CONFIG[m.timezone] || TIMEZONE_CONFIG["PET"];
+                const mLocalTime = convertTimeRange(panel.timePet, mTz.offsetHours);
+                const mBadgeTime = m.timezone !== 'PET' ? `${mLocalTime} (${mTz.shortCode})` : `${panel.timePet} (PET)`;
+
+                if (m.individualQuestions && Array.isArray(m.individualQuestions) && m.individualQuestions.length > 0) {
+                  return `
+                    <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-50/70 via-amber-100/30 to-white border border-amber-300 shadow-xs">
+                      <div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                        <div class="flex items-center gap-2">
+                          <span class="text-lg">${m.flag}</span>
+                          <span class="text-xs sm:text-sm font-black text-slate-900">${m.name}</span>
+                          <span class="text-[11px] text-slate-600 font-mono">(${m.company || m.title})</span>
+                        </div>
+                        <span class="text-[10px] px-2.5 py-1 rounded-xl bg-white border border-amber-300 text-slate-800 font-bold font-mono shadow-2xs">${m.country} • ⏰ ${mBadgeTime}</span>
+                      </div>
+                      <div class="space-y-2.5">
+                        ${m.individualQuestions.map(q => `
+                          <div class="bg-white p-3.5 rounded-xl border border-amber-200/90 shadow-2xs">
+                            <div class="flex items-center justify-between gap-2 mb-1 flex-wrap">
+                              <span class="text-[10px] font-black text-amber-800 bg-amber-100 px-2 py-0.5 rounded font-mono">${q.number} · ${q.axis}</span>
+                              <span class="text-xs font-bold text-slate-700 font-mono">${q.subtitle}</span>
+                            </div>
+                            <p class="text-xs sm:text-sm font-serif font-black text-amber-950 pl-3 border-l-3 border-amber-500 leading-relaxed">
+                              “${q.question}”
+                            </p>
+                          </div>
+                        `).join('')}
+                      </div>
+                    </div>
+                  `;
+                } else {
+                  return `
+                    <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-50/70 via-amber-100/30 to-white border border-amber-300 shadow-xs">
+                      <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                        <div class="flex items-center gap-2">
+                          <span class="text-lg">${m.flag}</span>
+                          <span class="text-xs sm:text-sm font-black text-slate-900">${m.name}</span>
+                          <span class="text-[11px] text-slate-600 font-mono">(${m.company || m.title})</span>
+                        </div>
+                        <span class="text-[10px] px-2.5 py-1 rounded-xl bg-white border border-amber-300 text-slate-800 font-bold font-mono shadow-2xs">${m.country} • ⏰ ${mBadgeTime}</span>
+                      </div>
+                      <div class="bg-white p-3.5 rounded-xl border border-amber-200/90 shadow-2xs">
+                        <p class="text-xs sm:text-sm font-serif font-black text-amber-950 pl-3 border-l-3 border-amber-500 leading-relaxed">
+                          “${m.individualQuestion || 'Intervención temática guiada'}”
+                        </p>
+                      </div>
+                    </div>
+                  `;
+                }
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- Dinámica Innovadora del Bloque -->
+          ${panel.dynamicChallenge ? `
+            <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-purple-50 via-purple-100/30 to-white border-2 border-purple-300 text-xs text-purple-950 shadow-xs">
+              <div class="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                <span class="text-xs font-black text-purple-950 uppercase tracking-wider flex items-center gap-1.5 font-mono">
+                  <i data-lucide="zap" class="w-3.5 h-3.5 text-purple-600"></i>
+                  <span>Dinámica Innovadora: ${panel.dynamicChallenge.name}</span>
+                </span>
+                <span class="text-[10px] font-black text-purple-900 bg-purple-200/80 px-2.5 py-0.5 rounded-full border border-purple-400 font-mono">RETO EN VIVO (30 SEG C/U)</span>
+              </div>
+              <p class="text-slate-800 font-semibold leading-relaxed mt-1 bg-white/80 p-3 rounded-xl border border-purple-200">${panel.dynamicChallenge.prompt}</p>
+              ${panel.dynamicChallenge.prompts ? `
+                <div class="grid grid-cols-1 gap-2 mt-2.5">
+                  ${panel.dynamicChallenge.prompts.map(p => `
+                    <div class="p-2.5 rounded-xl bg-white border border-purple-200 text-purple-950 text-xs font-mono font-medium flex items-center gap-2 shadow-2xs">
+                      <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-purple-600 shrink-0"></i>
+                      <span>${p}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+            </div>
+          ` : ''}
+
+          <!-- Pregunta de Cierre -->
+          ${panel.closingQuestion ? `
+            <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-50 via-sky-50/50 to-white border-2 border-blue-300 text-xs text-blue-950 shadow-xs">
+              <div class="text-[11px] font-black text-blue-900 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <i data-lucide="flag" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Pregunta de Cierre del Bloque (Ronda Relámpago de Conclusiones)</span>
+              </div>
+              <p class="text-slate-900 font-serif font-black text-xs sm:text-sm leading-relaxed italic bg-white p-3.5 rounded-xl border border-blue-200 shadow-2xs">“${panel.closingQuestion}”</p>
+            </div>
+          ` : ''}
+
+          <!-- Preguntas de Intercambio y Diálogo Cruzado -->
+          ${(PEER_QUESTIONS[panel.id] && PEER_QUESTIONS[panel.id].length > 0) ? `
+            <div>
+              <div class="text-[11px] font-black text-emerald-800 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+                <i data-lucide="message-square" class="w-3.5 h-3.5 text-emerald-600"></i>
+                <span>Preguntas de Cruce entre Copanelistas (Diálogo Dinámico)</span>
+              </div>
+              <div class="space-y-2">
+                ${PEER_QUESTIONS[panel.id].map((q, i) => `
+                  <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 flex items-start gap-2.5 leading-relaxed shadow-2xs">
+                    <span class="w-5 h-5 rounded-lg bg-emerald-100 text-emerald-800 font-mono font-bold flex items-center justify-center shrink-0 text-[11px]">${i + 1}</span>
+                    <p class="mt-0.5">${q}</p>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        `;
+        questionsList.appendChild(card);
+      });
+
+      // Update Time Allocation Protocol for Moderator
+      const timeTitle = document.getElementById('timeAllocationTitle');
+      const timeGrid = document.getElementById('timeAllocationGrid');
+      if (timeTitle && timeGrid) {
+        timeTitle.innerText = "Protocolo de Moderación: Distribución de Tiempos por Panel (30 min)";
+        timeGrid.className = "grid grid-cols-1 sm:grid-cols-4 gap-3 text-center";
+        timeGrid.innerHTML = `
+          <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 shadow-2xs">
+            <span class="text-xs font-mono font-bold text-indigo-700 block">3 Min</span>
+            <span class="text-xs font-bold text-slate-900 block mt-0.5">Apertura & Encuadre</span>
+            <span class="text-[10px] text-slate-500 block mt-1">Presentar tema y speakers con país y empresa</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200 shadow-2xs">
+            <span class="text-xs font-mono font-bold text-emerald-700 block">15 Min</span>
+            <span class="text-xs font-bold text-emerald-950 block mt-0.5">Ronda Individual</span>
+            <span class="text-[10px] text-emerald-800 block mt-1">4-5 min por panelista con su pregunta clave</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200 shadow-2xs">
+            <span class="text-xs font-mono font-bold text-amber-700 block">8 Min</span>
+            <span class="text-xs font-bold text-amber-950 block mt-0.5">Reto Dinámico & Cruce</span>
+            <span class="text-[10px] text-amber-800 block mt-1">Respuestas de 30 seg y debate ágil</span>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-purple-50/80 border border-purple-200 shadow-2xs">
+            <span class="text-xs font-mono font-bold text-purple-700 block">4 Min</span>
+            <span class="text-xs font-bold text-purple-950 block mt-0.5">Cierre & Conclusiones</span>
+            <span class="text-[10px] text-purple-800 block mt-1">Pregunta relámpago y pase al siguiente panel</span>
+          </div>
+        `;
+      }
+
+      // Populate Co-Panelists / Speakers Directory in Right Column
+      const coPanelistsList = document.getElementById('coPanelistsList');
+      const coPanelistsCount = document.getElementById('coPanelistsCount');
+      if (coPanelistsCount) coPanelistsCount.innerText = "13 Ponentes Oficiales";
+
+      if (coPanelistsList) {
+        coPanelistsList.innerHTML = '';
+
+        // Add Moderator Tips Card
+        const tipsCard = document.createElement('div');
+        tipsCard.className = "p-4 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 text-xs text-emerald-950 space-y-2 mb-3 shadow-2xs";
+        tipsCard.innerHTML = `
+          <div class="flex items-center gap-2 font-black text-emerald-900 text-xs">
+            <i data-lucide="award" class="w-4 h-4 text-emerald-600"></i>
+            <span>Reglas de Oro del Moderador:</span>
+          </div>
+          <ul class="space-y-1.5 text-[11px] text-slate-700">
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-600 font-bold">•</span>
+              <span><strong>Manejo del Tiempo:</strong> Intervenir con calidez cuando queden 30 segundos de respuesta.</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-600 font-bold">•</span>
+              <span><strong>Dinamismo:</strong> Mantener respuestas concisas en la dinámica en vivo (máximo 30 seg).</span>
+            </li>
+            <li class="flex items-start gap-1.5">
+              <span class="text-emerald-600 font-bold">•</span>
+              <span><strong>Conexión:</strong> Resaltar el país y proyecto de cada invitado al darle la palabra.</span>
+            </li>
+          </ul>
+        `;
+        coPanelistsList.appendChild(tipsCard);
+
+        // List speakers
+        const speakersToDisplay = SPEAKERS_DATABASE.filter(s => !s.isModerator && s.id !== 'melanie-almeyda' && s.id !== 'nataly-napanga');
+        speakersToDisplay.forEach(sp => {
+          const spPanel = PANELS_DATA[sp.assignedPanelId];
+          const spTz = TIMEZONE_CONFIG[sp.timezone] || TIMEZONE_CONFIG["PET"];
+          const spLocalTime = spPanel ? convertTimeRange(spPanel.timePet, spTz.offsetHours) : '4:00 PM';
+          const areaName = spPanel ? spPanel.badge.split('—')[0].replace(/[^0-9A-Za-zÁÉÍÓÚáéíóú ]/g, '').trim() : 'Especial';
+
+          let spAvatar = '';
+          if (sp.photo) {
+            spAvatar = `<img src="${sp.photo}" alt="${sp.name}" class="w-full h-full object-cover rounded-lg" style="object-position: ${sp.photoPosition || 'center'};" />`;
+          } else {
+            spAvatar = `<div class="w-full h-full bg-gradient-to-tr ${sp.avatarGradient || 'from-indigo-600 to-purple-600'} rounded-lg flex items-center justify-center text-white font-mono font-bold text-xs">${sp.initials || 'SP'}</div>`;
+          }
+
+          const spCard = document.createElement('div');
+          spCard.className = "flex items-center gap-3 p-3 rounded-2xl bg-white border border-slate-200/90 hover:border-slate-300 transition-all shadow-2xs";
+          spCard.innerHTML = `
+            <div class="w-11 h-11 rounded-xl p-0.5 bg-white border border-slate-200 shrink-0 overflow-hidden shadow-2xs">
+              ${spAvatar}
+            </div>
+            <div class="flex-grow min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <span class="text-xs font-black text-slate-900 truncate">${sp.name}</span>
+                <span class="text-[9px] font-mono font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">${spLocalTime}</span>
+              </div>
+              <p class="text-[11px] text-slate-600 truncate">${sp.company || sp.title}</p>
+              <div class="flex items-center justify-between mt-0.5 text-[10px]">
+                <span class="text-slate-500 truncate">${sp.flag} ${sp.country} (${spTz.shortCode})</span>
+                <span class="font-bold text-emerald-700">${areaName}</span>
+              </div>
+            </div>
+          `;
+          coPanelistsList.appendChild(spCard);
+        });
+      }
+
+      lucide.createIcons();
+    }
+
+    // ==========================================================
     // 9. RENDERIZADO DEL PANEL ASIGNADO Y PREGUNTAS GUÍA
     // ==========================================================
     function renderPersonalizedPanelSection(speaker) {
+      if (speaker.isModerator) {
+        renderModeratorMasterDeck(speaker);
+        return;
+      }
       const panel = PANELS_DATA[speaker.assignedPanelId] || PANELS_DATA["panel-1"];
       const sessionCard = document.getElementById('mySessionDetailsCard');
 
@@ -2579,7 +3004,7 @@
       container.appendChild(tzNotice);
 
       AGENDA_DATA.forEach(item => {
-        const isMySession = item.speakers.includes(speaker.id) || (item.panelId && item.panelId === speaker.assignedPanelId) || item.isVipOnly;
+        const isMySession = item.speakers.includes(speaker.id) || (item.panelId && (item.panelId === speaker.assignedPanelId || speaker.isModerator)) || item.isVipOnly;
 
         if (filterOnlyMine && !isMySession) return;
 
@@ -2592,7 +3017,7 @@
         let timeBoxStyle = '';
         if (isMySession) {
           highlightStyle = 'border-2 border-indigo-400 bg-gradient-to-r from-indigo-50/70 via-purple-50/40 to-white shadow-md shadow-indigo-500/10 ring-1 ring-indigo-300';
-          badgeMine = `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-600 text-white font-mono shadow-xs">⭐ TU PARTICIPACIÓN</span>`;
+          badgeMine = `<span class="text-[10px] font-black px-2 py-0.5 rounded bg-indigo-600 text-white font-mono shadow-xs">${speaker.isModerator ? '⭐ TU MODERACIÓN' : '⭐ TU PARTICIPACIÓN'}</span>`;
           timeBoxStyle = 'bg-indigo-600 text-white border-indigo-700';
         } else {
           highlightStyle = `border-l-4 ${item.colorBorder} bg-white border border-slate-200 shadow-xs hover:border-slate-300`;
@@ -2846,9 +3271,9 @@
       if (tbody) {
         const rows = SPEAKERS_DATABASE.map(s => {
           const p = PANELS_DATA[s.assignedPanelId];
-          const areaLabel = p ? p.badge.split('—')[0].replace(/[^0-9A-Za-zÁÉÍÓÚáéíóú ]/g, '').trim() : 'Dirección';
+          const areaLabel = s.isModerator ? 'Moderación Oficial' : (p ? p.badge.split('—')[0].replace(/[^0-9A-Za-zÁÉÍÓÚáéíóú ]/g, '').trim() : 'Dirección');
           const sTz = TIMEZONE_CONFIG[s.timezone] || TIMEZONE_CONFIG["PET"];
-          const sLocalTime = p ? convertTimeRange(p.timePet, sTz.offsetHours) : '4:00 PM';
+          const sLocalTime = s.isModerator ? '4:00 PM' : (p ? convertTimeRange(p.timePet, sTz.offsetHours) : '4:00 PM');
           return `
             <tr class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
               <td class="py-2.5 pr-4 font-sans font-bold text-slate-900">${s.flag} ${s.name}</td>
@@ -2860,11 +3285,13 @@
           `;
         });
         ADMIN_ACCOUNTS.forEach(a => {
+          const adminTitle = a.username.includes('melanie') ? 'Melanie' : (a.username.includes('nataly') ? 'Nataly' : 'Felipe');
+          const accessScope = a.speakerId === 'felipe-rosas' ? 'Moderador General' : 'Acceso Total';
           rows.unshift(`
             <tr class="border-b border-amber-300 bg-amber-50/80 hover:bg-amber-100/70 transition-colors">
-              <td class="py-2.5 pr-4 font-sans font-black text-amber-950">🛡️ Admin (${a.username.includes('melanie') ? 'Melanie' : 'Nataly'})</td>
+              <td class="py-2.5 pr-4 font-sans font-black text-amber-950">🛡️ Admin (${adminTitle})</td>
               <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">🇵🇪 Perú (PET)</td>
-              <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">Acceso Total</td>
+              <td class="py-2.5 pr-4 font-sans text-xs text-amber-900 font-bold">${accessScope}</td>
               <td class="py-2.5 pr-4 font-mono text-xs text-indigo-700 select-all font-semibold">${a.username}</td>
               <td class="py-2.5 font-mono text-xs text-amber-900 select-all font-black">${a.password}</td>
             </tr>
@@ -3009,7 +3436,7 @@
 
       ctx.fillStyle = '#38bdf8';
       ctx.font = 'bold 11px Inter, sans-serif';
-      ctx.fillText(`SPEAKER OFICIAL • ${speaker.tag.toUpperCase()}`, boxX + 20, boxY + 76);
+      ctx.fillText(speaker.isModerator ? 'MODERADOR OFICIAL • CONDUCCIÓN DEL FORUM' : `SPEAKER OFICIAL • ${speaker.tag.toUpperCase()}`, boxX + 20, boxY + 76);
 
       // Download button hook
       const downloadBtn = document.getElementById('downloadBgBtn');
@@ -3042,7 +3469,8 @@
       if (compEl) compEl.textContent = speaker.company || speaker.title;
 
       let pillText = "PANEL 1";
-      if (speaker.assignedPanelId === 'panel-2') pillText = "PANEL 2";
+      if (speaker.isModerator || speaker.assignedPanelId === 'all-panels') pillText = "MODERADOR";
+      else if (speaker.assignedPanelId === 'panel-2') pillText = "PANEL 2";
       else if (speaker.assignedPanelId === 'panel-3') pillText = "PANEL 3";
       else if (speaker.assignedPanelId === 'panel-4') pillText = "PANEL 4";
       else if (speaker.assignedPanelId === 'panel-ceo') pillText = "SPECIAL CEO";
@@ -3392,14 +3820,15 @@
     // 17. CALENDARIO (.ICS Y GOOGLE CALENDAR)
     // ==========================================================
     function updateCalendarLinks(speaker) {
-      const panel = PANELS_DATA[speaker.assignedPanelId] || PANELS_DATA["panel-1"];
+      const panel = (speaker && speaker.assignedPanelId && PANELS_DATA[speaker.assignedPanelId]) ? PANELS_DATA[speaker.assignedPanelId] : PANELS_DATA["panel-1"];
+      const sessionTheme = speaker.isModerator ? "Conducción y Moderación Oficial de Paneles" : panel.theme;
       
-      const title = encodeURIComponent(`OPPORTUNEUR IMPACT FORUM 2026 - Ponencia ${speaker.name}`);
+      const title = encodeURIComponent(speaker.isModerator ? `OPPORTUNEUR IMPACT FORUM 2026 - Moderación ${speaker.name}` : `OPPORTUNEUR IMPACT FORUM 2026 - Ponencia ${speaker.name}`);
       const details = encodeURIComponent(
-        `Sesión: ${panel.theme}\n` +
+        `Sesión: ${sessionTheme}\n` +
         `Rol: ${speaker.roleInForum}\n` +
         `Acceso VIP: https://zoom.us/j/84920267711 (Passcode: OPP2026VIP)\n` +
-        `¡Soundcheck a las 3:30 PM PET! Organiza: Polyglot Map & SPLENDIA.`
+        `¡Soundcheck a las 3:45 PM PET! Organiza: Polyglot Map & SPLENDIA.`
       );
       const location = encodeURIComponent('Sala Virtual VIP Polyglot Map (Zoom / Meet)');
       
@@ -3420,8 +3849,8 @@
           "DTSTAMP:20261021T120000Z",
           "DTSTART:20261107T203000Z",
           "DTEND:20261108T000000Z",
-          `SUMMARY:OPPORTUNEUR IMPACT FORUM 2026 - Ponencia ${speaker.name}`,
-          `DESCRIPTION:Sesion: ${panel.theme} | Sala VIP Zoom: 849 2026 7711 (OPP2026VIP)`,
+          `SUMMARY:OPPORTUNEUR IMPACT FORUM 2026 - ${speaker.isModerator ? 'Moderación' : 'Ponencia'} ${speaker.name}`,
+          `DESCRIPTION:Sesion: ${sessionTheme} | Sala VIP Zoom: 849 2026 7711 (OPP2026VIP)`,
           "LOCATION:Sala Virtual VIP Polyglot Map",
           "STATUS:CONFIRMED",
           "BEGIN:VALARM",
